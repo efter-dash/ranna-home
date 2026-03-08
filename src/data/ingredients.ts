@@ -33,7 +33,7 @@ import fishBoal from "@/assets/fish-boal.jpg";
 import fishTengra from "@/assets/fish-tengra.jpg";
 import fishAar from "@/assets/fish-aar.png";
 import fishShutki from "@/assets/fish-loitta-shutki.png";
-import fishChital from "@/assets/fish-chital.jpg";
+import fishChital from "@/assets/fish-chital.png";
 import fishBaila from "@/assets/fish-baila.jpg";
 import fishShol from "@/assets/fish-shol.png";
 import fishTaki from "@/assets/fish-taki.png";
