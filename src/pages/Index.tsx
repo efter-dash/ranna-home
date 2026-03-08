@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
+import HamburgerMenu from "@/components/HamburgerMenu";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
@@ -39,6 +40,9 @@ const Index = () => {
       {/* Header */}
       <div className="sticky top-0 z-10 bg-card border-b border-border px-4 pt-5 pb-3">
         <div className="flex items-center justify-center mb-1 relative">
+          <div className="absolute left-0">
+            <HamburgerMenu />
+          </div>
           <div className="flex flex-col items-center">
           <h1 className="text-2xl font-bold tracking-tight flex items-center gap-1">
             <span className="text-primary">রান্না</span>
