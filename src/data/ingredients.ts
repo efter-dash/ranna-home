@@ -103,8 +103,8 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "veg-okra", name: "Okra", localName: "ঢেঁড়স", category: "Vegetable", imageQuery: "okra", icon: "eco", image: "https://images.unsplash.com/photo-1425543103986-22abb7d7e8d2?w=400&h=400&fit=crop" },
   { id: "veg-spinach", name: "Spinach", localName: "পালং শাক", category: "Vegetable", imageQuery: "spinach leaves", icon: "eco", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop" },
   { id: "veg-lalshak", name: "Red Amaranth", localName: "লাল শাক", category: "Vegetable", imageQuery: "red amaranth", icon: "eco", image: vegLalshak },
-  { id: "veg-papaya", name: "Green Papaya", localName: "পেঁপে", category: "Vegetable", imageQuery: "green papaya", icon: "eco", image: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&h=400&fit=crop" },
-  { id: "veg-banana", name: "Green Banana", localName: "কাঁচা কলা", category: "Vegetable", imageQuery: "green banana", icon: "eco", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop" },
+  { id: "veg-papaya", name: "Green Papaya", localName: "পেঁপে", category: "Vegetable", imageQuery: "green papaya", icon: "eco", image: vegPapaya },
+  { id: "veg-banana", name: "Green Banana", localName: "কাঁচা কলা", category: "Vegetable", imageQuery: "green banana", icon: "eco", image: vegBanana },
   { id: "veg-kochu", name: "Taro Root", localName: "মুখি কচু", category: "Vegetable", imageQuery: "taro root", icon: "eco", image: "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop" },
   { id: "veg-shim", name: "Bean", localName: "শিম", category: "Vegetable", imageQuery: "flat beans", icon: "eco", image: vegShim },
 
