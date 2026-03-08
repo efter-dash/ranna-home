@@ -99,8 +99,18 @@ const RecipePage = () => {
 
   if (loading) {
     return (
-      <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-4">
-        <div className="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent" />
+      <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-6">
+        {/* Frying pan with steam */}
+        <div className="relative flex items-center justify-center">
+          {/* Steam wisps */}
+          <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex gap-2">
+            <span className="block w-1.5 rounded-full bg-primary/40 animate-steam-1 h-5" />
+            <span className="block w-1.5 rounded-full bg-primary/30 animate-steam-2 h-7" />
+            <span className="block w-1.5 rounded-full bg-primary/40 animate-steam-3 h-4" />
+          </div>
+          {/* Pan icon */}
+          <span className="material-symbols-outlined text-primary text-6xl animate-pan-rock">skillet</span>
+        </div>
         <p className="text-lg font-bold text-primary">রেসিপি তৈরি হচ্ছে...</p>
         <p className="text-sm text-muted-foreground text-center px-8">
           আপনার নির্বাচিত উপকরণ দিয়ে সুস্বাদু রেসিপি তৈরি করা হচ্ছে
