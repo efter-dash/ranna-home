@@ -3,6 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { ingredients } from "@/data/ingredients";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useFavorites } from "@/hooks/useFavorites";
 
 interface AIRecipe {
   title: string;
@@ -24,6 +25,31 @@ const RecipePage = () => {
   const [recipe, setRecipe] = useState<AIRecipe | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
+
+  const isCurrentFavorited = recipe ? isFavorited(recipe.titleBn) : false;
+
+  const handleToggleFavorite = () => {
+    if (!recipe) return;
+    if (isCurrentFavorited) {
+      const fav = getFavoriteByTitle(recipe.titleBn);
+      if (fav) removeFavorite(fav.id);
+      toast("প্রিয় তালিকা থেকে সরানো হয়েছে");
+    } else {
+      addFavorite({
+        titleBn: recipe.titleBn,
+        title: recipe.title,
+        prepTime: recipe.prepTime,
+        serves: recipe.serves,
+        difficulty: recipe.difficulty,
+        ingredientsList: recipe.ingredientsList,
+        missingEssentials: recipe.missingEssentials,
+        steps: recipe.steps,
+        ingredientIds: selectedIds,
+      });
+      toast("প্রিয় তালিকায় যোগ করা হয়েছে!");
+    }
+  };
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -114,8 +140,13 @@ const RecipePage = () => {
         <h2 className="text-base font-bold leading-tight tracking-tight flex-1 text-center px-2 truncate">
           {recipe.titleBn}
         </h2>
-        <button className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors">
-          <span className="material-symbols-outlined text-accent filled-icon">favorite</span>
+        <button
+          onClick={handleToggleFavorite}
+          className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors"
+        >
+          <span className={`material-symbols-outlined ${isCurrentFavorited ? "text-accent filled-icon" : "text-muted-foreground"}`}>
+            favorite
+          </span>
         </button>
       </div>
 
