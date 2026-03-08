@@ -26,17 +26,17 @@ import fishMagur from "@/assets/fish-magur.jpg";
 import fishShing from "@/assets/fish-shing.jpg";
 import fishPabda from "@/assets/fish-pabda.jpg";
 import fishKoi from "@/assets/fish-koi.jpg";
-import fishRupchanda from "@/assets/fish-rupchanda.jpg";
+import fishRupchanda from "@/assets/fish-rupchanda.jpeg";
 import fishBata from "@/assets/fish-bata.jpg";
 import fishMrigel from "@/assets/fish-mrigel.jpg";
 import fishBoal from "@/assets/fish-boal.jpg";
 import fishTengra from "@/assets/fish-tengra.jpg";
-import fishAar from "@/assets/fish-aar.jpg";
+import fishAar from "@/assets/fish-aar.png";
 import fishShutki from "@/assets/fish-shutki.jpg";
 import fishChital from "@/assets/fish-chital.jpg";
 import fishBaila from "@/assets/fish-baila.jpg";
-import fishShol from "@/assets/fish-shol.jpg";
-import fishTaki from "@/assets/fish-taki.jpg";
+import fishShol from "@/assets/fish-shol.png";
+import fishTaki from "@/assets/fish-taki.png";
 
 // Vegetable & Essential images
 import vegPotato from "@/assets/veg-potato.jpg";
@@ -56,9 +56,11 @@ import essCoriander from "@/assets/ess-coriander.jpeg";
 import essGinger from "@/assets/ess-ginger.jpg";
 import essChili from "@/assets/ess-chili.jpeg";
 import meatDuck from "@/assets/meat-duck.jpg";
-import fishGoldaChingri from "@/assets/fish-golda-chingri.jpg";
+import meatChicken from "@/assets/meat-chicken.jpg";
+import fishGoldaChingri from "@/assets/fish-golda-chingri-2.jpg";
 import fishTilapia from "@/assets/fish-tilapia.jpeg";
 import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
+import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
 import essLentils from "@/assets/ess-lentils.jpg";
 import essTurmeric from "@/assets/ess-turmeric.jpg";
@@ -82,7 +84,7 @@ import essSugar from "@/assets/ess-sugar.jpg";
 import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 import essMilk from "@/assets/ess-milk.jpg";
 import essSourCurd from "@/assets/ess-sour-curd.jpg";
-import meatDeshiChicken from "@/assets/meat-deshi-chicken.jpg";
+import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
@@ -112,7 +114,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   
 
   // ===== MEAT =====
-  { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=400&fit=crop" },
+  { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken", icon: "kebab_dining", image: meatChicken },
   { id: "meat-beef", name: "Beef", localName: "গরুর মাংস", category: "Meat", imageQuery: "raw beef", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=400&h=400&fit=crop" },
   { id: "meat-mutton", name: "Mutton", localName: "খাসি", category: "Meat", imageQuery: "raw mutton", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=400&h=400&fit=crop" },
   { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: meatDuck },
@@ -140,7 +142,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   // ===== ESSENTIALS =====
   { id: "ess-rice", name: "Rice", localName: "চাল", category: "Essential", imageQuery: "rice grains", icon: "grain", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
   { id: "ess-lentils", name: "Red Lentils", localName: "মসুর ডাল", category: "Essential", imageQuery: "red lentils", icon: "grain", image: essLentils },
-  { id: "ess-mustard-oil", name: "Mustard Oil", localName: "সরিষার তেল", category: "Essential", imageQuery: "mustard oil", icon: "water_drop", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=400&fit=crop" },
+  { id: "ess-mustard-oil", name: "Mustard Oil", localName: "সরিষার তেল", category: "Essential", imageQuery: "mustard oil", icon: "water_drop", image: essMustardOil },
   { id: "ess-onion", name: "Onion", localName: "পেঁয়াজ", category: "Essential", imageQuery: "onions", icon: "eco", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=400&fit=crop" },
   { id: "ess-garlic", name: "Garlic", localName: "রসুন", category: "Essential", imageQuery: "garlic", icon: "eco", image: essGarlic },
   { id: "ess-ginger", name: "Ginger", localName: "আদা", category: "Essential", imageQuery: "ginger root", icon: "thermostat", image: essGinger },
