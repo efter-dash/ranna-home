@@ -26,17 +26,17 @@ import fishMagur from "@/assets/fish-magur.jpg";
 import fishShing from "@/assets/fish-shing.jpg";
 import fishPabda from "@/assets/fish-pabda.jpg";
 import fishKoi from "@/assets/fish-koi.jpg";
-import fishRupchanda from "@/assets/fish-rupchanda.jpg";
+import fishRupchanda from "@/assets/fish-rupchanda.jpeg";
 import fishBata from "@/assets/fish-bata.jpg";
 import fishMrigel from "@/assets/fish-mrigel.jpg";
 import fishBoal from "@/assets/fish-boal.jpg";
 import fishTengra from "@/assets/fish-tengra.jpg";
-import fishAar from "@/assets/fish-aar.jpg";
+import fishAar from "@/assets/fish-aar.png";
 import fishShutki from "@/assets/fish-shutki.jpg";
 import fishChital from "@/assets/fish-chital.jpg";
 import fishBaila from "@/assets/fish-baila.jpg";
-import fishShol from "@/assets/fish-shol.jpg";
-import fishTaki from "@/assets/fish-taki.jpg";
+import fishShol from "@/assets/fish-shol.png";
+import fishTaki from "@/assets/fish-taki.png";
 
 // Vegetable & Essential images
 import vegPotato from "@/assets/veg-potato.jpg";
