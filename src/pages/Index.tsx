@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
@@ -10,8 +10,13 @@ const Index = () => {
   const { favorites } = useFavorites();
   const navigate = useNavigate();
 
+  const shuffledAll = useMemo(
+    () => [...INGREDIENT_DATA].sort(() => Math.random() - 0.5),
+    []
+  );
+
   const filteredIngredients = selectedCategory === "all"
-    ? INGREDIENT_DATA
+    ? shuffledAll
     : INGREDIENT_DATA.filter((i) => i.category === selectedCategory);
 
   const toggleIngredient = (id: string) => {
