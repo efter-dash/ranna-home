@@ -74,6 +74,12 @@ import essGaramMasala from "@/assets/ess-garam-masala.jpeg";
 import essGhee from "@/assets/ess-ghee.jpeg";
 import essJaggery from "@/assets/ess-jaggery.jpg";
 import essMustardSeeds from "@/assets/ess-mustard-seeds.jpg";
+import essNigella from "@/assets/ess-nigella.png";
+import essPoppySeeds from "@/assets/ess-poppy-seeds.jpeg";
+import essRedChiliPowder from "@/assets/ess-red-chili-powder.jpg";
+import essSoyabeanOil from "@/assets/ess-soyabean-oil.jpg";
+import essSugar from "@/assets/ess-sugar.jpg";
+import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
@@ -135,25 +141,25 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-garlic", name: "Garlic", localName: "রসুন", category: "Essential", imageQuery: "garlic", icon: "eco", image: essGarlic },
   { id: "ess-ginger", name: "Ginger", localName: "আদা", category: "Essential", imageQuery: "ginger root", icon: "thermostat", image: essGinger },
   { id: "ess-chili", name: "Green Chili", localName: "কাঁচা মরিচ", category: "Essential", imageQuery: "green chili", icon: "local_fire_department", image: essChili },
-  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric", icon: "opacity", image: essTurmeric },
+  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric", icon: "opacity", image: essTurmeric2 },
   { id: "ess-cumin", name: "Cumin", localName: "জিরা", category: "Essential", imageQuery: "cumin seeds", icon: "spa", image: essCumin },
   { id: "ess-coriander", name: "Coriander Leaves", localName: "ধনিয়া পাতা", category: "Essential", imageQuery: "coriander leaves", icon: "grass", image: essCoriander },
   { id: "ess-panch-phoron", name: "Panch Phoron", localName: "পাঁচফোড়ন", category: "Essential", imageQuery: "panch phoron spice", icon: "spa", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=400&fit=crop" },
-  { id: "ess-nigella", name: "Nigella Seeds", localName: "কালো জিরা", category: "Essential", imageQuery: "nigella seeds", icon: "spa", image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=400&h=400&fit=crop" },
+  { id: "ess-nigella", name: "Nigella Seeds", localName: "কালো জিরা", category: "Essential", imageQuery: "nigella seeds", icon: "spa", image: essNigella },
   { id: "ess-dry-red-chili", name: "Dry Red Chili", localName: "শুকনো মরিচ", category: "Essential", imageQuery: "dried red chili", icon: "local_fire_department", image: essDryRedChili },
   { id: "ess-bay-leaf", name: "Bay Leaf", localName: "তেজপাতা", category: "Essential", imageQuery: "bay leaves", icon: "eco", image: essBayLeaf },
   { id: "ess-cardamom", name: "Cardamom", localName: "এলাচ", category: "Essential", imageQuery: "cardamom pods", icon: "spa", image: essCardamom },
   { id: "ess-cinnamon", name: "Cinnamon", localName: "দারুচিনি", category: "Essential", imageQuery: "cinnamon sticks", icon: "spa", image: essCinnamon },
-  { id: "ess-red-chili-powder", name: "Red Chili Powder", localName: "লাল মরিচ গুঁড়া", category: "Essential", imageQuery: "red chili powder", icon: "local_fire_department", image: "https://images.unsplash.com/photo-1596547609652-9cf5d8c76921?w=400&h=400&fit=crop" },
+  { id: "ess-red-chili-powder", name: "Red Chili Powder", localName: "লাল মরিচ গুঁড়া", category: "Essential", imageQuery: "red chili powder", icon: "local_fire_department", image: essRedChiliPowder },
   { id: "ess-coriander-powder", name: "Coriander Powder", localName: "ধনিয়া গুঁড়া", category: "Essential", imageQuery: "coriander powder", icon: "spa", image: essCorianderPowder },
   { id: "ess-garam-masala", name: "Garam Masala", localName: "গরম মশলা", category: "Essential", imageQuery: "garam masala powder", icon: "spa", image: essGaramMasala },
   { id: "ess-ghee", name: "Ghee", localName: "ঘি", category: "Essential", imageQuery: "ghee clarified butter", icon: "water_drop", image: essGhee },
-  { id: "ess-poppy-seeds", name: "Poppy Seeds", localName: "পোস্ত", category: "Essential", imageQuery: "poppy seeds", icon: "spa", image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=400&h=400&fit=crop" },
+  { id: "ess-poppy-seeds", name: "Poppy Seeds", localName: "পোস্ত", category: "Essential", imageQuery: "poppy seeds", icon: "spa", image: essPoppySeeds },
   { id: "ess-mustard-seeds", name: "Mustard Seeds", localName: "সরিষা", category: "Essential", imageQuery: "mustard seeds", icon: "spa", image: essMustardSeeds },
   { id: "ess-coconut", name: "Coconut", localName: "নারিকেল", category: "Essential", imageQuery: "coconut", icon: "eco", image: essCoconut },
-  { id: "ess-sugar", name: "Sugar", localName: "চিনি", category: "Essential", imageQuery: "sugar", icon: "grain", image: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=400&h=400&fit=crop" },
+  { id: "ess-sugar", name: "Sugar", localName: "চিনি", category: "Essential", imageQuery: "sugar", icon: "grain", image: essSugar },
   { id: "ess-jaggery", name: "Jaggery", localName: "গুড়", category: "Essential", imageQuery: "jaggery", icon: "grain", image: essJaggery },
-  { id: "ess-soyabean-oil", name: "Soyabean Oil", localName: "সয়াবিন তেল", category: "Essential", imageQuery: "soybean oil", icon: "water_drop", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=400&fit=crop" },
+  { id: "ess-soyabean-oil", name: "Soyabean Oil", localName: "সয়াবিন তেল", category: "Essential", imageQuery: "soybean oil", icon: "water_drop", image: essSoyabeanOil },
   { id: "ess-butter", name: "Butter", localName: "মাখন", category: "Essential", imageQuery: "butter", icon: "water_drop", image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&h=400&fit=crop" },
 ];
 
