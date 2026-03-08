@@ -63,6 +63,7 @@ import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
 import essLentils from "@/assets/ess-lentils.jpg";
+import essChiniguraRice from "@/assets/ess-chinigura-rice.jpg";
 import essTurmeric from "@/assets/ess-turmeric.jpg";
 import meatQuail from "@/assets/meat-quail.jpeg";
 import meatPigeon from "@/assets/meat-pigeon.jpeg";
@@ -141,6 +142,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
 
   // ===== ESSENTIALS =====
   { id: "ess-rice", name: "Rice", localName: "চাল", category: "Essential", imageQuery: "rice grains", icon: "grain", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
+  { id: "ess-chinigura-rice", name: "Chinigura Rice", localName: "চিনিগুড়া চাল", category: "Essential", imageQuery: "chinigura aromatic rice", icon: "grain", image: essChiniguraRice },
   { id: "ess-lentils", name: "Red Lentils", localName: "মসুর ডাল", category: "Essential", imageQuery: "red lentils", icon: "grain", image: essLentils },
   { id: "ess-mustard-oil", name: "Mustard Oil", localName: "সরিষার তেল", category: "Essential", imageQuery: "mustard oil", icon: "water_drop", image: essMustardOil },
   { id: "ess-onion", name: "Onion", localName: "পেঁয়াজ", category: "Essential", imageQuery: "onions", icon: "eco", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=400&fit=crop" },
