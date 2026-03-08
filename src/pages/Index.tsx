@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ingredients, categories, Category } from "@/data/ingredients";
+import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
@@ -8,8 +8,8 @@ const Index = () => {
   const navigate = useNavigate();
 
   const filteredIngredients = selectedCategory === "all"
-    ? ingredients
-    : ingredients.filter((i) => i.category === selectedCategory);
+    ? INGREDIENT_DATA
+    : INGREDIENT_DATA.filter((i) => i.category === selectedCategory);
 
   const toggleIngredient = (id: string) => {
     setSelectedIngredients((prev) => {
@@ -90,20 +90,15 @@ const Index = () => {
                     : "border-border hover:border-primary/30"
                 }`}
               >
-                {/* Image */}
-                <div className="w-full aspect-square bg-muted overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                {/* Icon area */}
+                <div className="w-full aspect-square bg-muted flex items-center justify-center">
+                  <span className="material-symbols-outlined text-4xl text-muted-foreground">{item.icon}</span>
                 </div>
 
-                {/* Label */}
+                {/* Label - localName prominent, English name smaller */}
                 <div className="w-full px-2 py-2 text-center bg-card">
-                  <p className="text-xs font-semibold truncate">{item.name}</p>
-                  <p className="text-[10px] text-muted-foreground">{item.nameBn}</p>
+                  <p className="text-xs font-bold truncate">{item.localName}</p>
+                  <p className="text-[10px] text-muted-foreground">{item.name}</p>
                 </div>
 
                 {/* Checkmark */}
