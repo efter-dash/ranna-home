@@ -32,7 +32,7 @@ import fishMrigel from "@/assets/fish-mrigel.jpg";
 import fishBoal from "@/assets/fish-boal.jpg";
 import fishTengra from "@/assets/fish-tengra.jpg";
 import fishAar from "@/assets/fish-aar.png";
-import fishShutki from "@/assets/fish-shutki.jpg";
+import fishShutki from "@/assets/fish-loitta-shutki.png";
 import fishChital from "@/assets/fish-chital.jpg";
 import fishBaila from "@/assets/fish-baila.jpg";
 import fishShol from "@/assets/fish-shol.png";
@@ -104,7 +104,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "fish-boal", name: "Wallago", localName: "বোয়াল", category: "Fish", imageQuery: "wallago fish", icon: "set_meal", image: fishBoal },
   { id: "fish-tengra", name: "Mystus", localName: "টেংরা", category: "Fish", imageQuery: "small river fish", icon: "set_meal", image: fishTengra },
   { id: "fish-aar", name: "Long-whiskered Catfish", localName: "আইড়", category: "Fish", imageQuery: "river catfish", icon: "set_meal", image: fishAar },
-  { id: "fish-shutki", name: "Dried Fish", localName: "শুঁটকি", category: "Fish", imageQuery: "dried fish", icon: "set_meal", image: fishShutki },
+  { id: "fish-shutki", name: "Loitta Shutki", localName: "লইট্টা শুঁটকি", category: "Fish", imageQuery: "loitta shutki dried fish", icon: "set_meal", image: fishShutki },
   { id: "fish-chital", name: "Clown Knifefish", localName: "চিতল", category: "Fish", imageQuery: "knifefish", icon: "set_meal", image: fishChital },
   { id: "fish-baila", name: "Tank Goby", localName: "বাইলা/বেলে", category: "Fish", imageQuery: "small freshwater fish", icon: "set_meal", image: fishBaila },
   { id: "fish-shol", name: "Snakehead", localName: "শোল", category: "Fish", imageQuery: "snakehead fish", icon: "set_meal", image: fishShol },
