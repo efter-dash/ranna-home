@@ -74,6 +74,12 @@ import essGaramMasala from "@/assets/ess-garam-masala.jpeg";
 import essGhee from "@/assets/ess-ghee.jpeg";
 import essJaggery from "@/assets/ess-jaggery.jpg";
 import essMustardSeeds from "@/assets/ess-mustard-seeds.jpg";
+import essNigella from "@/assets/ess-nigella.png";
+import essPoppySeeds from "@/assets/ess-poppy-seeds.jpeg";
+import essRedChiliPowder from "@/assets/ess-red-chili-powder.jpg";
+import essSoyabeanOil from "@/assets/ess-soyabean-oil.jpg";
+import essSugar from "@/assets/ess-sugar.jpg";
+import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
