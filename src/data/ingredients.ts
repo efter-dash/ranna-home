@@ -97,8 +97,8 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "meat-beef", name: "Beef", localName: "গরুর মাংস", category: "Meat", imageQuery: "raw beef", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=400&h=400&fit=crop" },
   { id: "meat-mutton", name: "Mutton", localName: "খাসি", category: "Meat", imageQuery: "raw mutton", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=400&h=400&fit=crop" },
   { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: meatDuck },
-  { id: "meat-quail", name: "Quail", localName: "কোয়েল", category: "Meat", imageQuery: "raw quail meat", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1606728035253-0df1e5b6c1af?w=400&h=400&fit=crop" },
-  { id: "meat-pigeon", name: "Pigeon", localName: "কবুতর", category: "Meat", imageQuery: "raw pigeon meat", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=400&h=400&fit=crop" },
+  { id: "meat-quail", name: "Quail", localName: "কোয়েল", category: "Meat", imageQuery: "raw quail meat", icon: "kebab_dining", image: meatQuail },
+  { id: "meat-pigeon", name: "Pigeon", localName: "কবুতর", category: "Meat", imageQuery: "raw pigeon meat", icon: "kebab_dining", image: meatPigeon },
 
   // ===== VEGETABLES =====
   { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: vegPotato },
