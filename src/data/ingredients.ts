@@ -121,7 +121,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-garlic", name: "Garlic", localName: "রসুন", category: "Essential", imageQuery: "garlic", icon: "eco", image: essGarlic },
   { id: "ess-ginger", name: "Ginger", localName: "আদা", category: "Essential", imageQuery: "ginger root", icon: "thermostat", image: essGinger },
   { id: "ess-chili", name: "Green Chili", localName: "কাঁচা মরিচ", category: "Essential", imageQuery: "green chili", icon: "local_fire_department", image: essChili },
-  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric", icon: "opacity", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&h=400&fit=crop" },
+  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric", icon: "opacity", image: essTurmeric },
   { id: "ess-cumin", name: "Cumin", localName: "জিরা", category: "Essential", imageQuery: "cumin seeds", icon: "spa", image: essCumin },
   { id: "ess-coriander", name: "Coriander Leaves", localName: "ধনিয়া পাতা", category: "Essential", imageQuery: "coriander leaves", icon: "grass", image: essCoriander },
 ];
