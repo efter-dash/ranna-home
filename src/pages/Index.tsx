@@ -115,6 +115,8 @@ const Index = () => {
                     alt={item.name}
                     className="w-full h-full object-cover scale-110"
                     loading="lazy"
+                    decoding="async"
+                    fetchPriority={filteredIngredients.indexOf(item) < 6 ? "high" : "low"}
                   />
                 </div>
 
