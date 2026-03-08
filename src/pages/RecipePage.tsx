@@ -176,14 +176,17 @@ const RecipePage = () => {
         <h2 className="text-base font-bold leading-tight tracking-tight flex-1 text-center px-2 truncate">
           {recipe?.titleBn}
         </h2>
-        <button
-          onClick={handleToggleFavorite}
-          className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors"
-        >
-          <span className={`material-symbols-outlined ${isCurrentFavorited ? "text-accent filled-icon" : "text-muted-foreground"}`}>
-            favorite
-          </span>
-        </button>
+        <div className="flex items-center gap-1">
+          <RecipeHistorySheet history={history} onClear={clearHistory} />
+          <button
+            onClick={handleToggleFavorite}
+            className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors"
+          >
+            <span className={`material-symbols-outlined ${isCurrentFavorited ? "text-accent filled-icon" : "text-muted-foreground"}`}>
+              favorite
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Recipe Tabs - show only when multiple recipes */}
