@@ -147,11 +147,11 @@ const Index = () => {
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
           <button
             onClick={handleCookNow}
-            className="w-full sm:max-w-md sm:mx-auto sm:block py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full sm:max-w-md sm:mx-auto flex items-center justify-center gap-2 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
-            <span className="material-symbols-outlined filled-icon">skillet</span>
-            চলুন রান্না করি !
-            <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full ml-1">
+            <span className="material-symbols-outlined filled-icon leading-none align-middle" style={{ fontSize: '20px' }}>skillet</span>
+            <span className="leading-none">চলুন রান্না করি !</span>
+            <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full leading-none">
               {selectedIngredients.size}
             </span>
           </button>
