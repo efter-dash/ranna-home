@@ -62,6 +62,8 @@ import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
 import essLentils from "@/assets/ess-lentils.jpg";
 import essTurmeric from "@/assets/ess-turmeric.jpg";
+import meatQuail from "@/assets/meat-quail.jpeg";
+import meatPigeon from "@/assets/meat-pigeon.jpeg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
