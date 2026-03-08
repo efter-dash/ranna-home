@@ -84,7 +84,8 @@ const RecipePage = () => {
           {usedItems.map((item) => (
             <div key={item.id} className="flex flex-col items-center p-3 bg-card border border-border rounded-xl">
               <span className="material-symbols-outlined text-muted-foreground">{item.icon}</span>
-              <span className="text-[10px] mt-2 font-medium text-center">{item.name}</span>
+              <span className="text-[10px] mt-2 font-bold text-center">{item.localName}</span>
+              <span className="text-[9px] text-muted-foreground text-center">{item.name}</span>
             </div>
           ))}
         </div>
