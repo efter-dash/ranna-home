@@ -118,6 +118,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: meatDuck },
   { id: "meat-quail", name: "Quail", localName: "কোয়েল", category: "Meat", imageQuery: "raw quail meat", icon: "kebab_dining", image: meatQuail },
   { id: "meat-pigeon", name: "Pigeon", localName: "কবুতর", category: "Meat", imageQuery: "raw pigeon meat", icon: "kebab_dining", image: meatPigeon },
+  { id: "meat-deshi-chicken", name: "Deshi Chicken", localName: "দেশি মুরগি", category: "Meat", imageQuery: "free range country chicken", icon: "kebab_dining", image: meatDeshiChicken },
 
   // ===== VEGETABLES =====
   { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: vegPotato },
