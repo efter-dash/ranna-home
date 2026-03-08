@@ -62,6 +62,7 @@ import fishTilapia from "@/assets/fish-tilapia.png";
 import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
+import vegGolBegun from "@/assets/veg-gol-begun.png";
 import essLentils from "@/assets/ess-lentils.jpg";
 import essChiniguraRice from "@/assets/ess-chinigura-rice.jpg";
 import essMoongDal from "@/assets/ess-moong-dal.jpg";
@@ -129,6 +130,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   // ===== VEGETABLES =====
   { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: vegPotato },
   { id: "veg-eggplant", name: "Eggplant", localName: "বেগুন", category: "Vegetable", imageQuery: "eggplant", icon: "eco", image: vegEggplant },
+  { id: "veg-gol-begun", name: "Round Eggplant", localName: "গোল বেগুণ", category: "Vegetable", imageQuery: "round eggplant", icon: "eco", image: vegGolBegun },
   { id: "veg-cauliflower", name: "Cauliflower", localName: "ফুলকপি", category: "Vegetable", imageQuery: "cauliflower", icon: "eco", image: vegCauliflower },
   { id: "veg-cabbage", name: "Cabbage", localName: "বাঁধাকপি", category: "Vegetable", imageQuery: "cabbage", icon: "eco", image: vegCabbage },
   { id: "veg-tomato", name: "Tomato", localName: "টমেটো", category: "Vegetable", imageQuery: "tomatoes", icon: "eco", image: vegTomato },
