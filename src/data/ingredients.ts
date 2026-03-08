@@ -70,7 +70,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "fish-katla", name: "Catla", localName: "কাতলা", category: "Fish", imageQuery: "catla fish", icon: "set_meal", image: fishKatla },
   { id: "fish-chingri", name: "Prawn", localName: "চিংড়ি", category: "Fish", imageQuery: "fresh prawns", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
   { id: "fish-pangash", name: "Pangasius", localName: "পাঙ্গাশ", category: "Fish", imageQuery: "pangasius fish", icon: "set_meal", image: fishPangash },
-  { id: "fish-tilapia", name: "Tilapia", localName: "তেলাপিয়া", category: "Fish", imageQuery: "tilapia fish", icon: "set_meal", image: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=400&h=400&fit=crop" },
+  { id: "fish-tilapia", name: "Tilapia", localName: "তেলাপিয়া", category: "Fish", imageQuery: "tilapia fish", icon: "set_meal", image: fishTilapia },
   { id: "fish-magur", name: "Catfish", localName: "মাগুর", category: "Fish", imageQuery: "catfish", icon: "set_meal", image: fishMagur },
   { id: "fish-shing", name: "Stinging Catfish", localName: "শিং", category: "Fish", imageQuery: "stinging catfish", icon: "set_meal", image: fishShing },
   { id: "fish-pabda", name: "Butterfish", localName: "পাবদা", category: "Fish", imageQuery: "butterfish", icon: "set_meal", image: fishPabda },
