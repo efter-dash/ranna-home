@@ -81,7 +81,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "fish-baila", name: "Tank Goby", localName: "বাইলা/বেলে", category: "Fish", imageQuery: "small freshwater fish", icon: "set_meal", image: fishBaila },
   { id: "fish-shol", name: "Snakehead", localName: "শোল", category: "Fish", imageQuery: "snakehead fish", icon: "set_meal", image: fishShol },
   { id: "fish-taki", name: "Spotted Snakehead", localName: "টাকি", category: "Fish", imageQuery: "spotted snakehead", icon: "set_meal", image: fishTaki },
-  { id: "fish-golda-chingri", name: "Giant Prawn", localName: "গলদা চিংড়ি", category: "Fish", imageQuery: "giant freshwater prawn", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
+  { id: "fish-golda-chingri", name: "Giant Prawn", localName: "গলদা চিংড়ি", category: "Fish", imageQuery: "giant freshwater prawn", icon: "set_meal", image: fishGoldaChingri },
   { id: "fish-bagda-chingri", name: "Tiger Shrimp", localName: "বাগদা চিংড়ি", category: "Fish", imageQuery: "tiger shrimp", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
   
 
