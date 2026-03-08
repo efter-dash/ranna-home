@@ -6,6 +6,7 @@ import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
   const [selectedIngredients, setSelectedIngredients] = useState<Set<string>>(new Set());
+  const { favorites } = useFavorites();
   const navigate = useNavigate();
 
   const filteredIngredients = selectedCategory === "all"
