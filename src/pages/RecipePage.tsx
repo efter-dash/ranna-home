@@ -30,6 +30,7 @@ const RecipePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
+  const { history, addToHistory, clearHistory } = useRecipeHistory();
 
   const recipe = recipes[activeIndex] || null;
   const isCurrentFavorited = recipe ? isFavorited(recipe.titleBn) : false;
