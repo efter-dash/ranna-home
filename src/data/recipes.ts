@@ -11,18 +11,9 @@ export interface Recipe {
 }
 
 export function generateMockRecipe(selectedIds: string[]): Recipe {
-  const hasIlish = selectedIds.includes("ilish");
-  const hasRui = selectedIds.includes("rui");
-  const hasChingri = selectedIds.includes("chingri");
-  const hasChicken = selectedIds.includes("chicken");
-  const hasBeef = selectedIds.includes("beef");
-  const hasMutton = selectedIds.includes("mutton");
-  const hasPotato = selectedIds.includes("potato");
-  const hasBrinjal = selectedIds.includes("brinjal");
-  const hasCauliflower = selectedIds.includes("cauliflower");
-  const hasLentils = selectedIds.includes("lentils");
+  const has = (id: string) => selectedIds.includes(id);
 
-  if (hasIlish) {
+  if (has("fish-ilish")) {
     return {
       title: "Ilish Machher Bhapa",
       titleBn: "ইলিশ মাছের ভাপা",
@@ -31,7 +22,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
       serves: "4 People",
       difficulty: "Medium",
       usedIngredients: selectedIds,
-      missingEssentials: !selectedIds.includes("mustard-oil") ? ["Mustard Oil", "Mustard Paste"] : ["Mustard Paste"],
+      missingEssentials: !has("ess-mustard-oil") ? ["Mustard Oil", "Mustard Paste"] : ["Mustard Paste"],
       steps: [
         "Clean the **Hilsa fish** pieces and marinate with turmeric, chili powder, and salt for 10 minutes.",
         "Make a paste of **mustard seeds** soaked in water. Mix with mustard oil, green chilies, and a pinch of turmeric.",
@@ -42,7 +33,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
     };
   }
 
-  if (hasRui && hasBrinjal) {
+  if (has("fish-rui") && has("veg-eggplant")) {
     return {
       title: "Spicy Rohu Fish Curry with Eggplant",
       titleBn: "রুই মাছের ঝোল",
@@ -51,7 +42,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
       serves: "3 People",
       difficulty: "Medium",
       usedIngredients: selectedIds,
-      missingEssentials: !selectedIds.includes("chili") ? ["Salt", "Green Chilies"] : ["Salt"],
+      missingEssentials: !has("ess-chili") ? ["Salt", "Green Chilies"] : ["Salt"],
       steps: [
         "Marinate the cleaned **Rohu fish** pieces with turmeric powder, chili powder, and a pinch of salt. Let it rest for 15 minutes.",
         "Heat **mustard oil** in a pan until it reaches smoking point. Fry the marinated fish pieces until golden brown on both sides. Remove and set aside.",
@@ -62,7 +53,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
     };
   }
 
-  if (hasChicken) {
+  if (has("meat-chicken")) {
     return {
       title: "Deshi Chicken Curry with Potatoes",
       titleBn: "দেশি মুরগির তরকারি",
@@ -71,7 +62,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
       serves: "4 People",
       difficulty: "Easy",
       usedIngredients: selectedIds,
-      missingEssentials: !selectedIds.includes("potato") ? ["Potato", "Onion", "Garlic"] : ["Onion", "Garlic"],
+      missingEssentials: !has("veg-potato") ? ["Potato", "Onion", "Garlic"] : ["Onion", "Garlic"],
       steps: [
         "Cut **chicken** into medium pieces. Marinate with turmeric, chili powder, ginger-garlic paste, and salt for 30 minutes.",
         "Heat oil in a heavy-bottomed pan. Add whole spices — bay leaf, cardamom, cinnamon, and cloves.",
@@ -82,7 +73,7 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
     };
   }
 
-  if (hasBeef) {
+  if (has("meat-beef")) {
     return {
       title: "Traditional Beef Bhuna",
       titleBn: "গরুর মাংস ভুনা",
@@ -102,7 +93,47 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
     };
   }
 
-  if (hasLentils) {
+  if (has("meat-mutton")) {
+    return {
+      title: "Khashir Rezala",
+      titleBn: "খাসির রেজালা",
+      image: "https://images.unsplash.com/photo-1545247181-516773cae754?w=800&h=500&fit=crop",
+      prepTime: "80 mins",
+      serves: "4 People",
+      difficulty: "Hard",
+      usedIngredients: selectedIds,
+      missingEssentials: ["Yogurt", "Onion", "Cashew Paste"],
+      steps: [
+        "Marinate **mutton** pieces with yogurt, ginger-garlic paste, and a pinch of salt for 1 hour.",
+        "Heat ghee in a heavy pan. Add whole spices — cardamom, cloves, cinnamon, and bay leaf.",
+        "Fry sliced onions until golden. Add the marinated mutton and sear on high heat.",
+        "Add cashew paste, cream, and a little warm water. Cover and cook on low heat for 50-60 minutes.",
+        "Finish with a sprinkle of kewra water and fresh green chilies. Serve with fragrant **rice** or naan.",
+      ],
+    };
+  }
+
+  if (has("meat-duck")) {
+    return {
+      title: "Hasher Mangsho Bhuna",
+      titleBn: "হাঁসের মাংস ভুনা",
+      image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=800&h=500&fit=crop",
+      prepTime: "75 mins",
+      serves: "4 People",
+      difficulty: "Medium",
+      usedIngredients: selectedIds,
+      missingEssentials: ["Onion", "Garlic"],
+      steps: [
+        "Clean and cut **duck** into pieces. Marinate with turmeric, chili powder, and salt.",
+        "Pressure cook or boil the duck pieces until half tender.",
+        "Heat mustard oil, fry sliced onions until brown. Add ginger-garlic paste.",
+        "Add the duck pieces and bhuna (stir-fry) on high heat until oil separates.",
+        "Add green chilies and fresh coriander. Serve hot with steamed **rice**.",
+      ],
+    };
+  }
+
+  if (has("ess-lentils")) {
     return {
       title: "Bengali Masoor Dal",
       titleBn: "মসুর ডাল",
@@ -118,6 +149,26 @@ export function generateMockRecipe(selectedIds: string[]): Recipe {
         "Add sliced onions, green chilies, and dried red chilies. Fry until onions are golden.",
         "Pour the tempering over the boiled dal. Mix well and simmer for 5 minutes.",
         "Garnish with fresh **coriander** leaves. Serve hot with steamed **rice**.",
+      ],
+    };
+  }
+
+  if (has("veg-korola")) {
+    return {
+      title: "Korola Bhaji",
+      titleBn: "করলা ভাজি",
+      image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=800&h=500&fit=crop",
+      prepTime: "20 mins",
+      serves: "2 People",
+      difficulty: "Easy",
+      usedIngredients: selectedIds,
+      missingEssentials: ["Salt", "Onion"],
+      steps: [
+        "Slice **bitter gourd** thinly. Rub with salt and turmeric, let sit for 10 minutes, then squeeze out the water.",
+        "Heat **mustard oil** in a pan. Add sliced onions and fry until translucent.",
+        "Add the bitter gourd slices and toss on medium heat.",
+        "Sprinkle chili powder and a pinch of sugar. Fry until crispy.",
+        "Serve as a side dish with steamed **rice** and dal.",
       ],
     };
   }
