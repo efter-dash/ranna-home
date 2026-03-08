@@ -38,7 +38,7 @@ const Index = () => {
     <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-card border-b border-border px-4 pt-5 pb-3">
-        <div className="flex items-center justify-between mb-1">
+        <div className="flex items-center justify-center mb-1 relative">
           <div className="flex flex-col items-center">
           <h1 className="text-2xl font-bold tracking-tight flex items-center gap-1">
             <span className="text-primary">রান্না</span>
@@ -49,7 +49,7 @@ const Index = () => {
           </div>
           <Link
             to="/favorites"
-            className="relative w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+            className="absolute right-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
           >
             <span className="material-symbols-outlined text-primary">favorite</span>
             {favorites.length > 0 && (
