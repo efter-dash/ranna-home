@@ -157,21 +157,19 @@ const RecipePage = () => {
 
       {/* Recipe Tabs - show only when multiple recipes */}
       {isMultiple && (
-        <div className="flex gap-2 px-4 pt-3">
+        <div className="flex gap-2 px-4 pt-3 overflow-x-auto">
           {recipes.map((r, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`flex-1 py-2.5 px-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
+              className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl text-sm font-bold transition-all flex items-center justify-center gap-1.5 ${
                 activeIndex === idx
                   ? "bg-primary text-primary-foreground shadow-md"
                   : "bg-secondary text-muted-foreground hover:bg-secondary/80"
               }`}
             >
-              <span className="material-symbols-outlined text-base">
-                {idx === 0 ? "set_meal" : "kebab_dining"}
-              </span>
-              {idx === 0 ? "মাছ" : "মাংস"}
+              <span className="material-symbols-outlined text-base">restaurant_menu</span>
+              <span className="truncate">{r.titleBn?.split(" ").slice(0, 2).join(" ") || `রেসিপি ${idx + 1}`}</span>
             </button>
           ))}
         </div>
