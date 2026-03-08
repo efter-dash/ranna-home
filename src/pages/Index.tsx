@@ -36,7 +36,7 @@ const Index = () => {
           <div>
           <h1 className="text-2xl font-bold tracking-tight flex items-center gap-1">
             <span className="text-primary">রান্না</span>
-            <span className="text-primary text-xl">🐟</span>
+            <Fish className="text-primary" size={22} />
             <span className="text-foreground">করি</span>
           </h1>
             <p className="text-xs text-muted-foreground mt-0.5">আপনার প্যান্ট্রি থেকে রান্না করুন</p>
