@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useFavorites } from "@/hooks/useFavorites";
 import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
   const [selectedIngredients, setSelectedIngredients] = useState<Set<string>>(new Set());
+  const { favorites } = useFavorites();
   const navigate = useNavigate();
 
   const filteredIngredients = selectedCategory === "all"
@@ -37,9 +39,17 @@ const Index = () => {
             </h1>
             <p className="text-xs text-muted-foreground mt-0.5">আপনার প্যান্ট্রি থেকে রান্না করুন</p>
           </div>
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-            <span className="material-symbols-outlined text-primary">restaurant</span>
-          </div>
+          <Link
+            to="/favorites"
+            className="relative w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+          >
+            <span className="material-symbols-outlined text-primary">favorite</span>
+            {favorites.length > 0 && (
+              <span className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-accent text-accent-foreground text-[10px] font-bold flex items-center justify-center">
+                {favorites.length}
+              </span>
+            )}
+          </Link>
         </div>
 
         {/* Category Tabs */}
