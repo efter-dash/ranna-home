@@ -80,6 +80,9 @@ import essRedChiliPowder from "@/assets/ess-red-chili-powder.jpg";
 import essSoyabeanOil from "@/assets/ess-soyabean-oil.jpg";
 import essSugar from "@/assets/ess-sugar.jpg";
 import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
+import essMilk from "@/assets/ess-milk.jpg";
+import essSourCurd from "@/assets/ess-sour-curd.jpg";
+import meatDeshiChicken from "@/assets/meat-deshi-chicken.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
@@ -115,6 +118,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: meatDuck },
   { id: "meat-quail", name: "Quail", localName: "কোয়েল", category: "Meat", imageQuery: "raw quail meat", icon: "kebab_dining", image: meatQuail },
   { id: "meat-pigeon", name: "Pigeon", localName: "কবুতর", category: "Meat", imageQuery: "raw pigeon meat", icon: "kebab_dining", image: meatPigeon },
+  { id: "meat-deshi-chicken", name: "Deshi Chicken", localName: "দেশি মুরগি", category: "Meat", imageQuery: "free range country chicken", icon: "kebab_dining", image: meatDeshiChicken },
 
   // ===== VEGETABLES =====
   { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: vegPotato },
@@ -161,6 +165,8 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-jaggery", name: "Jaggery", localName: "গুড়", category: "Essential", imageQuery: "jaggery", icon: "grain", image: essJaggery },
   { id: "ess-soyabean-oil", name: "Soyabean Oil", localName: "সয়াবিন তেল", category: "Essential", imageQuery: "soybean oil", icon: "water_drop", image: essSoyabeanOil },
   { id: "ess-butter", name: "Butter", localName: "মাখন", category: "Essential", imageQuery: "butter", icon: "water_drop", image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&h=400&fit=crop" },
+  { id: "ess-milk", name: "Milk", localName: "দুধ", category: "Essential", imageQuery: "milk", icon: "water_drop", image: essMilk },
+  { id: "ess-sour-curd", name: "Sour Curd", localName: "টক দই", category: "Essential", imageQuery: "sour curd yogurt", icon: "grain", image: essSourCurd },
 ];
 
 // Backward-compatible export
