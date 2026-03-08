@@ -63,6 +63,7 @@ import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
 import essLentils from "@/assets/ess-lentils.jpg";
+import essChiniguraRice from "@/assets/ess-chinigura-rice.jpg";
 import essTurmeric from "@/assets/ess-turmeric.jpg";
 import meatQuail from "@/assets/meat-quail.jpeg";
 import meatPigeon from "@/assets/meat-pigeon.jpeg";
