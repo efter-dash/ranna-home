@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 
