@@ -179,7 +179,7 @@ const RecipePage = () => {
               }`}
             >
               <span className="material-symbols-outlined text-base">restaurant_menu</span>
-              <span className="truncate">{r.titleBn?.split(" ").slice(0, 2).join(" ") || `রেসিপি ${idx + 1}`}</span>
+              <span className="truncate">{r.titleBn?.split(" ").slice(-2).join(" ") || `রেসিপি ${idx + 1}`}</span>
             </button>
           ))}
         </div>
