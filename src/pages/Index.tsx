@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 
@@ -34,9 +35,9 @@ const Index = () => {
       <div className="sticky top-0 z-10 bg-card border-b border-border px-4 pt-5 pb-3">
         <div className="flex items-center justify-between mb-1">
           <div>
-          <h1 className="text-2xl font-bold tracking-tight font-title flex items-center gap-1">
+          <h1 className="text-2xl font-bold tracking-tight flex items-center gap-1">
             <span className="text-primary">রান্না</span>
-            <span className="material-symbols-outlined text-primary text-2xl">phishing</span>
+            <Fish className="text-primary" size={22} />
             <span className="text-foreground">করি</span>
           </h1>
             <p className="text-xs text-muted-foreground mt-0.5">আপনার প্যান্ট্রি থেকে রান্না করুন</p>
