@@ -80,6 +80,9 @@ import essRedChiliPowder from "@/assets/ess-red-chili-powder.jpg";
 import essSoyabeanOil from "@/assets/ess-soyabean-oil.jpg";
 import essSugar from "@/assets/ess-sugar.jpg";
 import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
+import essMilk from "@/assets/ess-milk.jpg";
+import essSourCurd from "@/assets/ess-sour-curd.jpg";
+import meatDeshiChicken from "@/assets/meat-deshi-chicken.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
