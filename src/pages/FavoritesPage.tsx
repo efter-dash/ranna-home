@@ -6,16 +6,16 @@ const FavoritesPage = () => {
   const { favorites, removeFavorite } = useFavorites();
 
   return (
-    <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl">
+    <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl">
       {/* Header */}
-      <div className="flex items-center bg-card p-4 pb-2 sticky top-0 z-10 border-b border-border">
+      <div className="flex items-center bg-card p-4 sm:px-6 lg:px-8 pb-2 sticky top-0 z-10 border-b border-border">
         <button
           onClick={() => navigate("/")}
           className="flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-secondary transition-colors"
         >
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
-        <h2 className="text-base font-bold leading-tight tracking-tight flex-1 text-center pr-10">
+        <h2 className="text-base sm:text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">
           প্রিয় রেসিপি
         </h2>
       </div>
@@ -35,7 +35,7 @@ const FavoritesPage = () => {
           </button>
         </div>
       ) : (
-        <div className="px-4 py-4 space-y-3 pb-24">
+        <div className="px-4 sm:px-6 lg:px-8 py-4 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {favorites.map((fav) => (
             <div
               key={fav.id}
@@ -84,7 +84,7 @@ const FavoritesPage = () => {
       )}
 
       {/* Bottom Bar */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
         <button
           onClick={() => navigate("/")}
           className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"

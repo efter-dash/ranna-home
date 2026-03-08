@@ -36,20 +36,20 @@ const Index = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl">
+    <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl">
       {/* Header */}
-      <div className="sticky top-0 z-10 bg-card border-b border-border px-4 pt-5 pb-3">
+      <div className="sticky top-0 z-10 bg-card border-b border-border px-4 sm:px-6 lg:px-8 pt-5 pb-3">
         <div className="flex items-center justify-center mb-1 relative">
           <div className="absolute left-0">
             <HamburgerMenu />
           </div>
           <div className="flex flex-col items-center">
-          <h1 className="text-2xl font-bold tracking-tight flex items-center gap-1">
+          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight flex items-center gap-1">
             <span className="text-primary">রান্না</span>
             <Fish className="text-primary" size={22} />
             <span className="text-foreground">করি</span>
           </h1>
-            <p className="text-xs text-muted-foreground mt-0.5">আপনার প্যান্ট্রি থেকে রান্না করুন</p>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">আপনার প্যান্ট্রি থেকে রান্না করুন</p>
           </div>
           <Link
             to="/favorites"
@@ -95,11 +95,11 @@ const Index = () => {
       </div>
 
       {/* Ingredient Grid */}
-      <div className="flex-1 px-4 pt-4 pb-28">
+      <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-28">
         <p className="text-base font-semibold text-muted-foreground mb-3 text-center">
           আপনার বাসায় যা যা আছে বেছে নিন — <span className="font-bold text-primary transition-all duration-300">{selectedIngredients.size}</span> টি বাছাই
         </p>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
           {filteredIngredients.map((item) => {
             const isSelected = selectedIngredients.has(item.id);
             return (
@@ -124,7 +124,7 @@ const Index = () => {
                   />
                 </div>
 
-                {/* Label - localName prominent, English name smaller */}
+                {/* Label */}
                 <div className="w-full px-2 py-2 text-center bg-card">
                   <p className="text-xs font-bold truncate">{item.localName}</p>
                   <p className="text-[10px] text-muted-foreground">{item.name}</p>
@@ -144,10 +144,10 @@ const Index = () => {
 
       {/* Floating Action Button */}
       {selectedIngredients.size > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-md px-4 z-20">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
           <button
             onClick={handleCookNow}
-            className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            className="w-full sm:max-w-md sm:mx-auto sm:block py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="material-symbols-outlined filled-icon">skillet</span>
             চলুন রান্না করি !

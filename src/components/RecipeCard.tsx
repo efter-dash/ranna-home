@@ -20,7 +20,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="px-4 py-3">
+      <div className="px-4 sm:px-6 py-3">
         <div className="w-full bg-primary/10 flex flex-col items-center justify-center overflow-hidden rounded-xl min-h-48 shadow-md p-6">
           <span className="material-symbols-outlined text-primary text-6xl mb-3 filled-icon">restaurant</span>
           <h1 className="text-2xl font-bold leading-tight text-center">{recipe.titleBn}</h1>
@@ -29,7 +29,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       </div>
 
       {/* Quick Info */}
-      <div className="flex justify-between px-6 py-4 bg-secondary mx-4 rounded-xl border border-border">
+      <div className="flex justify-between px-6 py-4 bg-secondary mx-4 sm:mx-6 rounded-xl border border-border">
         <div className="flex flex-col items-center">
           <span className="material-symbols-outlined text-primary mb-1">schedule</span>
           <span className="text-[10px] font-semibold text-muted-foreground uppercase">সময়</span>
@@ -50,7 +50,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       </div>
 
       {/* Ingredients from Pantry */}
-      <div className="px-4 pt-8">
+      <div className="px-4 sm:px-6 pt-8">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-bold flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">inventory_2</span>
@@ -60,7 +60,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
             {usedItems.length} টি
           </span>
         </div>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-3">
           {usedItems.map((item) => (
             <div key={item.id} className="flex flex-col items-center p-3 bg-card border border-border rounded-xl">
               <div className="w-10 h-10 rounded-full overflow-hidden bg-muted">
@@ -75,7 +75,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Full Ingredients List */}
       {recipe.ingredientsList && recipe.ingredientsList.length > 0 && (
-        <div className="px-4 pt-6">
+        <div className="px-4 sm:px-6 pt-6">
           <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">checklist</span>
             উপকরণ তালিকা
@@ -93,7 +93,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Missing Essentials */}
       {recipe.missingEssentials && recipe.missingEssentials.length > 0 && (
-        <div className="px-4 pt-6">
+        <div className="px-4 sm:px-6 pt-6">
           <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3">
             <span className="material-symbols-outlined text-accent">warning</span>
             <div>
@@ -107,7 +107,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       )}
 
       {/* Step-by-Step Instructions */}
-      <div className="px-4 pt-8 pb-24">
+      <div className="px-4 sm:px-6 pt-8 pb-24">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-primary">receipt_long</span>
           রান্নার প্রণালী

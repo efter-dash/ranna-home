@@ -78,11 +78,9 @@ const RecipePage = () => {
         if (fnError) throw fnError;
         if (data?.error) throw new Error(data.error);
 
-        // New response format: { recipes: [...], multiple: bool }
         if (data?.recipes && Array.isArray(data.recipes)) {
           setRecipes(data.recipes);
         } else {
-          // Fallback for old format
           setRecipes([data]);
         }
       } catch (err: any) {
@@ -100,7 +98,6 @@ const RecipePage = () => {
     }
   }, []);
 
-  // Save recipes to history when loaded
   useEffect(() => {
     if (recipes.length > 0) {
       recipes.forEach((r) => {
@@ -118,18 +115,16 @@ const RecipePage = () => {
       });
     }
   }, [recipes]);
+
   if (loading) {
     return (
-      <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-6">
-        {/* Frying pan with steam */}
+      <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl items-center justify-center gap-6">
         <div className="relative flex items-center justify-center">
-          {/* Steam wisps */}
           <div className="absolute -top-8 left-1/2 -translate-x-1/2 flex gap-2">
             <span className="block w-1.5 rounded-full bg-primary/40 animate-steam-1 h-5" />
             <span className="block w-1.5 rounded-full bg-primary/30 animate-steam-2 h-7" />
             <span className="block w-1.5 rounded-full bg-primary/40 animate-steam-3 h-4" />
           </div>
-          {/* Pan icon */}
           <span className="material-symbols-outlined text-primary text-6xl animate-pan-rock">skillet</span>
         </div>
         <p className="text-lg font-bold text-primary">রেসিপি তৈরি হচ্ছে...</p>
@@ -149,7 +144,7 @@ const RecipePage = () => {
 
   if (error || recipes.length === 0) {
     return (
-      <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-4 px-6">
+      <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl items-center justify-center gap-4 px-6">
         <span className="material-symbols-outlined text-4xl text-destructive">error</span>
         <p className="text-lg font-bold text-center">রেসিপি তৈরি করতে সমস্যা হয়েছে</p>
         <p className="text-sm text-muted-foreground text-center">{error}</p>
@@ -164,16 +159,16 @@ const RecipePage = () => {
   }
 
   return (
-    <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl">
+    <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl">
       {/* Header */}
-      <div className="flex items-center bg-card p-4 pb-2 sticky top-0 z-10 border-b border-border justify-between">
+      <div className="flex items-center bg-card p-4 sm:px-6 lg:px-8 pb-2 sticky top-0 z-10 border-b border-border justify-between">
         <button
           onClick={() => navigate("/")}
           className="flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-secondary transition-colors"
         >
           <span className="material-symbols-outlined">arrow_back</span>
         </button>
-        <h2 className="text-base font-bold leading-tight tracking-tight flex-1 text-center px-2 truncate">
+        <h2 className="text-base sm:text-lg font-bold leading-tight tracking-tight flex-1 text-center px-2 truncate">
           {recipe?.titleBn}
         </h2>
         <div className="flex items-center gap-1">
@@ -189,9 +184,9 @@ const RecipePage = () => {
         </div>
       </div>
 
-      {/* Recipe Tabs - show only when multiple recipes */}
+      {/* Recipe Tabs */}
       {isMultiple && (
-        <div className="flex gap-2 px-4 pt-3 overflow-x-auto">
+        <div className="flex gap-2 px-4 sm:px-6 lg:px-8 pt-3 overflow-x-auto">
           {recipes.map((r, idx) => (
             <button
               key={idx}
@@ -209,15 +204,17 @@ const RecipePage = () => {
         </div>
       )}
 
-      {recipe && (
-        <RecipeCard
-          recipe={recipe}
-          usedItems={usedItems}
-        />
-      )}
+      <div className="max-w-2xl mx-auto w-full">
+        {recipe && (
+          <RecipeCard
+            recipe={recipe}
+            usedItems={usedItems}
+          />
+        )}
+      </div>
 
       {/* Bottom Bar */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
+      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
         <button
           onClick={() => navigate("/")}
           className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
