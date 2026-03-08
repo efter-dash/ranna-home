@@ -4,7 +4,9 @@ import { ingredients } from "@/data/ingredients";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useRecipeHistory } from "@/hooks/useRecipeHistory";
 import RecipeCard from "@/components/RecipeCard";
+import RecipeHistorySheet from "@/components/RecipeHistorySheet";
 
 interface AIRecipe {
   title: string;
@@ -28,6 +30,7 @@ const RecipePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
+  const { history, addToHistory, clearHistory } = useRecipeHistory();
 
   const recipe = recipes[activeIndex] || null;
   const isCurrentFavorited = recipe ? isFavorited(recipe.titleBn) : false;
@@ -97,6 +100,24 @@ const RecipePage = () => {
     }
   }, []);
 
+  // Save recipes to history when loaded
+  useEffect(() => {
+    if (recipes.length > 0) {
+      recipes.forEach((r) => {
+        addToHistory({
+          titleBn: r.titleBn,
+          title: r.title,
+          prepTime: r.prepTime,
+          serves: r.serves,
+          difficulty: r.difficulty,
+          ingredientsList: r.ingredientsList,
+          missingEssentials: r.missingEssentials,
+          steps: r.steps,
+          ingredientIds: selectedIds,
+        });
+      });
+    }
+  }, [recipes]);
   if (loading) {
     return (
       <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-6">
@@ -155,14 +176,17 @@ const RecipePage = () => {
         <h2 className="text-base font-bold leading-tight tracking-tight flex-1 text-center px-2 truncate">
           {recipe?.titleBn}
         </h2>
-        <button
-          onClick={handleToggleFavorite}
-          className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors"
-        >
-          <span className={`material-symbols-outlined ${isCurrentFavorited ? "text-accent filled-icon" : "text-muted-foreground"}`}>
-            favorite
-          </span>
-        </button>
+        <div className="flex items-center gap-1">
+          <RecipeHistorySheet history={history} onClear={clearHistory} />
+          <button
+            onClick={handleToggleFavorite}
+            className="flex cursor-pointer items-center justify-center rounded-full h-10 w-10 hover:bg-secondary transition-colors"
+          >
+            <span className={`material-symbols-outlined ${isCurrentFavorited ? "text-accent filled-icon" : "text-muted-foreground"}`}>
+              favorite
+            </span>
+          </button>
+        </div>
       </div>
 
       {/* Recipe Tabs - show only when multiple recipes */}
