@@ -84,7 +84,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&h=400&fit=crop" },
 
   // ===== VEGETABLES =====
-  { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: "https://images.unsplash.com/photo-1518977676601-b53f82ade73c?w=400&h=400&fit=crop" },
+  { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: vegPotato },
   { id: "veg-eggplant", name: "Eggplant", localName: "বেগুন", category: "Vegetable", imageQuery: "eggplant", icon: "eco", image: "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?w=400&h=400&fit=crop" },
   { id: "veg-cauliflower", name: "Cauliflower", localName: "ফুলকপি", category: "Vegetable", imageQuery: "cauliflower", icon: "eco", image: "https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=400&h=400&fit=crop" },
   { id: "veg-cabbage", name: "Cabbage", localName: "বাঁধাকপি", category: "Vegetable", imageQuery: "cabbage", icon: "eco", image: "https://images.unsplash.com/photo-1594282486756-56b0fb4a29a4?w=400&h=400&fit=crop" },
