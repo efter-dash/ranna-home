@@ -113,7 +113,7 @@ const Index = () => {
                   <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover scale-110"
+                    className="w-full h-full object-contain"
                     loading="lazy"
                   />
                 </div>
