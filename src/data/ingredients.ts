@@ -110,7 +110,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "veg-lalshak", name: "Red Amaranth", localName: "লাল শাক", category: "Vegetable", imageQuery: "red amaranth", icon: "eco", image: vegLalshak },
   { id: "veg-papaya", name: "Green Papaya", localName: "পেঁপে", category: "Vegetable", imageQuery: "green papaya", icon: "eco", image: vegPapaya },
   { id: "veg-banana", name: "Green Banana", localName: "কাঁচা কলা", category: "Vegetable", imageQuery: "green banana", icon: "eco", image: vegBanana },
-  { id: "veg-kochu", name: "Taro Root", localName: "মুখি কচু", category: "Vegetable", imageQuery: "taro root", icon: "eco", image: "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop" },
+  { id: "veg-kochu", name: "Taro Root", localName: "মুখি কচু", category: "Vegetable", imageQuery: "taro root", icon: "eco", image: vegKochu },
   { id: "veg-shim", name: "Bean", localName: "শিম", category: "Vegetable", imageQuery: "flat beans", icon: "eco", image: vegShim },
 
   // ===== ESSENTIALS =====
