@@ -100,6 +100,24 @@ const RecipePage = () => {
     }
   }, []);
 
+  // Save recipes to history when loaded
+  useEffect(() => {
+    if (recipes.length > 0) {
+      recipes.forEach((r) => {
+        addToHistory({
+          titleBn: r.titleBn,
+          title: r.title,
+          prepTime: r.prepTime,
+          serves: r.serves,
+          difficulty: r.difficulty,
+          ingredientsList: r.ingredientsList,
+          missingEssentials: r.missingEssentials,
+          steps: r.steps,
+          ingredientIds: selectedIds,
+        });
+      });
+    }
+  }, [recipes]);
   if (loading) {
     return (
       <div className="relative flex min-h-screen w-full max-w-md mx-auto flex-col bg-card shadow-xl items-center justify-center gap-6">
