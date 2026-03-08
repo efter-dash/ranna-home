@@ -25,7 +25,7 @@ import fishPangash from "@/assets/fish-pangash.jpg";
 import fishMagur from "@/assets/fish-magur.jpg";
 import fishShing from "@/assets/fish-shing.jpg";
 import fishPabda from "@/assets/fish-pabda.jpg";
-import fishKoi from "@/assets/fish-koi.png";
+import fishKoi from "@/assets/fish-koi.jpg";
 import fishRupchanda from "@/assets/fish-rupchanda.jpg";
 import fishBata from "@/assets/fish-bata.jpg";
 import fishMrigel from "@/assets/fish-mrigel.jpg";
