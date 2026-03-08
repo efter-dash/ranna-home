@@ -40,7 +40,7 @@ import fishTaki from "@/assets/fish-taki.png";
 
 // Vegetable & Essential images
 import vegPotato from "@/assets/veg-potato.jpg";
-import vegEggplant from "@/assets/veg-eggplant.jpg";
+import vegEggplant from "@/assets/veg-eggplant.png";
 import vegCabbage from "@/assets/veg-cabbage.jpg";
 import vegTomato from "@/assets/veg-tomato.jpg";
 import vegLau from "@/assets/veg-lau.jpg";
