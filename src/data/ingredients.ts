@@ -90,7 +90,16 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "fish-taki", name: "Spotted Snakehead", localName: "টাকি", category: "Fish", imageQuery: "spotted snakehead", icon: "set_meal", image: fishTaki },
   { id: "fish-golda-chingri", name: "Giant Prawn", localName: "গলদা চিংড়ি", category: "Fish", imageQuery: "giant freshwater prawn", icon: "set_meal", image: fishGoldaChingri },
   { id: "fish-bagda-chingri", name: "Tiger Shrimp", localName: "বাগদা চিংড়ি", category: "Fish", imageQuery: "tiger shrimp", icon: "set_meal", image: fishBagdaChingri },
-  
+import essBayLeaf from "@/assets/ess-bay-leaf.jpeg";
+import essCardamom from "@/assets/ess-cardamom.jpeg";
+import essCinnamon from "@/assets/ess-cinnamon.jpg";
+import essCoconut from "@/assets/ess-coconut.png";
+import essCorianderPowder from "@/assets/ess-coriander-powder.jpg";
+import essDryRedChili from "@/assets/ess-dry-red-chili.jpeg";
+import essGaramMasala from "@/assets/ess-garam-masala.jpeg";
+import essGhee from "@/assets/ess-ghee.jpeg";
+import essJaggery from "@/assets/ess-jaggery.jpg";
+import essMustardSeeds from "@/assets/ess-mustard-seeds.jpg";
 
   // ===== MEAT =====
   { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=400&fit=crop" },
