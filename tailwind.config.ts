@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        title: ['"Tiro Bangla"', "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
