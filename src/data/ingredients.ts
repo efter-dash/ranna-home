@@ -37,7 +37,7 @@ import fishChital from "@/assets/fish-chital.jpg";
 import fishBaila from "@/assets/fish-baila.jpg";
 import fishShol from "@/assets/fish-shol.jpg";
 import fishTaki from "@/assets/fish-taki.jpg";
-import fishKachki from "@/assets/fish-kachki.jpg";
+
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
