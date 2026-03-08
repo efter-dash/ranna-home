@@ -47,8 +47,16 @@ import vegLau from "@/assets/veg-lau.jpg";
 import vegPotol from "@/assets/veg-potol.jpg";
 import vegLalshak from "@/assets/veg-lalshak.jpg";
 import vegShim from "@/assets/veg-shim.jpg";
+import vegCauliflower from "@/assets/veg-cauliflower.png";
+import vegPapaya from "@/assets/veg-papaya.webp";
+import vegBanana from "@/assets/veg-banana.jpg";
 import essGarlic from "@/assets/ess-garlic.jpg";
 import essCumin from "@/assets/ess-cumin.jpg";
+import essCoriander from "@/assets/ess-coriander.jpeg";
+import essGinger from "@/assets/ess-ginger.jpg";
+import essChili from "@/assets/ess-chili.jpeg";
+import meatDuck from "@/assets/meat-duck.jpg";
+import fishGoldaChingri from "@/assets/fish-golda-chingri.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
