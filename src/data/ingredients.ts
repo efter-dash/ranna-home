@@ -20,7 +20,7 @@ export const categories: { id: Category; label: string; icon: string }[] = [
 // AI-generated fish images
 import fishIlish from "@/assets/fish-ilish.jpg";
 import fishRui from "@/assets/fish-rui.jpg";
-import fishKatla from "@/assets/fish-katla.jpg";
+import fishKatla from "@/assets/fish-katla.png";
 import fishPangash from "@/assets/fish-pangash.png";
 import fishMagur from "@/assets/fish-magur.jpg";
 import fishShing from "@/assets/fish-shing.jpg";
