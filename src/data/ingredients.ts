@@ -25,7 +25,7 @@ import fishPangash from "@/assets/fish-pangash.jpg";
 import fishMagur from "@/assets/fish-magur.jpg";
 import fishShing from "@/assets/fish-shing.jpg";
 import fishPabda from "@/assets/fish-pabda.jpg";
-import fishKoi from "@/assets/fish-koi.png";
+import fishKoi from "@/assets/fish-koi.jpg";
 import fishRupchanda from "@/assets/fish-rupchanda.jpg";
 import fishBata from "@/assets/fish-bata.jpg";
 import fishMrigel from "@/assets/fish-mrigel.jpg";
@@ -37,7 +37,7 @@ import fishChital from "@/assets/fish-chital.jpg";
 import fishBaila from "@/assets/fish-baila.jpg";
 import fishShol from "@/assets/fish-shol.jpg";
 import fishTaki from "@/assets/fish-taki.jpg";
-import fishKachki from "@/assets/fish-kachki.jpg";
+
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
@@ -64,7 +64,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "fish-taki", name: "Spotted Snakehead", localName: "টাকি", category: "Fish", imageQuery: "spotted snakehead", icon: "set_meal", image: fishTaki },
   { id: "fish-golda-chingri", name: "Giant Prawn", localName: "গলদা চিংড়ি", category: "Fish", imageQuery: "giant freshwater prawn", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
   { id: "fish-bagda-chingri", name: "Tiger Shrimp", localName: "বাগদা চিংড়ি", category: "Fish", imageQuery: "tiger shrimp", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
-  { id: "fish-kachki", name: "Small Dried Fish", localName: "কাচকি", category: "Fish", imageQuery: "small silver fish", icon: "set_meal", image: fishKachki },
+  
 
   // ===== MEAT =====
   { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=400&fit=crop" },
