@@ -58,7 +58,7 @@ import essChili from "@/assets/ess-chili.jpeg";
 import meatDuck from "@/assets/meat-duck.jpg";
 import meatChicken from "@/assets/meat-chicken.jpg";
 import fishGoldaChingri from "@/assets/fish-golda-chingri-2.jpg";
-import fishTilapia from "@/assets/fish-tilapia.jpeg";
+import fishTilapia from "@/assets/fish-tilapia.png";
 import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
