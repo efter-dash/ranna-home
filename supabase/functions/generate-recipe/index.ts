@@ -26,7 +26,22 @@ serve(async (req) => {
       throw new Error("LOVABLE_API_KEY is not configured");
     }
 
+    // Detect if both meat and fish are selected
+    const hasFish = ingredients.some((i: any) => i.category === "Fish");
+    const hasMeat = ingredients.some((i: any) => i.category === "Meat");
+    const hasBothMeatAndFish = hasFish && hasMeat;
+
     const ingredientList = ingredients
+      .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
+      .join(", ");
+
+    const fishIngredients = ingredients
+      .filter((i: any) => i.category !== "Meat")
+      .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
+      .join(", ");
+
+    const meatIngredients = ingredients
+      .filter((i: any) => i.category !== "Fish")
       .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
       .join(", ");
 
@@ -44,7 +59,78 @@ serve(async (req) => {
 
 তুমি অবশ্যই JSON ফরম্যাটে উত্তর দেবে। অন্য কিছু লিখবে না।`;
 
-    const userPrompt = `এই উপকরণগুলো দিয়ে একটি সুস্বাদু বাংলাদেশী রেসিপি তৈরি করো: ${ingredientList}
+    if (hasBothMeatAndFish) {
+      // Generate two recipes - one for fish, one for meat
+      const userPrompt = `ব্যবহারকারী মাছ ও মাংস দুটোই নির্বাচন করেছে। দুটি আলাদা রেসিপি তৈরি করো:
+
+১. মাছের রেসিপি - এই উপকরণ দিয়ে: ${fishIngredients}
+২. মাংসের রেসিপি - এই উপকরণ দিয়ে: ${meatIngredients}
+
+JSON ফরম্যাট (অবশ্যই একটি array হবে):
+[
+  {
+    "title": "English fish recipe name",
+    "titleBn": "বাংলায় মাছের রেসিপির নাম",
+    "prepTime": "৩০ মিনিট",
+    "serves": "৪ জন",
+    "difficulty": "সহজ/মাঝারি/কঠিন",
+    "ingredientsList": ["১ কেজি ইলিশ মাছ", "২ টেবিল চামচ সরিষার তেল", ...],
+    "missingEssentials": ["লবণ", "সরিষার তেল", ...],
+    "steps": ["বাংলায় ধাপ ১...", "বাংলায় ধাপ ২...", ...]
+  },
+  {
+    "title": "English meat recipe name",
+    "titleBn": "বাংলায় মাংসের রেসিপির নাম",
+    "prepTime": "৬০ মিনিট",
+    "serves": "৪ জন",
+    "difficulty": "মাঝারি/কঠিন",
+    "ingredientsList": ["৫০০ গ্রাম মুরগি", ...],
+    "missingEssentials": ["লবণ", ...],
+    "steps": ["বাংলায় ধাপ ১...", "বাংলায় ধাপ ২...", ...]
+  }
+]`;
+
+      const response = await fetch(
+        "https://ai.gateway.lovable.dev/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${LOVABLE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "google/gemini-3-flash-preview",
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt },
+            ],
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        return handleAIError(response);
+      }
+
+      const data = await response.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error("No content in AI response");
+
+      let jsonStr = content;
+      const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/);
+      if (jsonMatch) jsonStr = jsonMatch[1].trim();
+
+      const recipes = JSON.parse(jsonStr);
+
+      // Ensure it's an array
+      const recipesArray = Array.isArray(recipes) ? recipes : [recipes];
+
+      return new Response(JSON.stringify({ recipes: recipesArray, multiple: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    } else {
+      // Single recipe flow (original)
+      const userPrompt = `এই উপকরণগুলো দিয়ে একটি সুস্বাদু বাংলাদেশী রেসিপি তৈরি করো: ${ingredientList}
 
 JSON ফরম্যাট:
 {
@@ -58,61 +144,42 @@ JSON ফরম্যাট:
   "steps": ["বাংলায় ধাপ ১...", "বাংলায় ধাপ ২...", ...]
 }`;
 
-    const response = await fetch(
-      "https://ai.gateway.lovable.dev/v1/chat/completions",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-3-flash-preview",
-          messages: [
-            { role: "system", content: systemPrompt },
-            { role: "user", content: userPrompt },
-          ],
-        }),
+      const response = await fetch(
+        "https://ai.gateway.lovable.dev/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${LOVABLE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: "google/gemini-3-flash-preview",
+            messages: [
+              { role: "system", content: systemPrompt },
+              { role: "user", content: userPrompt },
+            ],
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        return handleAIError(response);
       }
-    );
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: "Rate limited. Please try again in a moment." }),
-          { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: "AI credits exhausted. Please add credits." }),
-          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
-      const errText = await response.text();
-      console.error("AI gateway error:", response.status, errText);
-      throw new Error("AI gateway error");
+      const data = await response.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error("No content in AI response");
+
+      let jsonStr = content;
+      const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/);
+      if (jsonMatch) jsonStr = jsonMatch[1].trim();
+
+      const recipe = JSON.parse(jsonStr);
+
+      return new Response(JSON.stringify({ recipes: [recipe], multiple: false }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
-
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content;
-
-    if (!content) {
-      throw new Error("No content in AI response");
-    }
-
-    // Extract JSON from response (handle markdown code blocks)
-    let jsonStr = content;
-    const jsonMatch = content.match(/```(?:json)?\s*([\s\S]*?)```/);
-    if (jsonMatch) {
-      jsonStr = jsonMatch[1].trim();
-    }
-
-    const recipe = JSON.parse(jsonStr);
-
-    return new Response(JSON.stringify(recipe), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
   } catch (e) {
     console.error("generate-recipe error:", e);
     return new Response(
@@ -121,3 +188,27 @@ JSON ফরম্যাট:
     );
   }
 });
+
+async function handleAIError(response: Response) {
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+  };
+
+  if (response.status === 429) {
+    return new Response(
+      JSON.stringify({ error: "Rate limited. Please try again in a moment." }),
+      { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+  if (response.status === 402) {
+    return new Response(
+      JSON.stringify({ error: "AI credits exhausted. Please add credits." }),
+      { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  }
+  const errText = await response.text();
+  console.error("AI gateway error:", response.status, errText);
+  throw new Error("AI gateway error");
+}
