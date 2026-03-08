@@ -88,7 +88,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "veg-eggplant", name: "Eggplant", localName: "বেগুন", category: "Vegetable", imageQuery: "eggplant", icon: "eco", image: vegEggplant },
   { id: "veg-cauliflower", name: "Cauliflower", localName: "ফুলকপি", category: "Vegetable", imageQuery: "cauliflower", icon: "eco", image: "https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=400&h=400&fit=crop" },
   { id: "veg-cabbage", name: "Cabbage", localName: "বাঁধাকপি", category: "Vegetable", imageQuery: "cabbage", icon: "eco", image: vegCabbage },
-  { id: "veg-tomato", name: "Tomato", localName: "টমেটো", category: "Vegetable", imageQuery: "tomatoes", icon: "eco", image: "https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=400&h=400&fit=crop" },
+  { id: "veg-tomato", name: "Tomato", localName: "টমেটো", category: "Vegetable", imageQuery: "tomatoes", icon: "eco", image: vegTomato },
   { id: "veg-lau", name: "Bottle Gourd", localName: "লাউ", category: "Vegetable", imageQuery: "bottle gourd", icon: "eco", image: "https://images.unsplash.com/photo-1622921491193-345c3708a5cf?w=400&h=400&fit=crop" },
   { id: "veg-korola", name: "Bitter Gourd", localName: "করলা", category: "Vegetable", imageQuery: "bitter gourd", icon: "eco", image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=400&h=400&fit=crop" },
   { id: "veg-potol", name: "Pointed Gourd", localName: "পটল", category: "Vegetable", imageQuery: "pointed gourd", icon: "eco", image: "https://images.unsplash.com/photo-1622921491193-345c3708a5cf?w=400&h=400&fit=crop" },
