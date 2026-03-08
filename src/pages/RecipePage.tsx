@@ -4,7 +4,9 @@ import { ingredients } from "@/data/ingredients";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
 import { useFavorites } from "@/hooks/useFavorites";
+import { useRecipeHistory } from "@/hooks/useRecipeHistory";
 import RecipeCard from "@/components/RecipeCard";
+import RecipeHistorySheet from "@/components/RecipeHistorySheet";
 
 interface AIRecipe {
   title: string;
