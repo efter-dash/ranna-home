@@ -146,7 +146,7 @@ const Index = () => {
             className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 flex items-center justify-center gap-2 transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="material-symbols-outlined filled-icon">skillet</span>
-            Ranna Kori — Cook Now!
+            চলুন রান্না করি !
             <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full ml-1">
               {selectedIngredients.size}
             </span>
