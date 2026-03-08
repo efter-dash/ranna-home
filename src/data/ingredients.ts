@@ -89,6 +89,7 @@ import essSugar from "@/assets/ess-sugar.jpg";
 import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 import essMilk from "@/assets/ess-milk.jpg";
 import essSourCurd from "@/assets/ess-sour-curd.jpg";
+import essSalt from "@/assets/ess-salt.png";
 import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
@@ -179,6 +180,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-butter", name: "Butter", localName: "মাখন", category: "Essential", imageQuery: "butter", icon: "water_drop", image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&h=400&fit=crop" },
   { id: "ess-milk", name: "Milk", localName: "দুধ", category: "Essential", imageQuery: "milk", icon: "water_drop", image: essMilk },
   { id: "ess-sour-curd", name: "Sour Curd", localName: "টক দই", category: "Essential", imageQuery: "sour curd yogurt", icon: "grain", image: essSourCurd },
+  { id: "ess-salt", name: "Salt", localName: "লবণ", category: "Essential", imageQuery: "salt", icon: "grain", image: essSalt },
 ];
 
 // Backward-compatible export
