@@ -90,9 +90,14 @@ const Index = () => {
                     : "border-border hover:border-primary/30"
                 }`}
               >
-                {/* Icon area */}
-                <div className="w-full aspect-square bg-muted flex items-center justify-center">
-                  <span className="material-symbols-outlined text-4xl text-muted-foreground">{item.icon}</span>
+                {/* Image */}
+                <div className="w-full aspect-square bg-muted overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Label - localName prominent, English name smaller */}

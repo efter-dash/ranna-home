@@ -7,6 +7,7 @@ export interface Ingredient {
   category: Category;
   imageQuery: string;
   icon: string;
+  image: string;
 }
 
 export const categories: { id: Category; label: string; icon: string }[] = [
@@ -16,53 +17,89 @@ export const categories: { id: Category; label: string; icon: string }[] = [
   { id: "Essential", label: "Essentials", icon: "grain" },
 ];
 
+// AI-generated fish images
+import fishIlish from "@/assets/fish-ilish.jpg";
+import fishRui from "@/assets/fish-rui.jpg";
+import fishKatla from "@/assets/fish-katla.jpg";
+import fishPangash from "@/assets/fish-pangash.jpg";
+import fishMagur from "@/assets/fish-magur.jpg";
+import fishShing from "@/assets/fish-shing.jpg";
+import fishPabda from "@/assets/fish-pabda.jpg";
+import fishKoi from "@/assets/fish-koi.jpg";
+import fishRupchanda from "@/assets/fish-rupchanda.jpg";
+import fishBata from "@/assets/fish-bata.jpg";
+import fishMrigel from "@/assets/fish-mrigel.jpg";
+import fishBoal from "@/assets/fish-boal.jpg";
+import fishTengra from "@/assets/fish-tengra.jpg";
+import fishAar from "@/assets/fish-aar.jpg";
+import fishShutki from "@/assets/fish-shutki.jpg";
+import fishChital from "@/assets/fish-chital.jpg";
+import fishBaila from "@/assets/fish-baila.jpg";
+import fishShol from "@/assets/fish-shol.jpg";
+import fishTaki from "@/assets/fish-taki.jpg";
+import fishKachki from "@/assets/fish-kachki.jpg";
+
 export const INGREDIENT_DATA: Ingredient[] = [
-  // Fish
-  { id: "fish-ilish", name: "Hilsa", localName: "ইলিশ", category: "Fish", imageQuery: "raw hilsa fish market", icon: "set_meal" },
-  { id: "fish-rui", name: "Rohu", localName: "রুই", category: "Fish", imageQuery: "raw rohu fish", icon: "set_meal" },
-  { id: "fish-katla", name: "Catla", localName: "কাতলা", category: "Fish", imageQuery: "catla fish fresh", icon: "set_meal" },
-  { id: "fish-chingri", name: "Prawn", localName: "চিংড়ি", category: "Fish", imageQuery: "fresh raw prawns shrimp", icon: "set_meal" },
-  { id: "fish-magur", name: "Catfish", localName: "মাগুর", category: "Fish", imageQuery: "fresh catfish", icon: "set_meal" },
-  { id: "fish-pabda", name: "Butterfish", localName: "পাবদা", category: "Fish", imageQuery: "small freshwater fish", icon: "set_meal" },
-  { id: "fish-koi", name: "Climbing Perch", localName: "কই", category: "Fish", imageQuery: "climbing perch fish", icon: "set_meal" },
-  { id: "fish-shutki", name: "Dried Fish", localName: "শুঁটকি", category: "Fish", imageQuery: "dried fish market bangladesh", icon: "set_meal" },
-  { id: "fish-tilapia", name: "Tilapia", localName: "তেলাপিয়া", category: "Fish", imageQuery: "fresh tilapia fish", icon: "set_meal" },
-  { id: "fish-rupchanda", name: "Pomfret", localName: "রূপচাঁদা", category: "Fish", imageQuery: "pomfret fish fresh", icon: "set_meal" },
+  // ===== FISH (Popular Bangladeshi fish) =====
+  { id: "fish-ilish", name: "Hilsa", localName: "ইলিশ", category: "Fish", imageQuery: "hilsa fish", icon: "set_meal", image: fishIlish },
+  { id: "fish-rui", name: "Rohu", localName: "রুই", category: "Fish", imageQuery: "rohu fish", icon: "set_meal", image: fishRui },
+  { id: "fish-katla", name: "Catla", localName: "কাতলা", category: "Fish", imageQuery: "catla fish", icon: "set_meal", image: fishKatla },
+  { id: "fish-chingri", name: "Prawn", localName: "চিংড়ি", category: "Fish", imageQuery: "fresh prawns", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
+  { id: "fish-pangash", name: "Pangasius", localName: "পাঙ্গাশ", category: "Fish", imageQuery: "pangasius fish", icon: "set_meal", image: fishPangash },
+  { id: "fish-tilapia", name: "Tilapia", localName: "তেলাপিয়া", category: "Fish", imageQuery: "tilapia fish", icon: "set_meal", image: "https://images.unsplash.com/photo-1510130387422-82bed34b37e9?w=400&h=400&fit=crop" },
+  { id: "fish-magur", name: "Catfish", localName: "মাগুর", category: "Fish", imageQuery: "catfish", icon: "set_meal", image: fishMagur },
+  { id: "fish-shing", name: "Stinging Catfish", localName: "শিং", category: "Fish", imageQuery: "stinging catfish", icon: "set_meal", image: fishShing },
+  { id: "fish-pabda", name: "Butterfish", localName: "পাবদা", category: "Fish", imageQuery: "butterfish", icon: "set_meal", image: fishPabda },
+  { id: "fish-koi", name: "Climbing Perch", localName: "কই", category: "Fish", imageQuery: "climbing perch", icon: "set_meal", image: fishKoi },
+  { id: "fish-rupchanda", name: "Pomfret", localName: "রূপচাঁদা", category: "Fish", imageQuery: "pomfret fish", icon: "set_meal", image: fishRupchanda },
+  { id: "fish-bata", name: "Bata Fish", localName: "বাটা", category: "Fish", imageQuery: "bata fish", icon: "set_meal", image: fishBata },
+  { id: "fish-mrigel", name: "Mrigal Carp", localName: "মৃগেল", category: "Fish", imageQuery: "mrigal carp", icon: "set_meal", image: fishMrigel },
+  { id: "fish-boal", name: "Wallago", localName: "বোয়াল", category: "Fish", imageQuery: "wallago fish", icon: "set_meal", image: fishBoal },
+  { id: "fish-tengra", name: "Mystus", localName: "টেংরা", category: "Fish", imageQuery: "small river fish", icon: "set_meal", image: fishTengra },
+  { id: "fish-aar", name: "Long-whiskered Catfish", localName: "আইড়", category: "Fish", imageQuery: "river catfish", icon: "set_meal", image: fishAar },
+  { id: "fish-shutki", name: "Dried Fish", localName: "শুঁটকি", category: "Fish", imageQuery: "dried fish", icon: "set_meal", image: fishShutki },
+  { id: "fish-chital", name: "Clown Knifefish", localName: "চিতল", category: "Fish", imageQuery: "knifefish", icon: "set_meal", image: fishChital },
+  { id: "fish-baila", name: "Tank Goby", localName: "বাইলা/বেলে", category: "Fish", imageQuery: "small freshwater fish", icon: "set_meal", image: fishBaila },
+  { id: "fish-shol", name: "Snakehead", localName: "শোল", category: "Fish", imageQuery: "snakehead fish", icon: "set_meal", image: fishShol },
+  { id: "fish-taki", name: "Spotted Snakehead", localName: "টাকি", category: "Fish", imageQuery: "spotted snakehead", icon: "set_meal", image: fishTaki },
+  { id: "fish-golda-chingri", name: "Giant Prawn", localName: "গলদা চিংড়ি", category: "Fish", imageQuery: "giant freshwater prawn", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
+  { id: "fish-bagda-chingri", name: "Tiger Shrimp", localName: "বাগদা চিংড়ি", category: "Fish", imageQuery: "tiger shrimp", icon: "set_meal", image: "https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?w=400&h=400&fit=crop" },
+  { id: "fish-kachki", name: "Small Dried Fish", localName: "কাচকি", category: "Fish", imageQuery: "small silver fish", icon: "set_meal", image: fishKachki },
 
-  // Meat
-  { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken pieces", icon: "kebab_dining" },
-  { id: "meat-beef", name: "Beef", localName: "গরুর মাংস", category: "Meat", imageQuery: "raw beef cuts", icon: "kebab_dining" },
-  { id: "meat-mutton", name: "Mutton", localName: "খাসি", category: "Meat", imageQuery: "raw mutton goat meat", icon: "kebab_dining" },
-  { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck meat", icon: "kebab_dining" },
+  // ===== MEAT =====
+  { id: "meat-chicken", name: "Chicken", localName: "মুরগি", category: "Meat", imageQuery: "raw chicken", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&h=400&fit=crop" },
+  { id: "meat-beef", name: "Beef", localName: "গরুর মাংস", category: "Meat", imageQuery: "raw beef", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1603048297172-c92544798d5a?w=400&h=400&fit=crop" },
+  { id: "meat-mutton", name: "Mutton", localName: "খাসি", category: "Meat", imageQuery: "raw mutton", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1602470520998-f4a52199a3d6?w=400&h=400&fit=crop" },
+  { id: "meat-duck", name: "Duck", localName: "হাঁস", category: "Meat", imageQuery: "raw duck", icon: "kebab_dining", image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&h=400&fit=crop" },
 
-  // Vegetable
-  { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "fresh potatoes", icon: "nutrition" },
-  { id: "veg-eggplant", name: "Eggplant", localName: "বেগুন", category: "Vegetable", imageQuery: "fresh eggplant aubergine", icon: "eco" },
-  { id: "veg-cauliflower", name: "Cauliflower", localName: "ফুলকপি", category: "Vegetable", imageQuery: "fresh cauliflower", icon: "eco" },
-  { id: "veg-cabbage", name: "Cabbage", localName: "বাঁধাকপি", category: "Vegetable", imageQuery: "fresh green cabbage", icon: "eco" },
-  { id: "veg-tomato", name: "Tomato", localName: "টমেটো", category: "Vegetable", imageQuery: "fresh red tomatoes", icon: "eco" },
-  { id: "veg-lau", name: "Bottle Gourd", localName: "লাউ", category: "Vegetable", imageQuery: "bottle gourd lauki", icon: "eco" },
-  { id: "veg-korola", name: "Bitter Gourd", localName: "করলা", category: "Vegetable", imageQuery: "bitter gourd karela", icon: "eco" },
-  { id: "veg-potol", name: "Pointed Gourd", localName: "পটল", category: "Vegetable", imageQuery: "pointed gourd parwal", icon: "eco" },
-  { id: "veg-okra", name: "Okra", localName: "ঢেঁড়স", category: "Vegetable", imageQuery: "fresh okra ladyfinger", icon: "eco" },
-  { id: "veg-spinach", name: "Spinach", localName: "পালং শাক", category: "Vegetable", imageQuery: "fresh spinach leaves", icon: "eco" },
-  { id: "veg-lalshak", name: "Red Amaranth", localName: "লাল শাক", category: "Vegetable", imageQuery: "red amaranth leaves", icon: "eco" },
-  { id: "veg-papaya", name: "Green Papaya", localName: "পেঁপে", category: "Vegetable", imageQuery: "green raw papaya", icon: "eco" },
-  { id: "veg-banana", name: "Green Banana", localName: "কাঁচা কলা", category: "Vegetable", imageQuery: "green raw banana plantain", icon: "eco" },
-  { id: "veg-kochu", name: "Taro Root", localName: "মুখি কচু", category: "Vegetable", imageQuery: "taro root vegetable", icon: "eco" },
-  { id: "veg-shim", name: "Bean", localName: "শিম", category: "Vegetable", imageQuery: "fresh flat beans hyacinth bean", icon: "eco" },
+  // ===== VEGETABLES =====
+  { id: "veg-potato", name: "Potato", localName: "আলু", category: "Vegetable", imageQuery: "potatoes", icon: "nutrition", image: "https://images.unsplash.com/photo-1518977676601-b53f82ade73c?w=400&h=400&fit=crop" },
+  { id: "veg-eggplant", name: "Eggplant", localName: "বেগুন", category: "Vegetable", imageQuery: "eggplant", icon: "eco", image: "https://images.unsplash.com/photo-1615484477778-ca3b77940c25?w=400&h=400&fit=crop" },
+  { id: "veg-cauliflower", name: "Cauliflower", localName: "ফুলকপি", category: "Vegetable", imageQuery: "cauliflower", icon: "eco", image: "https://images.unsplash.com/photo-1568584711271-6c929fb49b60?w=400&h=400&fit=crop" },
+  { id: "veg-cabbage", name: "Cabbage", localName: "বাঁধাকপি", category: "Vegetable", imageQuery: "cabbage", icon: "eco", image: "https://images.unsplash.com/photo-1594282486756-56b0fb4a29a4?w=400&h=400&fit=crop" },
+  { id: "veg-tomato", name: "Tomato", localName: "টমেটো", category: "Vegetable", imageQuery: "tomatoes", icon: "eco", image: "https://images.unsplash.com/photo-1546470427-0d4db154ceb8?w=400&h=400&fit=crop" },
+  { id: "veg-lau", name: "Bottle Gourd", localName: "লাউ", category: "Vegetable", imageQuery: "bottle gourd", icon: "eco", image: "https://images.unsplash.com/photo-1622921491193-345c3708a5cf?w=400&h=400&fit=crop" },
+  { id: "veg-korola", name: "Bitter Gourd", localName: "করলা", category: "Vegetable", imageQuery: "bitter gourd", icon: "eco", image: "https://images.unsplash.com/photo-1582284540020-8acbe03f4924?w=400&h=400&fit=crop" },
+  { id: "veg-potol", name: "Pointed Gourd", localName: "পটল", category: "Vegetable", imageQuery: "pointed gourd", icon: "eco", image: "https://images.unsplash.com/photo-1622921491193-345c3708a5cf?w=400&h=400&fit=crop" },
+  { id: "veg-okra", name: "Okra", localName: "ঢেঁড়স", category: "Vegetable", imageQuery: "okra", icon: "eco", image: "https://images.unsplash.com/photo-1425543103986-22abb7d7e8d2?w=400&h=400&fit=crop" },
+  { id: "veg-spinach", name: "Spinach", localName: "পালং শাক", category: "Vegetable", imageQuery: "spinach leaves", icon: "eco", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop" },
+  { id: "veg-lalshak", name: "Red Amaranth", localName: "লাল শাক", category: "Vegetable", imageQuery: "red amaranth", icon: "eco", image: "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=400&fit=crop" },
+  { id: "veg-papaya", name: "Green Papaya", localName: "পেঁপে", category: "Vegetable", imageQuery: "green papaya", icon: "eco", image: "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=400&h=400&fit=crop" },
+  { id: "veg-banana", name: "Green Banana", localName: "কাঁচা কলা", category: "Vegetable", imageQuery: "green banana", icon: "eco", image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=400&fit=crop" },
+  { id: "veg-kochu", name: "Taro Root", localName: "মুখি কচু", category: "Vegetable", imageQuery: "taro root", icon: "eco", image: "https://images.unsplash.com/photo-1590165482129-1b8b27698780?w=400&h=400&fit=crop" },
+  { id: "veg-shim", name: "Bean", localName: "শিম", category: "Vegetable", imageQuery: "flat beans", icon: "eco", image: "https://images.unsplash.com/photo-1567375698348-5d9d5ae10c4a?w=400&h=400&fit=crop" },
 
-  // Essential
-  { id: "ess-rice", name: "Rice", localName: "চাল", category: "Essential", imageQuery: "raw basmati rice grains", icon: "grain" },
-  { id: "ess-lentils", name: "Red Lentils", localName: "মসুর ডাল", category: "Essential", imageQuery: "red lentils masoor dal", icon: "grain" },
-  { id: "ess-mustard-oil", name: "Mustard Oil", localName: "সরিষার তেল", category: "Essential", imageQuery: "mustard oil bottle", icon: "water_drop" },
-  { id: "ess-onion", name: "Onion", localName: "পেঁয়াজ", category: "Essential", imageQuery: "fresh onions", icon: "eco" },
-  { id: "ess-garlic", name: "Garlic", localName: "রসুন", category: "Essential", imageQuery: "fresh garlic cloves", icon: "eco" },
-  { id: "ess-ginger", name: "Ginger", localName: "আদা", category: "Essential", imageQuery: "fresh ginger root", icon: "thermostat" },
-  { id: "ess-chili", name: "Green Chili", localName: "কাঁচা মরিচ", category: "Essential", imageQuery: "fresh green chili peppers", icon: "local_fire_department" },
-  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric powder root", icon: "opacity" },
-  { id: "ess-cumin", name: "Cumin", localName: "জিরা", category: "Essential", imageQuery: "cumin seeds spice", icon: "spa" },
-  { id: "ess-coriander", name: "Coriander Leaves", localName: "ধনিয়া পাতা", category: "Essential", imageQuery: "fresh coriander cilantro leaves", icon: "grass" },
+  // ===== ESSENTIALS =====
+  { id: "ess-rice", name: "Rice", localName: "চাল", category: "Essential", imageQuery: "rice grains", icon: "grain", image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop" },
+  { id: "ess-lentils", name: "Red Lentils", localName: "মসুর ডাল", category: "Essential", imageQuery: "red lentils", icon: "grain", image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=400&h=400&fit=crop" },
+  { id: "ess-mustard-oil", name: "Mustard Oil", localName: "সরিষার তেল", category: "Essential", imageQuery: "mustard oil", icon: "water_drop", image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&h=400&fit=crop" },
+  { id: "ess-onion", name: "Onion", localName: "পেঁয়াজ", category: "Essential", imageQuery: "onions", icon: "eco", image: "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=400&h=400&fit=crop" },
+  { id: "ess-garlic", name: "Garlic", localName: "রসুন", category: "Essential", imageQuery: "garlic", icon: "eco", image: "https://images.unsplash.com/photo-1540148426945-6cf22a6b2571?w=400&h=400&fit=crop" },
+  { id: "ess-ginger", name: "Ginger", localName: "আদা", category: "Essential", imageQuery: "ginger root", icon: "thermostat", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&h=400&fit=crop" },
+  { id: "ess-chili", name: "Green Chili", localName: "কাঁচা মরিচ", category: "Essential", imageQuery: "green chili", icon: "local_fire_department", image: "https://images.unsplash.com/photo-1583119022894-919a68a3d0e3?w=400&h=400&fit=crop" },
+  { id: "ess-turmeric", name: "Turmeric", localName: "হলুদ", category: "Essential", imageQuery: "turmeric", icon: "opacity", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400&h=400&fit=crop" },
+  { id: "ess-cumin", name: "Cumin", localName: "জিরা", category: "Essential", imageQuery: "cumin seeds", icon: "spa", image: "https://images.unsplash.com/photo-1599909533601-aa23a126c55d?w=400&h=400&fit=crop" },
+  { id: "ess-coriander", name: "Coriander Leaves", localName: "ধনিয়া পাতা", category: "Essential", imageQuery: "coriander leaves", icon: "grass", image: "https://images.unsplash.com/photo-1592928302636-c83cf1e1c887?w=400&h=400&fit=crop" },
 ];
 
 // Backward-compatible export
