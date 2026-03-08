@@ -76,21 +76,33 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "pot-stir": {
-          "0%, 100%": { transform: "rotate(-5deg)" },
-          "50%": { transform: "rotate(5deg)" },
+        "pan-rock": {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
         },
-        "steam": {
-          "0%": { opacity: "0", transform: "translateY(0) scale(1)" },
-          "50%": { opacity: "1" },
-          "100%": { opacity: "0", transform: "translateY(-20px) scale(1.5)" },
+        "steam-1": {
+          "0%": { opacity: "0", transform: "translateY(0) scaleY(1)" },
+          "40%": { opacity: "0.7" },
+          "100%": { opacity: "0", transform: "translateY(-28px) scaleY(1.3)" },
+        },
+        "steam-2": {
+          "0%": { opacity: "0", transform: "translateY(0) scaleY(1)" },
+          "50%": { opacity: "0.6" },
+          "100%": { opacity: "0", transform: "translateY(-32px) scaleY(1.4)" },
+        },
+        "steam-3": {
+          "0%": { opacity: "0", transform: "translateY(0) scaleY(1)" },
+          "45%": { opacity: "0.5" },
+          "100%": { opacity: "0", transform: "translateY(-24px) scaleY(1.2)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "pot-stir": "pot-stir 1s ease-in-out infinite",
-        "steam": "steam 1.5s ease-out infinite",
+        "pan-rock": "pan-rock 1.2s ease-in-out infinite",
+        "steam-1": "steam-1 1.6s ease-out infinite",
+        "steam-2": "steam-2 1.8s ease-out 0.3s infinite",
+        "steam-3": "steam-3 1.4s ease-out 0.6s infinite",
       },
     },
   },
