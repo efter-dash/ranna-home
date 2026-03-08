@@ -92,7 +92,7 @@ const Index = () => {
 
       {/* Ingredient Grid */}
       <div className="flex-1 px-4 pt-4 pb-28">
-        <p className="text-sm text-muted-foreground mb-3">
+        <p className="text-sm text-muted-foreground mb-3 text-center">
           আপনার বাসায় যা যা আছে বেছে নিন — <span className="font-semibold text-primary">{selectedIngredients.size}</span> টি বাছাই
         </p>
         <div className="grid grid-cols-3 gap-3">
