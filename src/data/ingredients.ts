@@ -62,6 +62,7 @@ import fishTilapia from "@/assets/fish-tilapia.png";
 import fishBagdaChingri from "@/assets/fish-bagda-chingri.jpg";
 import essMustardOil from "@/assets/ess-mustard-oil.jpeg";
 import vegKochu from "@/assets/veg-kochu.jpeg";
+import vegGolBegun from "@/assets/veg-gol-begun.png";
 import essLentils from "@/assets/ess-lentils.jpg";
 import essChiniguraRice from "@/assets/ess-chinigura-rice.jpg";
 import essMoongDal from "@/assets/ess-moong-dal.jpg";
