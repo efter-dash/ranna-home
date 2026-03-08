@@ -38,6 +38,17 @@ import fishBaila from "@/assets/fish-baila.jpg";
 import fishShol from "@/assets/fish-shol.jpg";
 import fishTaki from "@/assets/fish-taki.jpg";
 
+// Vegetable & Essential images
+import vegPotato from "@/assets/veg-potato.jpg";
+import vegEggplant from "@/assets/veg-eggplant.jpg";
+import vegCabbage from "@/assets/veg-cabbage.jpg";
+import vegTomato from "@/assets/veg-tomato.jpg";
+import vegLau from "@/assets/veg-lau.jpg";
+import vegPotol from "@/assets/veg-potol.jpg";
+import vegLalshak from "@/assets/veg-lalshak.jpg";
+import vegShim from "@/assets/veg-shim.jpg";
+import essGarlic from "@/assets/ess-garlic.jpg";
+import essCumin from "@/assets/ess-cumin.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
