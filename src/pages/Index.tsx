@@ -4,6 +4,7 @@ import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
 import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
 import HamburgerMenu from "@/components/HamburgerMenu";
+import SearchFab from "@/components/SearchFab";
 
 const Index = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category | "all">("all");
