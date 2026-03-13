@@ -40,7 +40,7 @@ const SearchFab = ({ onSelectIngredient, selectedIngredients, hasSelection = fal
     : [];
 
   return (
-    <div ref={containerRef} className={`fixed right-4 sm:right-6 z-30 flex flex-col items-end gap-2 transition-all duration-300 ${hasSelection ? 'bottom-24' : 'bottom-6'}`}>
+    <div ref={containerRef} className={`fixed right-4 sm:right-6 z-30 flex flex-col items-end gap-2 transition-all duration-300 ${hasSelection ? 'bottom-32' : 'bottom-6'}`}>
       {/* Results dropdown */}
       {isOpen && results.length > 0 && (
         <div className="w-72 max-h-64 overflow-y-auto rounded-2xl bg-card border border-border shadow-xl">

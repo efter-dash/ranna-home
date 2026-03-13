@@ -148,24 +148,45 @@ const Index = () => {
       {/* Floating Action Button */}
       {selectedIngredients.size > 0 && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
-          <div className="w-full sm:max-w-md sm:mx-auto flex items-center gap-2">
-            <button
-              onClick={() => setSelectedIngredients(new Set())}
-              className="flex-shrink-0 w-12 h-12 rounded-2xl bg-destructive/90 text-destructive-foreground flex items-center justify-center shadow-xl transition-transform hover:scale-105 active:scale-95"
-              title="সব বাদ দিন"
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
-            </button>
-            <button
-              onClick={handleCookNow}
-              className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
-            >
-              <span className="material-symbols-outlined filled-icon leading-none align-middle" style={{ fontSize: '20px' }}>skillet</span>
-              <span className="leading-none">চলুন রান্না করি !</span>
-              <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full leading-none">
-                {selectedIngredients.size}
-              </span>
-            </button>
+          <div className="w-full sm:max-w-md sm:mx-auto flex flex-col gap-2">
+            {/* Selected ingredient chips */}
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-0.5">
+              {Array.from(selectedIngredients).map((id) => {
+                const item = INGREDIENT_DATA.find((i) => i.id === id);
+                if (!item) return null;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => toggleIngredient(id)}
+                    className="flex items-center gap-1 pl-1 pr-2 py-1 rounded-full bg-card border border-border shadow-md flex-shrink-0"
+                  >
+                    <img src={item.image} alt={item.localName} className="w-6 h-6 rounded-full object-cover" />
+                    <span className="text-[11px] font-semibold whitespace-nowrap">{item.localName}</span>
+                    <span className="material-symbols-outlined text-destructive" style={{ fontSize: '14px' }}>close</span>
+                  </button>
+                );
+              })}
+            </div>
+            {/* Action buttons */}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setSelectedIngredients(new Set())}
+                className="flex-shrink-0 w-12 h-12 rounded-2xl bg-destructive/90 text-destructive-foreground flex items-center justify-center shadow-xl transition-transform hover:scale-105 active:scale-95"
+                title="সব বাদ দিন"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+              </button>
+              <button
+                onClick={handleCookNow}
+                className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              >
+                <span className="material-symbols-outlined filled-icon leading-none align-middle" style={{ fontSize: '20px' }}>skillet</span>
+                <span className="leading-none">চলুন রান্না করি !</span>
+                <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full leading-none">
+                  {selectedIngredients.size}
+                </span>
+              </button>
+            </div>
           </div>
         </div>
       )}
