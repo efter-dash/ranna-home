@@ -143,7 +143,7 @@ const Index = () => {
         </div>
       </div>
 
-      <SearchFab onSelectIngredient={toggleIngredient} selectedIngredients={selectedIngredients} />
+      <SearchFab onSelectIngredient={toggleIngredient} selectedIngredients={selectedIngredients} hasSelection={selectedIngredients.size > 0} />
 
       {/* Floating Action Button */}
       {selectedIngredients.size > 0 && (
