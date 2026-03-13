@@ -5,6 +5,7 @@ import { INGREDIENT_DATA } from "@/data/ingredients";
 interface SearchFabProps {
   onSelectIngredient: (id: string) => void;
   selectedIngredients: Set<string>;
+  hasSelection?: boolean;
 }
 
 const SearchFab = ({ onSelectIngredient, selectedIngredients }: SearchFabProps) => {
