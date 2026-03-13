@@ -8,7 +8,7 @@ interface SearchFabProps {
   hasSelection?: boolean;
 }
 
-const SearchFab = ({ onSelectIngredient, selectedIngredients }: SearchFabProps) => {
+const SearchFab = ({ onSelectIngredient, selectedIngredients, hasSelection = false }: SearchFabProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
