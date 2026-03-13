@@ -5,9 +5,10 @@ import { INGREDIENT_DATA } from "@/data/ingredients";
 interface SearchFabProps {
   onSelectIngredient: (id: string) => void;
   selectedIngredients: Set<string>;
+  hasSelection?: boolean;
 }
 
-const SearchFab = ({ onSelectIngredient, selectedIngredients }: SearchFabProps) => {
+const SearchFab = ({ onSelectIngredient, selectedIngredients, hasSelection = false }: SearchFabProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -39,7 +40,7 @@ const SearchFab = ({ onSelectIngredient, selectedIngredients }: SearchFabProps) 
     : [];
 
   return (
-    <div ref={containerRef} className="fixed bottom-6 right-4 sm:right-6 z-30 flex flex-col items-end gap-2">
+    <div ref={containerRef} className={`fixed right-4 sm:right-6 z-30 flex flex-col items-end gap-2 transition-all duration-300 ${hasSelection ? 'bottom-24' : 'bottom-6'}`}>
       {/* Results dropdown */}
       {isOpen && results.length > 0 && (
         <div className="w-72 max-h-64 overflow-y-auto rounded-2xl bg-card border border-border shadow-xl">
