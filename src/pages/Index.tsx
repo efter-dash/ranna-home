@@ -97,9 +97,31 @@ const Index = () => {
 
       {/* Ingredient Grid */}
       <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-28">
-        <p className="text-base font-semibold text-muted-foreground mb-3 text-center">
-          আপনার বাসায় যা যা আছে বেছে নিন — <span className="font-bold text-primary transition-all duration-300">{selectedIngredients.size}</span> টি বাছাই
-        </p>
+        {selectedIngredients.size === 0 ? (
+          <p className="text-base font-semibold text-muted-foreground mb-3 text-center">
+            আপনার বাসায় যা যা আছে বেছে নিন
+          </p>
+        ) : (
+          <div className="mb-3">
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1 justify-center">
+              {Array.from(selectedIngredients).map((id) => {
+                const item = INGREDIENT_DATA.find((i) => i.id === id);
+                if (!item) return null;
+                return (
+                  <button
+                    key={id}
+                    onClick={() => toggleIngredient(id)}
+                    className="flex items-center gap-1 pl-1 pr-2 py-1 rounded-full bg-card border border-border shadow-sm flex-shrink-0"
+                  >
+                    <img src={item.image} alt={item.localName} className="w-6 h-6 rounded-full object-cover" />
+                    <span className="text-[11px] font-semibold whitespace-nowrap">{item.localName}</span>
+                    <span className="material-symbols-outlined text-destructive" style={{ fontSize: '14px' }}>close</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
           {filteredIngredients.map((item) => {
             const isSelected = selectedIngredients.has(item.id);
