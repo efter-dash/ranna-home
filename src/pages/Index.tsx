@@ -93,16 +93,14 @@ const Index = () => {
             </button>
           ))}
         </div>
-      </div>
 
-      {/* Ingredient Grid */}
-      <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-28">
+        {/* Selected chips or instruction text - sticky with header */}
         {selectedIngredients.size === 0 ? (
-          <p className="text-base font-semibold text-muted-foreground mb-3 text-center">
+          <p className="text-base font-semibold text-muted-foreground mt-3 pb-2 text-center">
             আপনার বাসায় যা যা আছে বেছে নিন
           </p>
         ) : (
-          <div className="mb-3">
+          <div className="mt-2 pb-2">
             <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1 justify-center">
               {Array.from(selectedIngredients).map((id) => {
                 const item = INGREDIENT_DATA.find((i) => i.id === id);
@@ -122,6 +120,10 @@ const Index = () => {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Ingredient Grid */}
+      <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-28">
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
           {filteredIngredients.map((item) => {
             const isSelected = selectedIngredients.has(item.id);
