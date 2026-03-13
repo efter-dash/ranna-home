@@ -100,7 +100,7 @@ const Index = () => {
             আপনার বাসায় যা যা আছে বেছে নিন
           </p>
         ) : (
-          <div className="mt-2 pb-2">
+          <div className="mt-1 pb-0.5">
             <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1 justify-center">
               {Array.from(selectedIngredients).map((id) => {
                 const item = INGREDIENT_DATA.find((i) => i.id === id);
