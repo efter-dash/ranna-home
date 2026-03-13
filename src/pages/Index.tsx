@@ -148,16 +148,25 @@ const Index = () => {
       {/* Floating Action Button */}
       {selectedIngredients.size > 0 && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
-          <button
-            onClick={handleCookNow}
-            className="w-full sm:max-w-md sm:mx-auto flex items-center justify-center gap-2 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <span className="material-symbols-outlined filled-icon leading-none align-middle" style={{ fontSize: '20px' }}>skillet</span>
-            <span className="leading-none">চলুন রান্না করি !</span>
-            <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full leading-none">
-              {selectedIngredients.size}
-            </span>
-          </button>
+          <div className="w-full sm:max-w-md sm:mx-auto flex items-center gap-2">
+            <button
+              onClick={() => setSelectedIngredients(new Set())}
+              className="flex-shrink-0 w-12 h-12 rounded-2xl bg-destructive/90 text-destructive-foreground flex items-center justify-center shadow-xl transition-transform hover:scale-105 active:scale-95"
+              title="সব বাদ দিন"
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+            </button>
+            <button
+              onClick={handleCookNow}
+              className="flex-1 flex items-center justify-center gap-2 py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <span className="material-symbols-outlined filled-icon leading-none align-middle" style={{ fontSize: '20px' }}>skillet</span>
+              <span className="leading-none">চলুন রান্না করি !</span>
+              <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full leading-none">
+                {selectedIngredients.size}
+              </span>
+            </button>
+          </div>
         </div>
       )}
     </div>
