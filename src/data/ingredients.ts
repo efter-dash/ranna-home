@@ -90,6 +90,11 @@ import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 import essMilk from "@/assets/ess-milk.jpg";
 import essSourCurd from "@/assets/ess-sour-curd.jpg";
 import essSalt from "@/assets/ess-salt.png";
+import essSuji from "@/assets/ess-suji.jpg";
+import essRaisins from "@/assets/ess-raisins.jpg";
+import essMaida from "@/assets/ess-maida.jpg";
+import essAtta from "@/assets/ess-atta.jpg";
+import essBlackPepper from "@/assets/ess-black-pepper.jpg";
 import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
@@ -181,6 +186,11 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-milk", name: "Milk", localName: "দুধ", category: "Essential", imageQuery: "milk", icon: "water_drop", image: essMilk },
   { id: "ess-sour-curd", name: "Sour Curd", localName: "টক দই", category: "Essential", imageQuery: "sour curd yogurt", icon: "grain", image: essSourCurd },
   { id: "ess-salt", name: "Salt", localName: "লবণ", category: "Essential", imageQuery: "salt", icon: "grain", image: essSalt },
+  { id: "ess-suji", name: "Semolina", localName: "সুজি", category: "Essential", imageQuery: "semolina", icon: "grain", image: essSuji },
+  { id: "ess-raisins", name: "Raisins", localName: "কিসমিস", category: "Essential", imageQuery: "raisins", icon: "grain", image: essRaisins },
+  { id: "ess-maida", name: "All-Purpose Flour", localName: "ময়দা", category: "Essential", imageQuery: "maida flour", icon: "grain", image: essMaida },
+  { id: "ess-atta", name: "Whole Wheat Flour", localName: "আটা", category: "Essential", imageQuery: "whole wheat flour", icon: "grain", image: essAtta },
+  { id: "ess-black-pepper", name: "Black Pepper", localName: "গোল মরিচ", category: "Essential", imageQuery: "black peppercorns", icon: "spa", image: essBlackPepper },
 ];
 
 // Backward-compatible export
