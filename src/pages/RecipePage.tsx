@@ -229,11 +229,21 @@ const RecipePage = () => {
           <p className="text-[10px] font-bold leading-normal tracking-wider">রেসিপি</p>
         </div>
         <button
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/favorites")}
           className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
         >
-          <span className="material-symbols-outlined">kitchen</span>
-          <p className="text-[10px] font-medium leading-normal tracking-wider">প্যান্ট্রি</p>
+          <span className="material-symbols-outlined">favorite</span>
+          <p className="text-[10px] font-medium leading-normal tracking-wider">ফেভারিট</p>
+        </button>
+        <button
+          onClick={() => {
+            const historyBtn = document.querySelector('[data-history-trigger]') as HTMLButtonElement;
+            historyBtn?.click();
+          }}
+          className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
+        >
+          <span className="material-symbols-outlined">schedule</span>
+          <p className="text-[10px] font-medium leading-normal tracking-wider">ইতিহাস</p>
         </button>
       </div>
     </div>
