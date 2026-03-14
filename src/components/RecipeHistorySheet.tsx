@@ -24,7 +24,7 @@ const RecipeHistorySheet = ({ history, onClear }: RecipeHistorySheetProps) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <button className="flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-secondary transition-colors">
+        <button data-history-trigger className="flex size-10 shrink-0 items-center justify-center cursor-pointer rounded-full hover:bg-secondary transition-colors">
           <span className="material-symbols-outlined">history</span>
         </button>
       </SheetTrigger>
