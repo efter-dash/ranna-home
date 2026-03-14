@@ -90,6 +90,11 @@ import essTurmeric2 from "@/assets/ess-turmeric-2.jpg";
 import essMilk from "@/assets/ess-milk.jpg";
 import essSourCurd from "@/assets/ess-sour-curd.jpg";
 import essSalt from "@/assets/ess-salt.png";
+import essSuji from "@/assets/ess-suji.jpg";
+import essRaisins from "@/assets/ess-raisins.jpg";
+import essMaida from "@/assets/ess-maida.jpg";
+import essAtta from "@/assets/ess-atta.jpg";
+import essBlackPepper from "@/assets/ess-black-pepper.jpg";
 import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
