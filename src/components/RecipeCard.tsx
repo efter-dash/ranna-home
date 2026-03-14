@@ -50,7 +50,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       </div>
 
       {/* Ingredients from Pantry */}
-      <div className="px-4 sm:px-6 pt-8">
+      <div className="px-4 sm:px-6 pt-10">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-bold flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">inventory_2</span>
@@ -75,7 +75,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Full Ingredients List */}
       {recipe.ingredientsList && recipe.ingredientsList.length > 0 && (
-        <div className="px-4 sm:px-6 pt-6">
+          <div className="px-4 sm:px-6 pt-8">
           <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">checklist</span>
             উপকরণ তালিকা
@@ -93,7 +93,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Missing Essentials */}
       {recipe.missingEssentials && recipe.missingEssentials.length > 0 && (
-        <div className="px-4 sm:px-6 pt-6">
+        <div className="px-4 sm:px-6 pt-8">
           <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3">
             <span className="material-symbols-outlined text-accent">warning</span>
             <div>
@@ -107,7 +107,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       )}
 
       {/* Step-by-Step Instructions */}
-      <div className="px-4 sm:px-6 pt-8 pb-24">
+      <div className="px-4 sm:px-6 pt-10 pb-24">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-primary">receipt_long</span>
           রান্নার প্রণালী

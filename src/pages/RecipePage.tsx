@@ -144,16 +144,18 @@ const RecipePage = () => {
 
   if (error || recipes.length === 0) {
     return (
-      <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl items-center justify-center gap-4 px-6">
-        <span className="material-symbols-outlined text-4xl text-destructive">error</span>
-        <p className="text-lg font-bold text-center">রেসিপি তৈরি করতে সমস্যা হয়েছে</p>
-        <p className="text-sm text-muted-foreground text-center">{error}</p>
-        <button
-          onClick={() => navigate("/")}
-          className="mt-4 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-bold"
-        >
-          আবার চেষ্টা করুন
-        </button>
+      <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl">
+        <div className="flex flex-1 flex-col items-center justify-center gap-4 px-6 min-h-[70vh]">
+          <span className="material-symbols-outlined text-5xl text-muted-foreground">soup_kitchen</span>
+          <p className="text-lg font-bold text-center">রেসিপি তৈরি করতে সমস্যা হয়েছে</p>
+          <p className="text-sm text-muted-foreground text-center max-w-xs">{error || "আবার চেষ্টা করুন"}</p>
+          <button
+            onClick={() => navigate("/")}
+            className="mt-4 px-6 py-3 bg-primary text-primary-foreground rounded-xl font-bold"
+          >
+            আবার চেষ্টা করুন
+          </button>
+        </div>
       </div>
     );
   }
