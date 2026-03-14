@@ -93,7 +93,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Missing Essentials */}
       {recipe.missingEssentials && recipe.missingEssentials.length > 0 && (
-        <div className="px-4 sm:px-6 pt-6">
+        <div className="px-4 sm:px-6 pt-8">
           <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3">
             <span className="material-symbols-outlined text-accent">warning</span>
             <div>
