@@ -95,6 +95,9 @@ import essRaisins from "@/assets/ess-raisins.jpg";
 import essMaida from "@/assets/ess-maida.jpg";
 import essAtta from "@/assets/ess-atta.jpg";
 import essBlackPepper from "@/assets/ess-black-pepper.jpg";
+import essCardamomPowder from "@/assets/ess-cardamom-powder.jpg";
+import essNutmeg from "@/assets/ess-nutmeg.jpg";
+import essSesame from "@/assets/ess-sesame.jpg";
 import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
@@ -191,6 +194,9 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-maida", name: "All-Purpose Flour", localName: "ময়দা", category: "Essential", imageQuery: "maida flour", icon: "grain", image: essMaida },
   { id: "ess-atta", name: "Whole Wheat Flour", localName: "আটা", category: "Essential", imageQuery: "whole wheat flour", icon: "grain", image: essAtta },
   { id: "ess-black-pepper", name: "Black Pepper", localName: "গোল মরিচ", category: "Essential", imageQuery: "black peppercorns", icon: "spa", image: essBlackPepper },
+  { id: "ess-cardamom-powder", name: "Cardamom Powder", localName: "এলাচ গুঁড়া", category: "Essential", imageQuery: "cardamom powder", icon: "spa", image: essCardamomPowder },
+  { id: "ess-nutmeg", name: "Nutmeg", localName: "জায়ফল", category: "Essential", imageQuery: "nutmeg", icon: "spa", image: essNutmeg },
+  { id: "ess-sesame", name: "Sesame Seeds", localName: "তিল", category: "Essential", imageQuery: "sesame seeds", icon: "spa", image: essSesame },
 ];
 
 // Backward-compatible export
