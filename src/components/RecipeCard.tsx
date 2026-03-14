@@ -107,7 +107,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       )}
 
       {/* Step-by-Step Instructions */}
-      <div className="px-4 sm:px-6 pt-8 pb-24">
+      <div className="px-4 sm:px-6 pt-10 pb-24">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-primary">receipt_long</span>
           রান্নার প্রণালী
