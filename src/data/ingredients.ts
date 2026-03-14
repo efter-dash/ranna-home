@@ -95,6 +95,9 @@ import essRaisins from "@/assets/ess-raisins.jpg";
 import essMaida from "@/assets/ess-maida.jpg";
 import essAtta from "@/assets/ess-atta.jpg";
 import essBlackPepper from "@/assets/ess-black-pepper.jpg";
+import essCardamomPowder from "@/assets/ess-cardamom-powder.jpg";
+import essNutmeg from "@/assets/ess-nutmeg.jpg";
+import essSesame from "@/assets/ess-sesame.jpg";
 import meatDeshiChicken from "@/assets/meat-deshi-chicken.png";
 
 export const INGREDIENT_DATA: Ingredient[] = [
