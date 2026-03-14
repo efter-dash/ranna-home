@@ -75,7 +75,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
 
       {/* Full Ingredients List */}
       {recipe.ingredientsList && recipe.ingredientsList.length > 0 && (
-        <div className="px-4 sm:px-6 pt-6">
+          <div className="px-4 sm:px-6 pt-8">
           <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">checklist</span>
             উপকরণ তালিকা
