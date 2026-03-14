@@ -50,7 +50,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       </div>
 
       {/* Ingredients from Pantry */}
-      <div className="px-4 sm:px-6 pt-8">
+      <div className="px-4 sm:px-6 pt-10">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-bold flex items-center gap-2">
             <span className="material-symbols-outlined text-primary">inventory_2</span>
