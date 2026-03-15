@@ -67,33 +67,34 @@ const Index = () => {
 
         {/* Category Tabs */}
         <div className="relative mt-4">
-        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:justify-center" style={{ WebkitOverflowScrolling: 'touch' }}>
-          <button
-            onClick={() => setSelectedCategory("all")}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
-              selectedCategory === "all"
-                ? "bg-primary text-primary-foreground"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-            }`}
-          >
-            <span className="material-symbols-outlined text-sm">grid_view</span>
-            All
-          </button>
-          {categories.map((cat) => (
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:justify-center pr-8" style={{ WebkitOverflowScrolling: 'touch' }}>
             <button
-              key={cat.id}
-              onClick={() => setSelectedCategory(cat.id)}
+              onClick={() => setSelectedCategory("all")}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
-                selectedCategory === cat.id
+                selectedCategory === "all"
                   ? "bg-primary text-primary-foreground"
                   : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
               }`}
             >
-              <span className="material-symbols-outlined text-sm">{cat.icon}</span>
-              {cat.label}
+              <span className="material-symbols-outlined text-sm">grid_view</span>
+              All
             </button>
-          ))}
-        </div>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
+                  selectedCategory === cat.id
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                }`}
+              >
+                <span className="material-symbols-outlined text-sm">{cat.icon}</span>
+                {cat.label}
+              </button>
+            ))}
+          </div>
+          <div className="absolute right-0 top-0 bottom-1 w-10 bg-gradient-to-l from-card to-transparent pointer-events-none md:hidden" />
 
         {/* Selected chips or instruction text - sticky with header */}
         {selectedIngredients.size === 0 ? (
