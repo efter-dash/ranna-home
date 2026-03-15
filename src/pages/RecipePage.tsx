@@ -236,10 +236,7 @@ const RecipePage = () => {
           <p className="text-[10px] font-medium leading-normal tracking-wider">ফেভারিট</p>
         </button>
         <button
-          onClick={() => {
-            const historyBtn = document.querySelector('[data-history-trigger]') as HTMLButtonElement;
-            historyBtn?.click();
-          }}
+          onClick={() => navigate("/history")}
           className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
         >
           <span className="material-symbols-outlined">schedule</span>
