@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Ingredient } from "@/data/ingredients";
 
 interface AIRecipe {
