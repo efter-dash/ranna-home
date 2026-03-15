@@ -113,21 +113,34 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
           <span className="material-symbols-outlined text-primary">receipt_long</span>
           রান্নার প্রণালী
         </h3>
-        <div className="space-y-6">
-          {recipe.steps.map((step, index) => (
-            <div key={index} className="flex gap-4">
-              <div className="flex-none">
-                <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-sm">
-                  {index + 1}
+        <div className="space-y-4">
+          {recipe.steps.map((step, index) => {
+            const isDone = completedSteps.has(index);
+            return (
+              <button
+                key={index}
+                onClick={() => toggleStep(index)}
+                className="flex gap-4 w-full text-left group"
+              >
+                <div className="flex-none">
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs transition-colors ${
+                    isDone
+                      ? "bg-muted text-muted-foreground line-through"
+                      : "bg-primary text-primary-foreground"
+                  }`}>
+                    {isDone ? "✓" : index + 1}
+                  </div>
                 </div>
-              </div>
-              <div>
-                <p className="text-muted-foreground leading-relaxed text-sm">
-                  {step}
-                </p>
-              </div>
-            </div>
-          ))}
+                <div className="pt-0.5">
+                  <p className={`leading-relaxed text-sm transition-colors ${
+                    isDone ? "line-through text-muted-foreground" : "text-muted-foreground"
+                  }`}>
+                    {step}
+                  </p>
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
