@@ -95,6 +95,7 @@ const Index = () => {
             ))}
           </div>
           <div className="absolute right-0 top-0 bottom-1 w-10 bg-gradient-to-l from-card to-transparent pointer-events-none md:hidden" />
+        </div>
 
         {/* Selected chips or instruction text - sticky with header */}
         {selectedIngredients.size === 0 ? (
