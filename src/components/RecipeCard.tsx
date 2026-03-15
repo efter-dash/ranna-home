@@ -18,6 +18,17 @@ interface RecipeCardProps {
 }
 
 const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
+  const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+
+  const toggleStep = (index: number) => {
+    setCompletedSteps((prev) => {
+      const next = new Set(prev);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+  };
+
   return (
     <div>
       {/* Hero Section */}
