@@ -66,7 +66,8 @@ const Index = () => {
         </div>
 
         {/* Category Tabs */}
-        <div className="flex gap-2 mt-4 overflow-x-auto pb-1 scrollbar-hide md:justify-center">
+        <div className="relative mt-4">
+        <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide md:justify-center" style={{ WebkitOverflowScrolling: 'touch' }}>
           <button
             onClick={() => setSelectedCategory("all")}
             className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-colors ${
