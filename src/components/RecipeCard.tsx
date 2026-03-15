@@ -106,11 +106,11 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       {/* Missing Essentials */}
       {recipe.missingEssentials && recipe.missingEssentials.length > 0 && (
         <div className="px-4 sm:px-6 pt-8">
-          <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 flex items-start gap-3">
-            <span className="material-symbols-outlined text-accent">warning</span>
+          <div className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-400 dark:border-amber-600 rounded-xl p-4 flex items-start gap-3 shadow-sm">
+            <span className="material-symbols-outlined text-amber-600 dark:text-amber-400 text-2xl filled-icon flex-none mt-0.5">warning</span>
             <div>
-              <h4 className="text-sm font-bold text-accent">প্রয়োজনীয় উপকরণ</h4>
-              <p className="text-xs text-muted-foreground mt-1">
+              <h4 className="text-sm font-bold text-amber-800 dark:text-amber-300">প্রয়োজনীয় উপকরণ</h4>
+              <p className="text-xs text-amber-700 dark:text-amber-400/80 mt-1 leading-relaxed">
                 এগুলো আপনার তালিকায় নেই কিন্তু রান্নায় দরকার: <strong>{recipe.missingEssentials.join(", ")}</strong>
               </p>
             </div>
