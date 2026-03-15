@@ -74,7 +74,7 @@ const RecipeHistorySheet = ({ history, onClear }: RecipeHistorySheetProps) => {
               <div className="p-4">
                 <button
                   onClick={onClear}
-                  className="w-full py-2.5 text-sm font-medium text-destructive bg-destructive/10 rounded-xl hover:bg-destructive/20 transition-colors"
+                  className="w-full py-2.5 text-sm font-medium text-destructive border border-destructive/30 bg-transparent rounded-xl hover:bg-destructive/10 transition-colors"
                 >
                   ইতিহাস মুছুন
                 </button>
