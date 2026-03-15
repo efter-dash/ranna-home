@@ -14,6 +14,7 @@ const AuthPage = lazy(() => import("./pages/AuthPage"));
 const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
+const HistoryPage = lazy(() => import("./pages/HistoryPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
