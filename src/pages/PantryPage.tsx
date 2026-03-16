@@ -159,7 +159,7 @@ const PantryPage = () => {
       {/* FAB + */}
       <button
         onClick={() => setSheetOpen(true)}
-        className="fixed right-4 sm:right-6 bottom-20 z-30 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 flex items-center justify-center transition-transform hover:scale-105 active:scale-95"
+        className={`fixed right-4 sm:right-6 z-30 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-xl shadow-primary/30 flex items-center justify-center transition-transform hover:scale-105 active:scale-95 ${pantryIngredients.length > 0 ? 'bottom-32' : 'bottom-20'}`}
       >
         <span className="material-symbols-outlined" style={{ fontSize: "28px" }}>add</span>
       </button>

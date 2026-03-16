@@ -174,7 +174,7 @@ const Index = () => {
 
       {/* Floating Action Button */}
       {selectedIngredients.size > 0 && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
+        <div className="fixed bottom-16 left-1/2 -translate-x-1/2 w-full max-w-5xl px-4 sm:px-6 lg:px-8 z-20">
           <div className="w-full sm:max-w-md sm:mx-auto">
             <div className="flex items-center gap-2">
               <button
