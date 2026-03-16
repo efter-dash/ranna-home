@@ -126,7 +126,7 @@ const Index = () => {
       </div>
 
       {/* Ingredient Grid */}
-      <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-28">
+      <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-36">
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
           {filteredIngredients.map((item) => {
             const isSelected = selectedIngredients.has(item.id);

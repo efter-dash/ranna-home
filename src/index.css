@@ -73,6 +73,11 @@
     --border: 150 10% 20%;
     --input: 150 10% 20%;
     --ring: 145 82% 38%;
+
+    --pantry-chip: 145 20% 20%;
+    --pantry-chip-border: 145 40% 40%;
+    --pantry-warning: 40 30% 15%;
+    --pantry-warning-border: 40 70% 45%;
   }
 }
 
