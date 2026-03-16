@@ -19,6 +19,7 @@ interface RecipeCardProps {
 
 const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+  const [copied, setCopied] = useState(false);
 
   const toggleStep = (index: number) => {
     setCompletedSteps((prev) => {
