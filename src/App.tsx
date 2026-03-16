@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
+import BottomNav from "@/components/BottomNav";
 import Index from "./pages/Index";
 
 const RecipePage = lazy(() => import("./pages/RecipePage"));
@@ -15,6 +16,7 @@ const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
 const HistoryPage = lazy(() => import("./pages/HistoryPage"));
+const PantryPage = lazy(() => import("./pages/PantryPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -43,9 +45,11 @@ const App = () => (
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/settings" element={<SettingsPage />} />
                 <Route path="/history" element={<HistoryPage />} />
+                <Route path="/pantry" element={<PantryPage />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            <BottomNav />
             <Footer />
           </div>
         </AuthProvider>
