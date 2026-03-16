@@ -19,6 +19,7 @@ interface RecipeCardProps {
 
 const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
+  const [copied, setCopied] = useState(false);
 
   const toggleStep = (index: number) => {
     setCompletedSteps((prev) => {
@@ -106,14 +107,29 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       {/* Missing Essentials */}
       {recipe.missingEssentials && recipe.missingEssentials.length > 0 && (
         <div className="px-4 sm:px-6 pt-8">
-          <div className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-400 dark:border-amber-600 rounded-xl p-4 flex items-start gap-3 shadow-sm">
-            <span className="material-symbols-outlined text-amber-600 dark:text-amber-400 text-2xl filled-icon flex-none mt-0.5">warning</span>
-            <div>
-              <h4 className="text-sm font-bold text-amber-800 dark:text-amber-300">প্রয়োজনীয় উপকরণ</h4>
-              <p className="text-xs text-amber-700 dark:text-amber-400/80 mt-1 leading-relaxed">
-                এগুলো আপনার তালিকায় নেই কিন্তু রান্নায় দরকার: <strong>{recipe.missingEssentials.join(", ")}</strong>
-              </p>
+          <div className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-400 dark:border-amber-600 rounded-xl p-4 shadow-sm">
+            <div className="flex items-start gap-3">
+              <span className="material-symbols-outlined text-amber-600 dark:text-amber-400 text-2xl filled-icon flex-none mt-0.5">warning</span>
+              <div className="flex-1">
+                <h4 className="text-sm font-bold text-amber-800 dark:text-amber-300">প্রয়োজনীয় উপকরণ</h4>
+                <p className="text-xs text-amber-700 dark:text-amber-400/80 mt-1 leading-relaxed">
+                  এগুলো আপনার তালিকায় নেই কিন্তু রান্নায় দরকার: <strong>{recipe.missingEssentials.join(", ")}</strong>
+                </p>
+              </div>
             </div>
+            <button
+              onClick={() => {
+                const text = recipe.missingEssentials.join("\n");
+                navigator.clipboard.writeText(text).then(() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                });
+              }}
+              className="mt-3 w-full flex items-center justify-center gap-2 text-xs font-semibold py-2 rounded-lg bg-amber-200/60 dark:bg-amber-900/40 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-900/60 transition-colors"
+            >
+              <span className="material-symbols-outlined text-base">{copied ? "check_circle" : "content_copy"}</span>
+              {copied ? "কপি হয়েছে!" : "উপকরণ কপি করুন"}
+            </button>
           </div>
         </div>
       )}
