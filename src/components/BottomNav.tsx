@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const tabs = [
@@ -10,12 +11,33 @@ const tabs = [
 const BottomNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
 
-  // Hide on recipe page to avoid conflict with cook CTA
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      if (currentY < 10) {
+        setVisible(true);
+      } else if (currentY > lastScrollY.current + 5) {
+        setVisible(false);
+      } else if (currentY < lastScrollY.current - 5) {
+        setVisible(true);
+      }
+      lastScrollY.current = currentY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   if (location.pathname === "/recipe") return null;
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-40 bg-card border-t border-border safe-area-bottom">
+    <nav
+      className={`fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl z-40 bg-card border-t border-border safe-area-bottom transition-transform duration-300 ${
+        visible ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
       <div className="flex items-center justify-around h-14">
         {tabs.map((tab) => {
           const isActive = location.pathname === tab.path;
