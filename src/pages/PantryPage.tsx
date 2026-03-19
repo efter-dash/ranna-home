@@ -6,10 +6,33 @@ import HamburgerMenu from "@/components/HamburgerMenu";
 import PantryAddSheet from "@/components/PantryAddSheet";
 
 const CATEGORY_LABELS: Record<string, string> = {
-  Vegetable: "শাকসবজি",
+  Vegetable: "সবজি",
   Fish: "মাছ",
   Meat: "মাংস",
-  Essential: "মশলা ও অন্যান্য",
+  Essential: "মশলা",
+};
+
+const CATEGORY_CHIP_VARS: Record<string, { bg: string; border: string; badge: string }> = {
+  Vegetable: {
+    bg: "hsl(var(--pantry-chip-vegetable))",
+    border: "hsl(var(--pantry-chip-vegetable-border))",
+    badge: "hsl(var(--pantry-badge-vegetable))",
+  },
+  Fish: {
+    bg: "hsl(var(--pantry-chip-fish))",
+    border: "hsl(var(--pantry-chip-fish-border))",
+    badge: "hsl(var(--pantry-badge-fish))",
+  },
+  Meat: {
+    bg: "hsl(var(--pantry-chip-meat))",
+    border: "hsl(var(--pantry-chip-meat-border))",
+    badge: "hsl(var(--pantry-badge-meat))",
+  },
+  Essential: {
+    bg: "hsl(var(--pantry-chip-essential))",
+    border: "hsl(var(--pantry-chip-essential-border))",
+    badge: "hsl(var(--pantry-badge-essential))",
+  },
 };
 
 const PantryPage = () => {
@@ -45,7 +68,7 @@ const PantryPage = () => {
     .map((cat) => CATEGORY_LABELS[cat.id] || cat.label);
 
   return (
-    <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-card shadow-xl pb-32">
+    <div className="relative flex min-h-screen w-full max-w-5xl mx-auto flex-col bg-background pb-32">
       {/* Header */}
       <div className="sticky top-0 z-10 bg-card border-b border-border px-4 sm:px-6 pt-5 pb-4">
         <div className="flex items-center justify-center relative">
@@ -53,36 +76,10 @@ const PantryPage = () => {
             <HamburgerMenu />
           </div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight">
-            <span className="material-symbols-outlined text-primary align-middle mr-1" style={{ fontSize: "24px" }}>
-              kitchen
-            </span>
             আমার প্যান্ট্রি
           </h1>
         </div>
       </div>
-
-      {/* Stale warning */}
-      {staleCategories.length > 0 && (
-        <div
-          className="mx-4 sm:mx-6 mt-4 rounded-lg px-4 py-3 border-l-[3px]"
-          style={{
-            backgroundColor: "hsl(var(--pantry-warning))",
-            borderLeftColor: "hsl(var(--pantry-warning-border))",
-          }}
-        >
-          <div className="flex items-start gap-2">
-            <span
-              className="material-symbols-outlined filled-icon flex-shrink-0 mt-0.5"
-              style={{ fontSize: "18px", color: "hsl(var(--pantry-warning-border))" }}
-            >
-              warning
-            </span>
-            <p className="text-sm text-foreground">
-              <span className="font-semibold">{staleCategories.join(", ")}</span> ৭ দিনের বেশি আপডেট হয়নি। আপনার প্যান্ট্রি আপডেট করুন।
-            </p>
-          </div>
-        </div>
-      )}
 
       {/* Content */}
       <div className="flex-1 px-4 sm:px-6 pt-4">
@@ -102,37 +99,40 @@ const PantryPage = () => {
             </p>
           </div>
         ) : (
-          <div className="space-y-5">
+          <div className="space-y-4">
             {categories.map((cat) => {
               const items = grouped[cat.id];
               if (items.length === 0) return null;
+              const vars = CATEGORY_CHIP_VARS[cat.id];
               return (
-                <div key={cat.id}>
-                  <div className="flex items-center gap-1.5 mb-2">
-                    <span className="material-symbols-outlined text-primary" style={{ fontSize: "18px" }}>
-                      {cat.icon}
-                    </span>
+                <div
+                  key={cat.id}
+                  className="rounded-xl border border-border bg-card p-4"
+                >
+                  {/* Category header */}
+                  <div className="flex items-center justify-between mb-3">
                     <h2 className="text-sm font-bold text-foreground">
                       {CATEGORY_LABELS[cat.id] || cat.label}
                     </h2>
-                    <span className="text-xs text-muted-foreground">({items.length})</span>
+                    <span
+                      className="text-[11px] font-bold px-2.5 py-0.5 rounded-full text-primary-foreground"
+                      style={{ backgroundColor: vars.badge }}
+                    >
+                      {items.length} উপকরণ
+                    </span>
                   </div>
+                  {/* Chips */}
                   <div className="flex flex-wrap gap-2">
                     {items.map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center gap-1.5 pl-1.5 pr-1 py-1 rounded-full border"
+                        className="flex items-center gap-1.5 pl-3 pr-1.5 py-1.5 rounded-full border text-sm font-semibold"
                         style={{
-                          backgroundColor: "hsl(var(--pantry-chip))",
-                          borderColor: "hsl(var(--pantry-chip-border))",
+                          backgroundColor: vars.bg,
+                          borderColor: vars.border,
                         }}
                       >
-                        <img
-                          src={item.image}
-                          alt={item.localName}
-                          className="w-6 h-6 rounded-full object-cover"
-                        />
-                        <span className="text-xs font-semibold text-foreground whitespace-nowrap">
+                        <span className="text-foreground whitespace-nowrap">
                           {item.localName}
                         </span>
                         <button
@@ -154,6 +154,32 @@ const PantryPage = () => {
             })}
           </div>
         )}
+
+        {/* Stale warning */}
+        {staleCategories.length > 0 && (
+          <div
+            className="mt-4 rounded-lg px-4 py-3 border-l-[3px]"
+            style={{
+              backgroundColor: "hsl(var(--pantry-warning))",
+              borderLeftColor: "hsl(var(--pantry-warning-border))",
+            }}
+          >
+            <div className="flex items-start gap-2">
+              <span
+                className="material-symbols-outlined filled-icon flex-shrink-0 mt-0.5"
+                style={{ fontSize: "18px", color: "hsl(var(--pantry-warning-border))" }}
+              >
+                warning
+              </span>
+              <div className="text-sm text-foreground">
+                <p className="font-bold">৭ দিনের বেশি হয়ে গেছে</p>
+                <p>
+                  <span className="font-semibold">{staleCategories.join(", ")}</span> — আপডেট করুন
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* FAB + */}
@@ -172,7 +198,7 @@ const PantryPage = () => {
             className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-primary text-primary-foreground font-bold text-base shadow-xl shadow-primary/30 transition-transform hover:scale-[1.02] active:scale-[0.98]"
           >
             <span className="material-symbols-outlined filled-icon" style={{ fontSize: "20px" }}>skillet</span>
-            রান্না শুরু করুন
+            রান্না শুরু করুন ~
             <span className="bg-primary-foreground/20 text-primary-foreground text-xs font-bold px-2 py-0.5 rounded-full">
               {pantryIngredients.length}
             </span>
