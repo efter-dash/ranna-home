@@ -84,9 +84,9 @@ const PantryAddSheet = ({
           ))}
         </div>
 
-        {/* Grid */}
+        {/* Items */}
         <div className="flex-1 overflow-y-auto px-4 pb-6">
-          <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+          <div className="flex flex-wrap gap-2">
             {filtered.map((item) => {
               const isInPantry = inPantry.has(item.id);
               return (
@@ -95,28 +95,18 @@ const PantryAddSheet = ({
                   onClick={() =>
                     isInPantry ? onRemove(item.id) : onAdd(item.id, item.category)
                   }
-                  className={`relative flex flex-col items-center rounded-xl overflow-hidden border-2 transition-all ${
+                  className={`flex items-center gap-1.5 px-3.5 py-2.5 rounded-full border-2 text-sm font-semibold transition-all ${
                     isInPantry
-                      ? "border-primary shadow-md shadow-primary/20"
-                      : "border-border"
+                      ? "bg-primary/10 border-primary text-primary"
+                      : "bg-secondary/50 border-border text-foreground hover:border-primary/40"
                   }`}
                 >
-                  <div className="w-full aspect-square bg-muted overflow-hidden">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="w-full px-1.5 py-1.5 text-center bg-card">
-                    <p className="text-[11px] font-bold truncate">{item.localName}</p>
-                    <p className="text-[9px] text-muted-foreground truncate">{item.name}</p>
-                  </div>
+                  <span>{item.localName}</span>
+                  <span className="text-[11px] text-muted-foreground font-normal">
+                    {item.name}
+                  </span>
                   {isInPantry && (
-                    <div className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-                      <span className="material-symbols-outlined text-primary-foreground filled-icon" style={{ fontSize: "14px" }}>check</span>
-                    </div>
+                    <span className="material-symbols-outlined filled-icon text-primary" style={{ fontSize: "16px" }}>check_circle</span>
                   )}
                 </button>
               );
