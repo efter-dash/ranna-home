@@ -84,10 +84,20 @@
     --input: 150 10% 20%;
     --ring: 145 82% 38%;
 
-    --pantry-chip: 145 20% 20%;
-    --pantry-chip-border: 145 40% 40%;
+    --pantry-chip-vegetable: 140 20% 20%;
+    --pantry-chip-vegetable-border: 145 40% 40%;
+    --pantry-chip-fish: 175 20% 20%;
+    --pantry-chip-fish-border: 175 35% 40%;
+    --pantry-chip-meat: 10 20% 20%;
+    --pantry-chip-meat-border: 10 40% 45%;
+    --pantry-chip-essential: 40 20% 20%;
+    --pantry-chip-essential-border: 40 50% 40%;
     --pantry-warning: 40 30% 15%;
     --pantry-warning-border: 40 70% 45%;
+    --pantry-badge-vegetable: 145 40% 40%;
+    --pantry-badge-fish: 175 35% 40%;
+    --pantry-badge-meat: 10 40% 45%;
+    --pantry-badge-essential: 40 50% 40%;
   }
 }
 
