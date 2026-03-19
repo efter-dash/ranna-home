@@ -38,10 +38,20 @@
 
     --radius: 0.75rem;
 
-    --pantry-chip: 140 40% 94%;
-    --pantry-chip-border: 145 50% 55%;
+    --pantry-chip-vegetable: 140 40% 94%;
+    --pantry-chip-vegetable-border: 145 50% 55%;
+    --pantry-chip-fish: 175 35% 92%;
+    --pantry-chip-fish-border: 175 45% 50%;
+    --pantry-chip-meat: 10 60% 94%;
+    --pantry-chip-meat-border: 10 55% 60%;
+    --pantry-chip-essential: 40 60% 93%;
+    --pantry-chip-essential-border: 40 70% 50%;
     --pantry-warning: 45 100% 95%;
     --pantry-warning-border: 40 80% 50%;
+    --pantry-badge-vegetable: 145 50% 55%;
+    --pantry-badge-fish: 175 45% 50%;
+    --pantry-badge-meat: 10 55% 60%;
+    --pantry-badge-essential: 40 70% 50%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
