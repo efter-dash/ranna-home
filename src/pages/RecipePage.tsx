@@ -18,6 +18,7 @@ interface AIRecipe {
   ingredientsList: string[];
   missingEssentials: string[];
   steps: string[];
+  stepTimers?: number[];
 }
 
 const RecipePage = () => {
