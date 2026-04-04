@@ -29,6 +29,7 @@ const RecipePage = () => {
   const [recipes, setRecipes] = useState<AIRecipe[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [showCookMode, setShowCookMode] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
   const { history, addToHistory, clearHistory } = useRecipeHistory();
