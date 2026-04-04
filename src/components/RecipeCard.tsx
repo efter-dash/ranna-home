@@ -15,6 +15,7 @@ interface AIRecipe {
 interface RecipeCardProps {
   recipe: AIRecipe;
   usedItems: Ingredient[];
+  onStartCooking?: () => void;
 }
 
 const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
