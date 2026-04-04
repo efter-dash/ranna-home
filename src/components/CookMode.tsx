@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 interface CookModeProps {
   steps: string[];
+  stepTimers?: number[];
   onClose: () => void;
 }
 
