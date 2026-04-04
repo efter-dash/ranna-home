@@ -7,6 +7,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useRecipeHistory } from "@/hooks/useRecipeHistory";
 import RecipeCard from "@/components/RecipeCard";
 import RecipeHistorySheet from "@/components/RecipeHistorySheet";
+import CookMode from "@/components/CookMode";
 
 interface AIRecipe {
   title: string;
