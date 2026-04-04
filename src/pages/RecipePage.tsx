@@ -252,6 +252,7 @@ const RecipePage = () => {
       {showCookMode && recipe && (
         <CookMode
           steps={recipe.steps}
+          stepTimers={recipe.stepTimers}
           onClose={() => setShowCookMode(false)}
         />
       )}
