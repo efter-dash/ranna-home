@@ -2,15 +2,18 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 interface CookModeProps {
   steps: string[];
+  stepTimers?: number[];
   onClose: () => void;
 }
 
-const CookMode = ({ steps, onClose }: CookModeProps) => {
+const CookMode = ({ steps, stepTimers, onClose }: CookModeProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [timerSeconds, setTimerSeconds] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
-  const [defaultTime] = useState(() => steps.map(() => 5 * 60)); // 5 min default per step
+  const [defaultTime] = useState(() =>
+    steps.map((_, i) => (stepTimers && stepTimers[i] ? stepTimers[i] : 5 * 60))
+  );
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
   const isLastStep = currentStep === steps.length - 1;
