@@ -246,6 +246,14 @@ const RecipePage = () => {
           <p className="text-[10px] font-medium leading-normal tracking-wider">ইতিহাস</p>
         </button>
       </div>
+
+      {/* Cook Mode Overlay */}
+      {showCookMode && recipe && (
+        <CookMode
+          steps={recipe.steps}
+          onClose={() => setShowCookMode(false)}
+        />
+      )}
     </div>
   );
 };
