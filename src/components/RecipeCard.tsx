@@ -18,7 +18,7 @@ interface RecipeCardProps {
   onStartCooking?: () => void;
 }
 
-const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
+const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [copied, setCopied] = useState(false);
 
