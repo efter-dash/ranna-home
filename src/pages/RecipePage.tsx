@@ -213,6 +213,7 @@ const RecipePage = () => {
           <RecipeCard
             recipe={recipe}
             usedItems={usedItems}
+            onStartCooking={() => setShowCookMode(true)}
           />
         )}
       </div>
