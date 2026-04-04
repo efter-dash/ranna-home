@@ -7,6 +7,7 @@ import { useFavorites } from "@/hooks/useFavorites";
 import { useRecipeHistory } from "@/hooks/useRecipeHistory";
 import RecipeCard from "@/components/RecipeCard";
 import RecipeHistorySheet from "@/components/RecipeHistorySheet";
+import CookMode from "@/components/CookMode";
 
 interface AIRecipe {
   title: string;
@@ -28,6 +29,7 @@ const RecipePage = () => {
   const [recipes, setRecipes] = useState<AIRecipe[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [showCookMode, setShowCookMode] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
   const { history, addToHistory, clearHistory } = useRecipeHistory();
@@ -211,6 +213,7 @@ const RecipePage = () => {
           <RecipeCard
             recipe={recipe}
             usedItems={usedItems}
+            onStartCooking={() => setShowCookMode(true)}
           />
         )}
       </div>
@@ -243,6 +246,14 @@ const RecipePage = () => {
           <p className="text-[10px] font-medium leading-normal tracking-wider">ইতিহাস</p>
         </button>
       </div>
+
+      {/* Cook Mode Overlay */}
+      {showCookMode && recipe && (
+        <CookMode
+          steps={recipe.steps}
+          onClose={() => setShowCookMode(false)}
+        />
+      )}
     </div>
   );
 };

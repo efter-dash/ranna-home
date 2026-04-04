@@ -15,9 +15,10 @@ interface AIRecipe {
 interface RecipeCardProps {
   recipe: AIRecipe;
   usedItems: Ingredient[];
+  onStartCooking?: () => void;
 }
 
-const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
+const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [copied, setCopied] = useState(false);
 
@@ -135,7 +136,7 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
       )}
 
       {/* Step-by-Step Instructions */}
-      <div className="px-4 sm:px-6 pt-10 pb-24">
+      <div className="px-4 sm:px-6 pt-10">
         <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
           <span className="material-symbols-outlined text-primary">receipt_long</span>
           রান্নার প্রণালী
@@ -169,6 +170,17 @@ const RecipeCard = ({ recipe, usedItems }: RecipeCardProps) => {
             );
           })}
         </div>
+      </div>
+
+      {/* Start Cooking Button */}
+      <div className="px-4 sm:px-6 pt-8 pb-28">
+        <button
+          onClick={() => onStartCooking?.()}
+          className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-bold text-base flex items-center justify-center gap-2 shadow-lg hover:bg-primary/90 transition-colors"
+        >
+          <span className="material-symbols-outlined filled-icon">skillet</span>
+          শুরু করা যাক
+        </button>
       </div>
     </div>
   );
