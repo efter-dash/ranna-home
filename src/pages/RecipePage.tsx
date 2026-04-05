@@ -19,6 +19,7 @@ interface AIRecipe {
   missingEssentials: string[];
   steps: string[];
   stepTimers?: number[];
+  stepTips?: string[];
 }
 
 const RecipePage = () => {
@@ -253,6 +254,7 @@ const RecipePage = () => {
         <CookMode
           steps={recipe.steps}
           stepTimers={recipe.stepTimers}
+          stepTips={recipe.stepTips}
           onClose={() => setShowCookMode(false)}
         />
       )}

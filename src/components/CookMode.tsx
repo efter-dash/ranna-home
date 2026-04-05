@@ -3,10 +3,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 interface CookModeProps {
   steps: string[];
   stepTimers?: number[];
+  stepTips?: string[];
   onClose: () => void;
 }
 
-const CookMode = ({ steps, stepTimers, onClose }: CookModeProps) => {
+const CookMode = ({ steps, stepTimers, stepTips, onClose }: CookModeProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [timerSeconds, setTimerSeconds] = useState(0);
@@ -145,6 +146,17 @@ const CookMode = ({ steps, stepTimers, onClose }: CookModeProps) => {
               </p>
             </div>
           </div>
+
+          {/* Tip */}
+          {stepTips && stepTips[currentStep] && (
+            <div className="bg-accent/30 border border-accent rounded-xl p-4 mt-3 flex items-start gap-3">
+              <span className="material-symbols-outlined text-primary text-xl mt-0.5 shrink-0">lightbulb</span>
+              <div>
+                <p className="text-xs font-bold text-primary mb-0.5">টিপস</p>
+                <p className="text-sm leading-relaxed text-foreground">{stepTips[currentStep]}</p>
+              </div>
+            </div>
+          )}
 
           {/* Timer */}
           <div className="bg-card border border-border rounded-xl p-4 mt-4 flex items-center justify-between shadow-sm">
