@@ -2,12 +2,13 @@ import { useState, useEffect, useRef, useCallback } from "react";
 
 interface CookModeProps {
   steps: string[];
+  stepTitles?: string[];
   stepTimers?: number[];
   stepTips?: string[];
   onClose: () => void;
 }
 
-const CookMode = ({ steps, stepTimers, stepTips, onClose }: CookModeProps) => {
+const CookMode = ({ steps, stepTitles, stepTimers, stepTips, onClose }: CookModeProps) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [timerSeconds, setTimerSeconds] = useState(0);
@@ -94,10 +95,9 @@ const CookMode = ({ steps, stepTimers, stepTips, onClose }: CookModeProps) => {
     setTimerRunning((prev) => !prev);
   };
 
-  // Extract a short title from step text (first few words)
-  const getStepTitle = (step: string) => {
-    const words = step.split(" ").slice(0, 3).join(" ");
-    return words.length < step.length ? words : step;
+  const getStepTitle = (stepIndex: number) => {
+    if (stepTitles && stepTitles[stepIndex]) return stepTitles[stepIndex];
+    return `ধাপ ${stepIndex + 1}`;
   };
 
   return (
@@ -140,7 +140,7 @@ const CookMode = ({ steps, stepTimers, stepTips, onClose }: CookModeProps) => {
         <div className="max-w-lg mx-auto">
           <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm mt-4" style={{ borderLeft: "3px solid hsl(var(--primary))" }}>
             <div className="p-5 sm:p-6">
-              <h3 className="text-lg font-bold mb-3">{getStepTitle(steps[currentStep])}</h3>
+              <h3 className="text-lg font-bold mb-3">{getStepTitle(currentStep)}</h3>
               <p className="text-sm sm:text-base leading-relaxed text-foreground">
                 {steps[currentStep]}
               </p>
