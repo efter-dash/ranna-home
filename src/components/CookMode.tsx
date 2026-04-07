@@ -10,6 +10,8 @@ interface CookModeProps {
 
 const CookMode = ({ steps, stepTitles, stepTimers, stepTips, onClose }: CookModeProps) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<"left" | "right">("left");
+  const [animKey, setAnimKey] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [timerSeconds, setTimerSeconds] = useState(0);
   const [timerRunning, setTimerRunning] = useState(false);
@@ -80,12 +82,18 @@ const CookMode = ({ steps, stepTitles, stepTimers, stepTips, onClose }: CookMode
     if (isLastStep) {
       onClose();
     } else {
+      setSlideDirection("left");
+      setAnimKey((k) => k + 1);
       setCurrentStep((prev) => prev + 1);
     }
   }, [currentStep, isLastStep, onClose]);
 
   const goPrev = useCallback(() => {
-    if (currentStep > 0) setCurrentStep((prev) => prev - 1);
+    if (currentStep > 0) {
+      setSlideDirection("right");
+      setAnimKey((k) => k + 1);
+      setCurrentStep((prev) => prev - 1);
+    }
   }, [currentStep]);
 
   const toggleTimer = () => {
@@ -137,7 +145,13 @@ const CookMode = ({ steps, stepTitles, stepTimers, stepTips, onClose }: CookMode
 
       {/* Step Card */}
       <div className="flex-1 overflow-y-auto px-4 sm:px-6 pb-4">
-        <div className="max-w-lg mx-auto">
+        <div
+          key={animKey}
+          className="max-w-lg mx-auto"
+          style={{
+            animation: `cook-slide-${slideDirection} 0.25s ease-out both`,
+          }}
+        >
           <div className="bg-card border border-border rounded-xl overflow-hidden shadow-sm mt-4" style={{ borderLeft: "3px solid hsl(var(--primary))" }}>
             <div className="p-5 sm:p-6">
               <h3 className="text-lg font-bold mb-3">{getStepTitle(currentStep)}</h3>
