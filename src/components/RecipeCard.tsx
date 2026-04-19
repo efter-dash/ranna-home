@@ -31,6 +31,7 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
   const [copied, setCopied] = useState(false);
   const [expandedSub, setExpandedSub] = useState<number | null>(null);
   const [appliedSubs, setAppliedSubs] = useState<Set<string>>(new Set());
+  const [showSubs, setShowSubs] = useState(false);
 
   const toggleStep = (index: number) => {
     setCompletedSteps((prev) => {
