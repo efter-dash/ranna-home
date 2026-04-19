@@ -9,6 +9,13 @@ import RecipeCard from "@/components/RecipeCard";
 import RecipeHistorySheet from "@/components/RecipeHistorySheet";
 import CookMode from "@/components/CookMode";
 
+interface Substitute {
+  original: string;
+  substitute: string;
+  compatibility: number;
+  explanation: string;
+}
+
 interface AIRecipe {
   title: string;
   titleBn: string;
@@ -17,6 +24,7 @@ interface AIRecipe {
   difficulty: string;
   ingredientsList: string[];
   missingEssentials: string[];
+  substitutes?: Substitute[];
   steps: string[];
   stepTimers?: number[];
   stepTitles?: string[];
