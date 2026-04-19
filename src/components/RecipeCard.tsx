@@ -131,14 +131,31 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
       {/* Missing Essentials + Substitutes */}
       {displayedMissing.length > 0 && (
         <div className="px-4 sm:px-6 pt-8 space-y-4">
-          {/* Amber attention header */}
+          {/* Amber attention header with copy icon */}
           <div className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-400 dark:border-amber-600 rounded-xl p-4 shadow-sm">
             <div className="flex items-start gap-3">
               <span className="material-symbols-outlined text-amber-600 dark:text-amber-400 text-2xl filled-icon flex-none mt-0.5">warning</span>
-              <div className="flex-1">
-                <h4 className="text-sm font-bold text-amber-800 dark:text-amber-300">
-                  {displayedMissing.length}টি উপকরণ নেই
-                </h4>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center justify-between gap-2">
+                  <h4 className="text-sm font-bold text-amber-800 dark:text-amber-300">
+                    {displayedMissing.length}টি উপকরণ নেই
+                  </h4>
+                  <button
+                    onClick={() => {
+                      const text = displayedMissing.join("\n");
+                      navigator.clipboard.writeText(text).then(() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 2000);
+                      });
+                    }}
+                    aria-label="অভাবী উপকরণ কপি করুন"
+                    className="flex-none p-1.5 rounded-lg hover:bg-amber-100 dark:hover:bg-amber-900/40 transition-colors text-amber-700 dark:text-amber-300"
+                  >
+                    <span className="material-symbols-outlined text-base">
+                      {copied ? "check_circle" : "content_copy"}
+                    </span>
+                  </button>
+                </div>
                 <p className="text-xs text-amber-700 dark:text-amber-400/80 mt-1 leading-relaxed">
                   {displayedMissing.join(" • ")}
                 </p>
@@ -146,70 +163,68 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
             </div>
           </div>
 
-          {/* Substitute suggestions */}
+          {/* Substitute suggestions - collapsible */}
           {availableSubs.length > 0 && (
             <div>
-              <h3 className="text-base font-bold mb-3 flex items-center gap-2">
-                <span className="material-symbols-outlined text-primary">swap_horiz</span>
-                বিকল্প উপকরণ
-              </h3>
-              <div className="space-y-3">
-                {availableSubs.map((sub, idx) => {
-                  const isExpanded = expandedSub === idx;
-                  const compColor =
-                    sub.compatibility >= 75
-                      ? "bg-primary/10 text-primary"
-                      : sub.compatibility >= 50
-                      ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
-                      : "bg-muted text-muted-foreground";
-                  return (
-                    <button
-                      key={idx}
-                      onClick={() => setExpandedSub(isExpanded ? null : idx)}
-                      className="w-full text-left bg-card border border-border rounded-xl p-4 shadow-sm hover:border-primary/40 transition-colors"
-                    >
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <span className="text-sm font-bold flex-1 min-w-0 truncate">{sub.original}</span>
-                        <span className="material-symbols-outlined text-muted-foreground text-base">arrow_forward</span>
-                        <span className="text-sm font-bold flex-1 min-w-0 truncate">{sub.substitute}</span>
-                        <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${compColor}`}>
-                          {sub.compatibility}% কাছাকাছি
-                        </span>
-                      </div>
-                      {isExpanded && (
-                        <p className="mt-3 text-xs text-muted-foreground leading-relaxed bg-secondary/50 rounded-lg p-3">
-                          {sub.explanation}
-                        </p>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-
               <button
-                onClick={cookWithSubstitutes}
-                className="mt-4 w-full py-3.5 rounded-2xl bg-primary text-primary-foreground font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:bg-primary/90 transition-colors"
+                onClick={() => setShowSubs((v) => !v)}
+                className="w-full flex items-center justify-between gap-2 bg-card border border-border rounded-xl px-4 py-3 shadow-sm hover:border-primary/40 transition-colors"
               >
-                <span className="material-symbols-outlined text-base">restaurant</span>
-                বিকল্প দিয়ে রান্না করুন
+                <span className="text-base font-bold flex items-center gap-2">
+                  <span className="material-symbols-outlined text-primary">swap_horiz</span>
+                  বিকল্প উপকরণ
+                </span>
+                <span className="material-symbols-outlined text-muted-foreground">
+                  {showSubs ? "expand_less" : "expand_more"}
+                </span>
               </button>
+
+              {showSubs && (
+                <div className="space-y-3 mt-3">
+                  {availableSubs.map((sub, idx) => {
+                    const isExpanded = expandedSub === idx;
+                    const compColor =
+                      sub.compatibility >= 75
+                        ? "bg-primary/10 text-primary"
+                        : sub.compatibility >= 50
+                        ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300"
+                        : "bg-muted text-muted-foreground";
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => setExpandedSub(isExpanded ? null : idx)}
+                        className="w-full text-left bg-card border border-border rounded-xl p-4 shadow-sm hover:border-primary/40 transition-colors"
+                      >
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <span className="text-sm font-bold flex-1 min-w-0 truncate">{sub.original}</span>
+                          <span className="material-symbols-outlined text-muted-foreground text-base">arrow_forward</span>
+                          <span className="text-sm font-bold flex-1 min-w-0 truncate">{sub.substitute}</span>
+                          <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${compColor}`}>
+                            {sub.compatibility}% কাছাকাছি
+                          </span>
+                        </div>
+                        {isExpanded && (
+                          <p className="mt-3 text-xs text-muted-foreground leading-relaxed bg-secondary/50 rounded-lg p-3">
+                            {sub.explanation}
+                          </p>
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+
+              {showSubs && (
+                <button
+                  onClick={cookWithSubstitutes}
+                  className="mt-4 w-full py-3.5 rounded-2xl bg-primary text-primary-foreground font-bold text-sm flex items-center justify-center gap-2 shadow-md hover:bg-primary/90 transition-colors"
+                >
+                  <span className="material-symbols-outlined text-base">restaurant</span>
+                  বিকল্প উপকরণ দিয়ে রান্না করুন
+                </button>
+              )}
             </div>
           )}
-
-          {/* Copy button */}
-          <button
-            onClick={() => {
-              const text = displayedMissing.join("\n");
-              navigator.clipboard.writeText(text).then(() => {
-                setCopied(true);
-                setTimeout(() => setCopied(false), 2000);
-              });
-            }}
-            className="w-full flex items-center justify-center gap-2 text-xs font-semibold py-2 rounded-lg bg-secondary text-muted-foreground hover:bg-secondary/80 transition-colors"
-          >
-            <span className="material-symbols-outlined text-base">{copied ? "check_circle" : "content_copy"}</span>
-            {copied ? "কপি হয়েছে!" : "অভাবী উপকরণ কপি করুন"}
-          </button>
         </div>
       )}
 
