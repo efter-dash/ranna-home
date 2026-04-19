@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Ingredient } from "@/data/ingredients";
 
+interface Substitute {
+  original: string;
+  substitute: string;
+  compatibility: number;
+  explanation: string;
+}
+
 interface AIRecipe {
   title: string;
   titleBn: string;
@@ -9,6 +16,7 @@ interface AIRecipe {
   difficulty: string;
   ingredientsList: string[];
   missingEssentials: string[];
+  substitutes?: Substitute[];
   steps: string[];
 }
 
@@ -21,6 +29,8 @@ interface RecipeCardProps {
 const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [copied, setCopied] = useState(false);
+  const [expandedSub, setExpandedSub] = useState<number | null>(null);
+  const [appliedSubs, setAppliedSubs] = useState<Set<string>>(new Set());
 
   const toggleStep = (index: number) => {
     setCompletedSteps((prev) => {
@@ -30,6 +40,18 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
       return next;
     });
   };
+
+  const subsByOriginal = new Map<string, Substitute>();
+  (recipe.substitutes || []).forEach((s) => subsByOriginal.set(s.original, s));
+
+  const displayedMissing = recipe.missingEssentials.filter((m) => !appliedSubs.has(m));
+  const availableSubs = (recipe.substitutes || []).filter((s) => !appliedSubs.has(s.original));
+
+  const cookWithSubstitutes = () => {
+    const allOriginals = availableSubs.map((s) => s.original);
+    setAppliedSubs((prev) => new Set([...prev, ...allOriginals]));
+  };
+
 
   return (
     <div>
