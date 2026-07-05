@@ -1,39 +1,105 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-};
+// Set the ALLOWED_ORIGINS secret (comma-separated, e.g. "https://myapp.lovable.app,http://localhost:8080")
+// in Supabase to lock CORS to your real origins. Falls back to "*" until configured.
+const ALLOWED_ORIGINS = (Deno.env.get("ALLOWED_ORIGINS") ?? "")
+  .split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
+
+const VALID_CATEGORIES = new Set(["Fish", "Meat", "Vegetable", "Essential"]);
+const MAX_INGREDIENTS = 25;
+const MAX_NAME_LENGTH = 60;
+
+function corsHeaders(req: Request) {
+  const origin = req.headers.get("origin") ?? "";
+  const allowOrigin =
+    ALLOWED_ORIGINS.length === 0
+      ? "*"
+      : ALLOWED_ORIGINS.includes(origin)
+        ? origin
+        : ALLOWED_ORIGINS[0];
+  return {
+    "Access-Control-Allow-Origin": allowOrigin,
+    "Access-Control-Allow-Headers":
+      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
+    Vary: "Origin",
+  };
+}
+
+interface IngredientInput {
+  name: string;
+  localName: string;
+  category: string;
+}
+
+// Strip newlines/control characters so values can't break out of the prompt structure
+function sanitize(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const cleaned = value.replace(/[\r\n\t]/g, " ").trim();
+  if (cleaned.length === 0 || cleaned.length > MAX_NAME_LENGTH) return null;
+  return cleaned;
+}
+
+function validateIngredients(body: unknown): IngredientInput[] | null {
+  if (typeof body !== "object" || body === null) return null;
+  const raw = (body as Record<string, unknown>).ingredients;
+  if (!Array.isArray(raw) || raw.length === 0 || raw.length > MAX_INGREDIENTS) return null;
+
+  const result: IngredientInput[] = [];
+  for (const item of raw) {
+    if (typeof item !== "object" || item === null) return null;
+    const record = item as Record<string, unknown>;
+    const name = sanitize(record.name);
+    const localName = sanitize(record.localName);
+    const category = record.category;
+    if (!name || !localName || typeof category !== "string" || !VALID_CATEGORIES.has(category)) {
+      return null;
+    }
+    result.push({ name, localName, category });
+  }
+  return result;
+}
 
 serve(async (req) => {
+  const cors = corsHeaders(req);
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers: cors });
   }
 
-  try {
-    const { ingredients } = await req.json();
+  const json = (payload: unknown, status = 200) =>
+    new Response(JSON.stringify(payload), {
+      status,
+      headers: { ...cors, "Content-Type": "application/json" },
+    });
 
-    if (!ingredients || !Array.isArray(ingredients) || ingredients.length === 0) {
-      return new Response(
-        JSON.stringify({ error: "No ingredients provided" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+  try {
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return json({ error: "Invalid JSON body" }, 400);
+    }
+
+    const ingredients = validateIngredients(body);
+    if (!ingredients) {
+      return json({ error: "Invalid ingredients payload" }, 400);
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY is not configured");
+      console.error("LOVABLE_API_KEY is not configured");
+      return json({ error: "Service temporarily unavailable" }, 500);
     }
 
-    const hasFish = ingredients.some((i: any) => i.category === "Fish");
-    const hasMeat = ingredients.some((i: any) => i.category === "Meat");
+    const hasFish = ingredients.some((i) => i.category === "Fish");
+    const hasMeat = ingredients.some((i) => i.category === "Meat");
 
     const ingredientList = ingredients
-      .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
+      .map((i) => `${i.localName} (${i.name})`)
       .join(", ");
 
-    const systemPrompt = `তুমি একজন বাংলাদেশী রান্নার বিশেষজ্ঞ। তুমি সিদ্দিকা কবীরের "রান্না খাদ্য পুষ্টি" বইয়ের স্টাইলে রেসিপি লেখো। 
+    const systemPrompt = `তুমি একজন বাংলাদেশী রান্নার বিশেষজ্ঞ। তুমি সিদ্দিকা কবীরের "রান্না খাদ্য পুষ্টি" বইয়ের স্টাইলে রেসিপি লেখো।
 
 তোমার রেসিপি অবশ্যই বাংলায় লিখতে হবে। প্রতিটি রেসিপিতে থাকবে:
 - রেসিপির নাম (বাংলায়)
@@ -53,12 +119,12 @@ serve(async (req) => {
     if (hasFish && hasMeat) {
       // Both meat and fish: generate 2-3 recipes covering both proteins
       const fishIngredients = ingredients
-        .filter((i: any) => i.category !== "Meat")
-        .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
+        .filter((i) => i.category !== "Meat")
+        .map((i) => `${i.localName} (${i.name})`)
         .join(", ");
       const meatIngredients = ingredients
-        .filter((i: any) => i.category !== "Fish")
-        .map((i: { name: string; localName: string }) => `${i.localName} (${i.name})`)
+        .filter((i) => i.category !== "Fish")
+        .map((i) => `${i.localName} (${i.name})`)
         .join(", ");
 
       recipeCount = 3;
@@ -138,8 +204,15 @@ serve(async (req) => {
       }
     );
 
+    if (response.status === 429) {
+      return json({ error: "Rate limited. Please try again in a moment." }, 429);
+    }
+    if (response.status === 402) {
+      return json({ error: "AI credits exhausted. Please add credits." }, 402);
+    }
     if (!response.ok) {
-      return handleAIError(response);
+      console.error("AI gateway error:", response.status, await response.text());
+      return json({ error: "Recipe generation failed. Please try again." }, 502);
     }
 
     const data = await response.json();
@@ -153,38 +226,10 @@ serve(async (req) => {
     const parsed = JSON.parse(jsonStr);
     const recipesArray = Array.isArray(parsed) ? parsed : [parsed];
 
-    return new Response(
-      JSON.stringify({ recipes: recipesArray, multiple: recipesArray.length > 1 }),
-      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    return json({ recipes: recipesArray, multiple: recipesArray.length > 1 });
   } catch (e) {
+    // Full detail stays server-side; clients get a generic message
     console.error("generate-recipe error:", e);
-    return new Response(
-      JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),
-      { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-    );
+    return json({ error: "Recipe generation failed. Please try again." }, 500);
   }
 });
-
-async function handleAIError(response: Response) {
-  const cors = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers":
-      "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
-  };
-  if (response.status === 429) {
-    return new Response(
-      JSON.stringify({ error: "Rate limited. Please try again in a moment." }),
-      { status: 429, headers: { ...cors, "Content-Type": "application/json" } }
-    );
-  }
-  if (response.status === 402) {
-    return new Response(
-      JSON.stringify({ error: "AI credits exhausted. Please add credits." }),
-      { status: 402, headers: { ...cors, "Content-Type": "application/json" } }
-    );
-  }
-  const errText = await response.text();
-  console.error("AI gateway error:", response.status, errText);
-  throw new Error("AI gateway error");
-}

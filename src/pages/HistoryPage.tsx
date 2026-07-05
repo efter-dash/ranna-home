@@ -46,9 +46,10 @@ const HistoryPage = () => {
               <button
                 key={entry.id}
                 onClick={() => {
-                  if (entry.ingredientIds.length > 0) {
-                    navigate(`/recipe?ingredients=${entry.ingredientIds.join(",")}`);
-                  }
+                  const params = new URLSearchParams();
+                  params.set("ingredients", entry.ingredientIds.join(","));
+                  params.set("historyId", entry.id);
+                  navigate(`/recipe?${params.toString()}`);
                 }}
                 className="bg-secondary rounded-xl p-4 border border-border text-left hover:border-primary/30 transition-colors"
               >
@@ -87,27 +88,6 @@ const HistoryPage = () => {
         </div>
       )}
 
-      {/* Bottom Bar */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
-        <button
-          onClick={() => navigate("/")}
-          className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="material-symbols-outlined">home</span>
-          <p className="text-[10px] font-medium leading-normal tracking-wider">হোম</p>
-        </button>
-        <button
-          onClick={() => navigate("/favorites")}
-          className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="material-symbols-outlined">favorite</span>
-          <p className="text-[10px] font-medium leading-normal tracking-wider">ফেভারিট</p>
-        </button>
-        <div className="flex flex-1 flex-col items-center justify-end gap-1 text-primary">
-          <span className="material-symbols-outlined filled-icon">schedule</span>
-          <p className="text-[10px] font-bold leading-normal tracking-wider">ইতিহাস</p>
-        </div>
-      </div>
     </div>
   );
 };

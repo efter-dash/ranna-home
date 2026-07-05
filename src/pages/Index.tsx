@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Fish } from "lucide-react";
 import { useFavorites } from "@/hooks/useFavorites";
-import { INGREDIENT_DATA, categories, Category } from "@/data/ingredients";
+import { INGREDIENT_DATA, INGREDIENT_BY_ID, categories, Category } from "@/data/ingredients";
 import HamburgerMenu from "@/components/HamburgerMenu";
 import SearchFab from "@/components/SearchFab";
 
@@ -12,10 +12,15 @@ const Index = () => {
   const { favorites } = useFavorites();
   const navigate = useNavigate();
 
-  const shuffledAll = useMemo(
-    () => [...INGREDIENT_DATA].sort(() => Math.random() - 0.5),
-    []
-  );
+  const shuffledAll = useMemo(() => {
+    // Fisher-Yates: sort(() => Math.random() - 0.5) produces a biased shuffle
+    const arr = [...INGREDIENT_DATA];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }, []);
 
   const filteredIngredients = selectedCategory === "all"
     ? shuffledAll
@@ -106,7 +111,7 @@ const Index = () => {
           <div className="mt-1 pb-0.5">
             <div className="flex gap-1.5 overflow-x-auto scrollbar-hide pb-1 justify-center">
               {Array.from(selectedIngredients).map((id) => {
-                const item = INGREDIENT_DATA.find((i) => i.id === id);
+                const item = INGREDIENT_BY_ID.get(id);
                 if (!item) return null;
                 return (
                   <button
@@ -128,7 +133,7 @@ const Index = () => {
       {/* Ingredient Grid */}
       <div className="flex-1 px-4 sm:px-6 lg:px-8 pt-4 pb-36">
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
-          {filteredIngredients.map((item) => {
+          {filteredIngredients.map((item, index) => {
             const isSelected = selectedIngredients.has(item.id);
             return (
               <button
@@ -148,7 +153,7 @@ const Index = () => {
                     className="w-full h-full object-cover scale-110"
                     loading="lazy"
                     decoding="async"
-                    fetchPriority={filteredIngredients.indexOf(item) < 6 ? "high" : "low"}
+                    fetchPriority={index < 6 ? "high" : "low"}
                   />
                 </div>
 

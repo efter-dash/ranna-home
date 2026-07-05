@@ -1,29 +1,41 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import { createStorageStore } from "@/lib/storageStore";
+import { INGREDIENT_BY_ID } from "@/data/ingredients";
 
 interface PantryData {
   ingredients: string[];
   categoryTimestamps: Record<string, number>;
 }
 
-const STORAGE_KEY = "rannakori-pantry";
+const STALE_AFTER_MS = 7 * 24 * 60 * 60 * 1000;
 
-const getInitialData = (): PantryData => {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) return JSON.parse(raw);
-  } catch {}
-  return { ingredients: [], categoryTimestamps: {} };
-};
+const pantryStore = createStorageStore<PantryData>({
+  key: "rannakori-pantry",
+  fallback: { ingredients: [], categoryTimestamps: {} },
+  validate: (raw) => {
+    const d = raw as PantryData;
+    if (
+      !d ||
+      !Array.isArray(d.ingredients) ||
+      typeof d.categoryTimestamps !== "object" ||
+      d.categoryTimestamps === null
+    ) {
+      return null;
+    }
+    return {
+      ingredients: d.ingredients.filter((i) => typeof i === "string"),
+      categoryTimestamps: d.categoryTimestamps,
+    };
+  },
+});
+
+const categoryOf = (id: string) => INGREDIENT_BY_ID.get(id)?.category;
 
 export const usePantry = () => {
-  const [data, setData] = useState<PantryData>(getInitialData);
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }, [data]);
+  const data = pantryStore.useStore();
 
   const addIngredient = useCallback((id: string, category: string) => {
-    setData((prev) => {
+    pantryStore.set((prev) => {
       if (prev.ingredients.includes(id)) return prev;
       return {
         ingredients: [...prev.ingredients, id],
@@ -36,23 +48,16 @@ export const usePantry = () => {
   }, []);
 
   const removeIngredient = useCallback((id: string) => {
-    setData((prev) => ({
-      ...prev,
-      ingredients: prev.ingredients.filter((i) => i !== id),
-    }));
-  }, []);
-
-  const addMultiple = useCallback((ids: string[], category: string) => {
-    setData((prev) => {
-      const newIds = ids.filter((id) => !prev.ingredients.includes(id));
-      if (newIds.length === 0) return prev;
-      return {
-        ingredients: [...prev.ingredients, ...newIds],
-        categoryTimestamps: {
-          ...prev.categoryTimestamps,
-          [category]: Date.now(),
-        },
-      };
+    pantryStore.set((prev) => {
+      const ingredients = prev.ingredients.filter((i) => i !== id);
+      const categoryTimestamps = { ...prev.categoryTimestamps };
+      // Drop the category timestamp when its last item leaves, so a later
+      // re-add starts the staleness clock fresh instead of inheriting it
+      const category = categoryOf(id);
+      if (category && !ingredients.some((i) => categoryOf(i) === category)) {
+        delete categoryTimestamps[category];
+      }
+      return { ingredients, categoryTimestamps };
     });
   }, []);
 
@@ -60,17 +65,15 @@ export const usePantry = () => {
     (category: string): boolean => {
       const ts = data.categoryTimestamps[category];
       if (!ts) return true;
-      return Date.now() - ts > 7 * 24 * 60 * 60 * 1000;
+      return Date.now() - ts > STALE_AFTER_MS;
     },
     [data.categoryTimestamps]
   );
 
   return {
     pantryIngredients: data.ingredients,
-    categoryTimestamps: data.categoryTimestamps,
     addIngredient,
     removeIngredient,
-    addMultiple,
     isStale,
   };
 };

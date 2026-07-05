@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import { createStorageStore } from "@/lib/storageStore";
 
 export interface RecipeHistoryEntry {
   id: string;
@@ -14,43 +15,49 @@ export interface RecipeHistoryEntry {
   timestamp: number;
 }
 
-const HISTORY_KEY = "recipe_history_session";
+const MAX_ENTRIES = 20;
 
-function getHistory(): RecipeHistoryEntry[] {
-  try {
-    const raw = sessionStorage.getItem(HISTORY_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
+const isHistoryEntry = (h: unknown): h is RecipeHistoryEntry => {
+  const c = h as RecipeHistoryEntry;
+  return (
+    !!c &&
+    typeof c.id === "string" &&
+    typeof c.titleBn === "string" &&
+    typeof c.title === "string" &&
+    typeof c.timestamp === "number" &&
+    Array.isArray(c.steps) &&
+    Array.isArray(c.ingredientsList) &&
+    Array.isArray(c.missingEssentials) &&
+    Array.isArray(c.ingredientIds)
+  );
+};
+
+const historyStore = createStorageStore<RecipeHistoryEntry[]>({
+  key: "recipe_history_session",
+  fallback: [],
+  validate: (raw) => (Array.isArray(raw) ? raw.filter(isHistoryEntry) : null),
+  storage: () => sessionStorage,
+});
 
 export function useRecipeHistory() {
-  const [history, setHistory] = useState<RecipeHistoryEntry[]>(getHistory);
+  const history = historyStore.useStore();
 
   const addToHistory = useCallback((entry: Omit<RecipeHistoryEntry, "id" | "timestamp">) => {
-    setHistory((prev) => {
-      // Avoid duplicates by titleBn
+    historyStore.set((prev) => {
+      // Avoid duplicates by titleBn; keep the existing id so ?historyId= links stay valid
+      const existing = prev.find((h) => h.titleBn === entry.titleBn);
       const filtered = prev.filter((h) => h.titleBn !== entry.titleBn);
       const newEntry: RecipeHistoryEntry = {
         ...entry,
-        id: crypto.randomUUID(),
+        id: existing?.id ?? crypto.randomUUID(),
         timestamp: Date.now(),
       };
-      const updated = [newEntry, ...filtered].slice(0, 20); // Keep max 20
-      sessionStorage.setItem(HISTORY_KEY, JSON.stringify(updated));
-      return updated;
+      return [newEntry, ...filtered].slice(0, MAX_ENTRIES);
     });
   }, []);
 
   const clearHistory = useCallback(() => {
-    sessionStorage.removeItem(HISTORY_KEY);
-    setHistory([]);
-  }, []);
-
-  // Sync on mount
-  useEffect(() => {
-    setHistory(getHistory());
+    historyStore.set([]);
   }, []);
 
   return { history, addToHistory, clearHistory };

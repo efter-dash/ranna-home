@@ -18,52 +18,52 @@ const CookMode = ({ steps, stepTitles, stepTimers, stepTips, onClose }: CookMode
   const [defaultTime] = useState(() =>
     steps.map((_, i) => (stepTimers && stepTimers[i] ? stepTimers[i] : 5 * 60))
   );
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const wakeLockRef = useRef<WakeLockSentinel | null>(null);
   const isLastStep = currentStep === steps.length - 1;
   const isDone = completedSteps.size === steps.length;
 
   // Wake Lock
   useEffect(() => {
+    let unmounted = false;
+
     const requestWakeLock = async () => {
       try {
-        if ("wakeLock" in navigator) {
+        if ("wakeLock" in navigator && !unmounted) {
           wakeLockRef.current = await navigator.wakeLock.request("screen");
         }
-      } catch (e) {
-        console.log("Wake Lock not supported or denied");
+      } catch {
+        // Wake Lock unsupported or denied — cook mode still works, screen may sleep
       }
     };
     requestWakeLock();
 
+    // The browser auto-releases the lock when the tab is hidden; re-acquire on return
     const handleVisibility = () => {
       if (document.visibilityState === "visible") requestWakeLock();
     };
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
+      unmounted = true;
       wakeLockRef.current?.release();
       document.removeEventListener("visibilitychange", handleVisibility);
     };
   }, []);
 
-  // Timer
+  // Timer: one interval per run, not one per tick
   useEffect(() => {
-    if (timerRunning && timerSeconds > 0) {
-      intervalRef.current = setInterval(() => {
-        setTimerSeconds((prev) => {
-          if (prev <= 1) {
-            setTimerRunning(false);
-            return 0;
-          }
-          return prev - 1;
-        });
-      }, 1000);
-    }
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-  }, [timerRunning, timerSeconds]);
+    if (!timerRunning) return;
+    const interval = setInterval(() => {
+      setTimerSeconds((prev) => {
+        if (prev <= 1) {
+          setTimerRunning(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [timerRunning]);
 
   // Reset timer when step changes
   useEffect(() => {

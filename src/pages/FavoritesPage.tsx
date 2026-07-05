@@ -83,27 +83,6 @@ const FavoritesPage = () => {
         </div>
       )}
 
-      {/* Bottom Bar */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-5xl bg-card border-t border-border flex gap-2 px-4 pb-6 pt-3">
-        <button
-          onClick={() => navigate("/")}
-          className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="material-symbols-outlined">home</span>
-          <p className="text-[10px] font-medium leading-normal tracking-wider">হোম</p>
-        </button>
-        <div className="flex flex-1 flex-col items-center justify-end gap-1 text-primary">
-          <span className="material-symbols-outlined filled-icon">favorite</span>
-          <p className="text-[10px] font-bold leading-normal tracking-wider">প্রিয়</p>
-        </div>
-        <button
-          onClick={() => navigate("/")}
-          className="flex flex-1 flex-col items-center justify-end gap-1 text-muted-foreground hover:text-primary transition-colors"
-        >
-          <span className="material-symbols-outlined">kitchen</span>
-          <p className="text-[10px] font-medium leading-normal tracking-wider">প্যান্ট্রি</p>
-        </button>
-      </div>
     </div>
   );
 };

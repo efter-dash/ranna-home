@@ -11,10 +11,20 @@ const ResetPasswordPage = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash.includes("type=recovery")) {
+    // The Supabase client consumes the URL hash asynchronously at startup, so the
+    // hash may already be gone by the time this runs. Check it if still present,
+    // and also listen for the PASSWORD_RECOVERY event to cover the other ordering.
+    if (window.location.hash.includes("type=recovery")) {
       setIsRecovery(true);
     }
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") {
+        setIsRecovery(true);
+      }
+    });
+
+    return () => subscription.unsubscribe();
   }, []);
 
   const handleReset = async (e: React.FormEvent) => {

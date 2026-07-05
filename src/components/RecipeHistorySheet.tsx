@@ -11,9 +11,10 @@ const RecipeHistorySheet = ({ history, onClear }: RecipeHistorySheetProps) => {
   const navigate = useNavigate();
 
   const handleRecipeClick = (entry: RecipeHistoryEntry) => {
-    if (entry.ingredientIds.length > 0) {
-      navigate(`/recipe?ingredients=${entry.ingredientIds.join(",")}`);
-    }
+    const params = new URLSearchParams();
+    params.set("ingredients", entry.ingredientIds.join(","));
+    params.set("historyId", entry.id);
+    navigate(`/recipe?${params.toString()}`);
   };
 
   const formatTime = (ts: number) => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { useAuth } from "@/hooks/useAuth";
@@ -16,8 +16,7 @@ const AuthPage = () => {
   const { toast } = useToast();
 
   if (user) {
-    navigate("/");
-    return null;
+    return <Navigate to="/" replace />;
   }
 
   const handleEmailAuth = async (e: React.FormEvent) => {

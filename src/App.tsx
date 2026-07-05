@@ -3,7 +3,6 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/Footer";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
 import BottomNav from "@/components/BottomNav";
@@ -19,8 +18,6 @@ const HistoryPage = lazy(() => import("./pages/HistoryPage"));
 const PantryPage = lazy(() => import("./pages/PantryPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const queryClient = new QueryClient();
-
 const PageFallback = () => (
   <div className="flex min-h-screen items-center justify-center">
     <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
@@ -28,34 +25,32 @@ const PageFallback = () => (
 );
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AuthProvider>
-          <div className="flex flex-col min-h-screen">
-            <Suspense fallback={<PageFallback />}>
-              <Routes>
-                <Route path="/" element={<Index />} />
-                <Route path="/recipe" element={<RecipePage />} />
-                <Route path="/favorites" element={<FavoritesPage />} />
-                <Route path="/auth" element={<AuthPage />} />
-                <Route path="/reset-password" element={<ResetPasswordPage />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/history" element={<HistoryPage />} />
-                <Route path="/pantry" element={<PantryPage />} />
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </Suspense>
-            <BottomNav />
-            <Footer />
-          </div>
-        </AuthProvider>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <TooltipProvider>
+    <Toaster />
+    <Sonner />
+    <BrowserRouter>
+      <AuthProvider>
+        <div className="flex flex-col min-h-screen">
+          <Suspense fallback={<PageFallback />}>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/recipe" element={<RecipePage />} />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/auth" element={<AuthPage />} />
+              <Route path="/reset-password" element={<ResetPasswordPage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+              <Route path="/history" element={<HistoryPage />} />
+              <Route path="/pantry" element={<PantryPage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+          <BottomNav />
+          <Footer />
+        </div>
+      </AuthProvider>
+    </BrowserRouter>
+  </TooltipProvider>
 );
 
 export default App;

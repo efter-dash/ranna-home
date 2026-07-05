@@ -201,3 +201,5 @@ export const INGREDIENT_DATA: Ingredient[] = [
 
 // Backward-compatible export
 export const ingredients = INGREDIENT_DATA;
+
+export const INGREDIENT_BY_ID = new Map(INGREDIENT_DATA.map((i) => [i.id, i]));

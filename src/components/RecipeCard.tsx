@@ -29,7 +29,9 @@ interface RecipeCardProps {
 const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
   const [completedSteps, setCompletedSteps] = useState<Set<number>>(new Set());
   const [copied, setCopied] = useState(false);
-  const [expandedSub, setExpandedSub] = useState<number | null>(null);
+  // Keyed by substitute `original` name: the list shrinks as subs are applied,
+  // so a numeric index would point at the wrong row after a change
+  const [expandedSub, setExpandedSub] = useState<string | null>(null);
   const [appliedSubs, setAppliedSubs] = useState<Set<string>>(new Set());
   const [showSubs, setShowSubs] = useState(false);
 
@@ -41,9 +43,6 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
       return next;
     });
   };
-
-  const subsByOriginal = new Map<string, Substitute>();
-  (recipe.substitutes || []).forEach((s) => subsByOriginal.set(s.original, s));
 
   const displayedMissing = recipe.missingEssentials.filter((m) => !appliedSubs.has(m));
   const availableSubs = (recipe.substitutes || []).filter((s) => !appliedSubs.has(s.original));
@@ -181,8 +180,8 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
 
               {showSubs && (
                 <div className="space-y-3 mt-3">
-                  {availableSubs.map((sub, idx) => {
-                    const isExpanded = expandedSub === idx;
+                  {availableSubs.map((sub) => {
+                    const isExpanded = expandedSub === sub.original;
                     const compColor =
                       sub.compatibility >= 75
                         ? "bg-primary/10 text-primary"
@@ -191,8 +190,8 @@ const RecipeCard = ({ recipe, usedItems, onStartCooking }: RecipeCardProps) => {
                         : "bg-muted text-muted-foreground";
                     return (
                       <button
-                        key={idx}
-                        onClick={() => setExpandedSub(isExpanded ? null : idx)}
+                        key={sub.original}
+                        onClick={() => setExpandedSub(isExpanded ? null : sub.original)}
                         className="w-full text-left bg-card border border-border rounded-xl p-4 shadow-sm hover:border-primary/40 transition-colors"
                       >
                         <div className="flex items-center gap-3 flex-wrap">

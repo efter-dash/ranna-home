@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import { createStorageStore } from "@/lib/storageStore";
 
 export interface FavoriteRecipe {
   id: string;
@@ -14,27 +15,28 @@ export interface FavoriteRecipe {
   savedAt: string;
 }
 
-const STORAGE_KEY = "rannakori-favorites";
+const isFavoriteRecipe = (f: unknown): f is FavoriteRecipe => {
+  const c = f as FavoriteRecipe;
+  return (
+    !!c &&
+    typeof c.id === "string" &&
+    typeof c.titleBn === "string" &&
+    typeof c.title === "string" &&
+    Array.isArray(c.steps) &&
+    Array.isArray(c.ingredientsList) &&
+    Array.isArray(c.missingEssentials) &&
+    Array.isArray(c.ingredientIds)
+  );
+};
 
-function loadFavorites(): FavoriteRecipe[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveFavorites(favorites: FavoriteRecipe[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
-}
+const favoritesStore = createStorageStore<FavoriteRecipe[]>({
+  key: "rannakori-favorites",
+  fallback: [],
+  validate: (raw) => (Array.isArray(raw) ? raw.filter(isFavoriteRecipe) : null),
+});
 
 export function useFavorites() {
-  const [favorites, setFavorites] = useState<FavoriteRecipe[]>(loadFavorites);
-
-  useEffect(() => {
-    saveFavorites(favorites);
-  }, [favorites]);
+  const favorites = favoritesStore.useStore();
 
   const addFavorite = useCallback((recipe: Omit<FavoriteRecipe, "id" | "savedAt">) => {
     const newFav: FavoriteRecipe = {
@@ -42,12 +44,12 @@ export function useFavorites() {
       id: crypto.randomUUID(),
       savedAt: new Date().toISOString(),
     };
-    setFavorites((prev) => [newFav, ...prev]);
+    favoritesStore.set((prev) => [newFav, ...prev]);
     return newFav.id;
   }, []);
 
   const removeFavorite = useCallback((id: string) => {
-    setFavorites((prev) => prev.filter((f) => f.id !== id));
+    favoritesStore.set((prev) => prev.filter((f) => f.id !== id));
   }, []);
 
   const isFavorited = useCallback(

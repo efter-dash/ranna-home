@@ -31,10 +31,27 @@ interface AIRecipe {
   stepTips?: string[];
 }
 
+// AI output is untrusted input — verify the fields the UI dereferences before rendering
+const isValidRecipe = (r: unknown): r is AIRecipe => {
+  const c = r as AIRecipe;
+  return (
+    !!c &&
+    typeof c.titleBn === "string" &&
+    typeof c.title === "string" &&
+    Array.isArray(c.steps) &&
+    c.steps.length > 0 &&
+    Array.isArray(c.ingredientsList) &&
+    Array.isArray(c.missingEssentials)
+  );
+};
+
 const RecipePage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const selectedIds = searchParams.get("ingredients")?.split(",") || [];
+  const ingredientsParam = searchParams.get("ingredients") ?? "";
+  const favoriteId = searchParams.get("favoriteId");
+  const historyId = searchParams.get("historyId");
+  const selectedIds = ingredientsParam ? ingredientsParam.split(",") : [];
   const usedItems = ingredients.filter((i) => selectedIds.includes(i.id));
 
   const [recipes, setRecipes] = useState<AIRecipe[]>([]);
@@ -42,7 +59,7 @@ const RecipePage = () => {
   const [loading, setLoading] = useState(true);
   const [showCookMode, setShowCookMode] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
+  const { favorites, addFavorite, removeFavorite, isFavorited, getFavoriteByTitle } = useFavorites();
   const { history, addToHistory, clearHistory } = useRecipeHistory();
 
   const recipe = recipes[activeIndex] || null;
@@ -72,9 +89,32 @@ const RecipePage = () => {
   };
 
   useEffect(() => {
+    // Saved favorite or history entry: render it directly, no AI call
+    const saved = favoriteId
+      ? favorites.find((f) => f.id === favoriteId)
+      : historyId
+        ? history.find((h) => h.id === historyId)
+        : undefined;
+    if (saved) {
+      setRecipes([saved]);
+      setActiveIndex(0);
+      setLoading(false);
+      setError(null);
+      return;
+    }
+
+    // Nothing valid to cook with: don't strand the user on the loading spinner
+    if (usedItems.length === 0) {
+      navigate("/", { replace: true });
+      return;
+    }
+
+    let cancelled = false;
+
     const fetchRecipe = async () => {
       setLoading(true);
       setError(null);
+      setActiveIndex(0);
 
       try {
         const ingredientData = usedItems.map((i) => ({
@@ -88,28 +128,32 @@ const RecipePage = () => {
           { body: { ingredients: ingredientData } }
         );
 
+        if (cancelled) return;
         if (fnError) throw fnError;
         if (data?.error) throw new Error(data.error);
 
-        if (data?.recipes && Array.isArray(data.recipes)) {
-          setRecipes(data.recipes);
-        } else {
-          setRecipes([data]);
-        }
+        const raw = Array.isArray(data?.recipes) ? data.recipes : [data];
+        const valid = raw.filter(isValidRecipe);
+        if (valid.length === 0) throw new Error("রেসিপি তৈরি করতে সমস্যা হয়েছে");
+        setRecipes(valid);
       } catch (err: any) {
+        if (cancelled) return;
         console.error("Recipe generation error:", err);
         const msg = err?.message || "রেসিপি তৈরি করতে সমস্যা হয়েছে";
         setError(msg);
         toast.error(msg);
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
-    if (usedItems.length > 0) {
-      fetchRecipe();
-    }
-  }, []);
+    fetchRecipe();
+    return () => {
+      cancelled = true;
+    };
+    // `favorites`/`history` intentionally omitted: changing them on-page must not refetch
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ingredientsParam, favoriteId, historyId]);
 
   useEffect(() => {
     if (recipes.length > 0) {

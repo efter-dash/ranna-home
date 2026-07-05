@@ -16,7 +16,7 @@ const HamburgerMenu = () => {
 
   const menuItems = [
     { label: "ফেভারিট", icon: Heart, to: "/favorites" },
-    { label: "রেসিপি ইতিহাস", icon: History, to: "/recipe" },
+    { label: "রেসিপি ইতিহাস", icon: History, to: "/history" },
     { label: "সেটিংস", icon: Settings, to: "/settings" },
     { label: "আমাদের সম্পর্কে", icon: Info, to: "/about" },
   ];
