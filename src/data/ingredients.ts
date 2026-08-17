@@ -98,7 +98,7 @@ import essBlackPepper from "@/assets/ess-black-pepper.webp";
 import essCardamomPowder from "@/assets/ess-cardamom-powder.webp";
 import essNutmeg from "@/assets/ess-nutmeg.webp";
 import essSesame from "@/assets/ess-sesame.webp";
-import meatDeshiChicken from "@/assets/meat-deshi-chicken.webp";
+import meatDeshiChicken from "@/assets/meat-deshi-chicken.jpg";
 
 export const INGREDIENT_DATA: Ingredient[] = [
   // ===== FISH (Popular Bangladeshi fish) =====
