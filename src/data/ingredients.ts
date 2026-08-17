@@ -187,6 +187,7 @@ export const INGREDIENT_DATA: Ingredient[] = [
   { id: "ess-soyabean-oil", name: "Soyabean Oil", localName: "সয়াবিন তেল", category: "Essential", imageQuery: "soybean oil", icon: "water_drop", image: essSoyabeanOil },
   { id: "ess-butter", name: "Butter", localName: "মাখন", category: "Essential", imageQuery: "butter", icon: "water_drop", image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&h=400&fit=crop" },
   { id: "ess-milk", name: "Milk", localName: "দুধ", category: "Essential", imageQuery: "milk", icon: "water_drop", image: essMilk },
+  { id: "ess-egg", name: "Chicken Egg", localName: "ডিম", category: "Essential", imageQuery: "chicken eggs", icon: "egg", image: "https://images.unsplash.com/photo-1518569656558-1f25e69d93d7?w=400&h=400&fit=crop" },
   { id: "ess-sour-curd", name: "Sour Curd", localName: "টক দই", category: "Essential", imageQuery: "sour curd yogurt", icon: "grain", image: essSourCurd },
   { id: "ess-salt", name: "Salt", localName: "লবণ", category: "Essential", imageQuery: "salt", icon: "grain", image: essSalt },
   { id: "ess-suji", name: "Semolina", localName: "সুজি", category: "Essential", imageQuery: "semolina", icon: "grain", image: essSuji },
