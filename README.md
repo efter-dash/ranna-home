@@ -1,73 +1,128 @@
-# Welcome to your Lovable project
+## About RannaKori
 
-## Project info
+**RannaKori** is a Bengali-first AI-assisted cooking companion designed around a familiar question:
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+> **বাসায় যা আছে, তা দিয়ে কী রান্না করা যায়?**  
+> *What can I cook with what I already have at home?*
 
-## How can I edit this code?
+Instead of inventing new recipes, RannaKori uses AI to **curate and match traditional Bangladeshi recipes** based on the ingredients a user already has and what they are trying to cook.
 
-There are several ways of editing your application.
+The system is grounded in a reference collection of established Bangladeshi cookbooks containing traditional recipes. When users select their available ingredients, the AI evaluates those inputs against this recipe knowledge base and recommends the most suitable recipe.
 
-**Use Lovable**
+The goal is not to reinvent traditional food, but to make authentic recipes **easier to discover, more contextual, and more practical for everyday cooking.**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## ✨ Key Features
 
-**Use your preferred IDE**
+### 🥕 Ingredient-Based Recipe Matching
+Users select the ingredients they already have, and RannaKori identifies recipes that best match those ingredients.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 📚 Cookbook-Grounded Recipe Knowledge
+The system is based on a curated reference library of established Bangladeshi cookbooks and traditional recipes.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🤖 AI-Curated Recommendations
+AI helps determine which existing recipe is most appropriate based on the user's ingredients and cooking intent.
 
-Follow these steps:
+It is not designed to randomly invent a new recipe from scratch.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 🇧🇩 Traditional Bangladeshi Recipes
+The experience focuses on preserving and surfacing established Bangladeshi cooking traditions rather than replacing them with AI-created variations.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 🧂 Ingredient Compatibility
+The system evaluates how well the user's available ingredients align with known recipes and can identify ingredients that may still be required.
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🔄 Ingredient Alternatives
+Where appropriate, the experience can help users understand possible ingredient substitutions while keeping the original recipe context in mind.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+---
+
+## 🧠 How the Recipe Intelligence Works
+
+The core idea behind RannaKori is **curation rather than generation**.
+
+The workflow is approximately:
+
+```text
+Traditional Bangladeshi Cookbooks
+            ↓
+     Recipe Knowledge Base
+            ↓
+User Selects Available Ingredients
+            ↓
+User Indicates What They Want to Cook
+            ↓
+AI Evaluates Relevant Recipes
+            ↓
+Best-Matching Traditional Recipe
+            ↓
+Step-by-Step Cooking Experience
 ```
 
-**Edit a file directly in GitHub**
+The AI acts primarily as an intelligent matching and curation layer.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Instead of asking:
 
-**Use GitHub Codespaces**
+**“What recipe can AI invent with these ingredients?”**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+RannaKori asks:
 
-## What technologies are used for this project?
+**“Among the traditional recipes we already know, which one best fits what this person has available?”**
 
-This project is built with:
+---
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 💡 Why I Built It
 
-## How can I deploy this project?
+RannaKori started from a common everyday problem:
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+**You have ingredients at home, but you don't know what you can make with them.**
 
-## Can I connect a custom domain to my Lovable project?
+At the same time, I didn't want AI to simply invent recipes and present them as traditional Bengali food.
 
-Yes, you can!
+Bangladeshi cuisine already has a rich body of established recipes and cooking knowledge.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+So the idea became:
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+**Traditional recipe knowledge + available ingredients + AI-powered matching**
+
+The technology helps users navigate existing culinary knowledge rather than replacing that knowledge.
+
+This makes RannaKori an experiment in using AI as a **curation and discovery layer** over established human knowledge.
+
+---
+
+## 🎯 Product Principles
+
+### Preserve before generating
+For traditional cuisine, existing culinary knowledge should be respected rather than unnecessarily recreated by AI.
+
+### AI should curate, not overwrite
+The role of AI is to help identify the most relevant recipe from trusted source material.
+
+### Start with what the user has
+Recipe discovery begins with the ingredients available in the kitchen.
+
+### Design for local context
+Language, ingredients, recipes and cooking behaviour should feel natural to Bangladeshi users.
+
+### Make traditional knowledge easier to access
+Technology should reduce the friction between a person asking *“What can I cook?”* and finding an appropriate traditional recipe.
+
+---
+
+## ⚠️ AI & Recipe Disclaimer
+
+RannaKori uses AI to help **match and curate recipes from its reference knowledge base** based on user-selected ingredients and cooking preferences.
+
+AI may still occasionally interpret inputs incorrectly or produce inaccurate guidance.
+
+Users should therefore use appropriate judgement regarding:
+
+- Food safety
+- Allergies
+- Dietary restrictions
+- Ingredient freshness
+- Cooking temperatures
+- Medical or nutritional requirements
+
+The application's recommendations should be treated as cooking assistance rather than professional medical or nutritional advice.
