@@ -1,5 +1,8 @@
 # RannaKori redesign roadmap
 
+> Paused until credits are available. When resuming, start with: (1) mobile bottom bar, (2) recipe page.
+
+
 - [ ] Establish premium Bengali design tokens, typography, motion, and responsive shell
 - [ ] Redesign home discovery, search, shortcuts, ingredient selection tray, and navigation
 - [ ] Redesign pantry and ingredient picker
